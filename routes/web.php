@@ -32,3 +32,8 @@ Route::get('/competitions', [
     'uses' => 'CompetitionsController@getIndex',
     'as' => 'competitions.index'
 ]);
+
+Route::get('new_activity', [
+    'uses' => 'ActivitiesController@getNewActivityForm',
+    'as' => 'activities.new_activity'
+]);

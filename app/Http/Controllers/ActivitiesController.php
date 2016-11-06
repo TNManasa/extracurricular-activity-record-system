@@ -6,5 +6,8 @@ use Illuminate\Http\Request;
 
 class ActivitiesController extends Controller
 {
-    //
+    public function getNewActivityForm()
+    {
+        return view('activities.add_activity');
+    }
 }
