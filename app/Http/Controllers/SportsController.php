@@ -7,10 +7,10 @@ use Illuminate\Http\Request;
 
 class SportsController extends Controller
 {
-    public function getAllSports()
+    public function getIndex()
     {
         $all_sports = Sport::all();
-        return view('sports.all_sports', [
+        return view('sports.index', [
             'all_sports' => $all_sports
         ]);
     }

@@ -17,7 +17,10 @@
 @section('content')
     <div class="row">
         <div class="col-md-6 ol-md-offset-2">
-            <a href="{{ route('') }}" class="btn btn-default">Student Sign Up</a>
+            <a href="{{ route('students.register') }}" class="btn btn-default">Student Sign Up</a>
+            <a href="{{ route('sports.index') }}" class="btn btn-default">Sports</a>
+            <a href="{{ route('societies.index') }}" class="btn btn-default">Societies</a>
+            <a href="{{ route('competitions.index') }}" class="btn btn-default">Competitions</a>
         </div>
     </div>
 @stop
