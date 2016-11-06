@@ -15,6 +15,9 @@
 
 </head>
 <body>
+
+@yield('begin_body')
+
 <div class="container" style="padding: 20px">
     @yield('content')
 </div>
