@@ -14,4 +14,25 @@ class SportsController extends Controller
             'all_sports' => $all_sports
         ]);
     }
+
+    public function newSport()
+    {
+        return view('sports.new_sport');
+    }
+
+    public function addNewSport(Request $request)
+    {
+        $this->validate($request, [
+            'title' => 'required|max:60',
+            'position' => 'required|max:20',
+            'start_date' => 'required'
+        ]);
+
+        $sport = new Sport;
+        $sport->title = $request->title;
+        $sport->position = $request->position;
+        $sport->start_date = $request->start_date;
+    }
 }
+
+

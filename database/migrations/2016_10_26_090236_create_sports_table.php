@@ -18,6 +18,7 @@ class CreateSportsTable extends Migration
             $table->integer('activity_id')->unsigned();
             $table->string('title');
             $table->string('position');
+            $table->date('start_date');
             $table->timestamps();
         });
     }

@@ -17,7 +17,8 @@ class CreateCompetitionsTable extends Migration
             $table->increments('id');
             $table->integer('activity_id')->unsigned();
             $table->string('title');
-            $table->string('position');
+            $table->string('achievements');
+            $table->date('start_date');
             $table->timestamps();
         });
     }
