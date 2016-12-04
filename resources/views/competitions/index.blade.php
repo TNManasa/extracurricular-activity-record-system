@@ -23,6 +23,7 @@
                     <li class="list-group-item">{{ $competition->title }}</li>
                 @endforeach
             </ul>
+            <h2>{{$comp->name}}</h2>
         </div>
     </div>
 @stop

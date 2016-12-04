@@ -12,9 +12,12 @@ class CompetitionsController extends Controller
     {
         $all_competitions = Competition::all();
         $raw_competitions = DB::select('select * from competitions');
-        return view('competitions.index', [
+        $comp1=new Competition();
+        $comp1->name=$raw_competitions[0]->title;
+        return view('competitions/index', [
             'all_competitions' => $all_competitions,
-            'raw_competitions' => $raw_competitions
+            'raw_competitions' => $raw_competitions,
+            'comp'=>$comp1
         ]);
     }
 
