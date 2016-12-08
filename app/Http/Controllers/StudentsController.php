@@ -21,12 +21,25 @@ class StudentsController extends Controller
         $dob=$request['dob'];
         $gender=$request['gender'];
         $faculty=$request['faculty'];
-        $pwd=$request['password'];
+        $pwd=bcrypt($request['password']);
+        $email= $request['email'];
+        $role= 'student';
 
-        $line= 'insert into students (index_no, first_name, last_name,gender,faculty,dob) values ("'.$index_no.'","'.$first_name.'","'.$last_name.'","'.$gender.'","'.$faculty.'","'.$dob.'")';
+
+        $line1='insert into users (email,password,role) values ("'.$email.'","'.$pwd.'","'.$role.'")';
+        DB::insert($line1);
+
+        $id1 = DB::select('select id from users where email = ?',[$email]);
+        $id=null;
+        foreach ($id1 as $user) {
+            $id= $user->id;
+        }
 
 
-        DB::insert($line);
-        return 1;
+        $line2= 'insert into students (index_no, first_name, last_name,gender,faculty,id,dob) values ("'.$index_no.'","'.$first_name.'","'.$last_name.'","'.$gender.'","'.$faculty.'","'.$id.'","'.$dob.'")';
+
+
+        DB::insert($line2);
+        return 'success';
     }
 }

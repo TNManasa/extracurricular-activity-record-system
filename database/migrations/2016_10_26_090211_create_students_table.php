@@ -21,6 +21,9 @@ class CreateStudentsTable extends Migration
             $table->string('index_no');
             $table->string('faculty');
             $table->primary('index_no');
+            $table->integer('id')->unsigned();
+            $table->foreign('id')->references('id')->on('users')->onDelete('cascade');
+
         });
     }
 
