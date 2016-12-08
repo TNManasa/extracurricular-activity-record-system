@@ -8,7 +8,7 @@
     {{--Student Sign Up Form--}}
     <div class="row">
         <div class="col-md-4">
-            <form action="" method="post">
+            <form action="{{ route('student.addDetails') }}" method="post">
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label for="index_no">Index No: </label>
@@ -28,6 +28,21 @@
                 <div class="form-group">
                     <label for="email">Email: </label>
                     <input type="text" name="email" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" name="dob" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <input type="number" name="gender" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="faculty">Department</label>
+                    <input type="text" name="faculty" class="form-control">
                 </div>
 
                 <div class="form-group">

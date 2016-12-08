@@ -16,6 +16,11 @@ Route::get('/students/register', [
     'as' => 'students.register'
 ]);
 
+Route::post('/students/addDetails',[
+    'uses' => 'StudentsController@addDetails',
+    'as' => 'student.addDetails'
+]);
+
 // End of Student Routes
 
 Route::get('/sports', [
