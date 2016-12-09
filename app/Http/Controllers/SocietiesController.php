@@ -23,8 +23,8 @@ class SocietiesController extends Controller
     public function addNewSociety(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required',
-            'position' => 'required',
+            'name' => 'required|max:60',
+            'position' => 'required|max:60|before:today',
             'start_date' => 'required'
         ]);
 

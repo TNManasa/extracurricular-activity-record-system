@@ -8,6 +8,8 @@
     {{--Student Sign Up Form--}}
     <div class="row">
         <div class="col-md-4">
+            <h1>Register as Student</h1>
+            <br>
             <form action="{{ route('student.addDetails') }}" method="post">
                 {{ csrf_field() }}
                 <div class="form-group">
@@ -37,7 +39,10 @@
 
                 <div class="form-group">
                     <label for="gender">Gender</label>
-                    <input type="number" name="gender" class="form-control">
+                    <select name="gender" class="form-control">
+                        <option value="1">Male</option> 
+                        <option value="2">Female</option>
+                    </select>
                 </div>
 
                 <div class="form-group">
@@ -53,6 +58,10 @@
                 <div class="form-group">
                     <label for="password_confirmation">Confirm Password: </label>
                     <input type="password" name="password_confirmation" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <input type="hidden" name="role" value="student"> 
                 </div>
 
                 <div class="form-group">
