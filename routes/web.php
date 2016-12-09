@@ -12,12 +12,14 @@ Route::get('/', function () {
 
 // Student Routes
 Route::get('/students/register', [
-    'uses' => 'StudentsController@getIndex',
+    // add new student form
+    'uses' => 'StudentsController@newStudent',
     'as' => 'students.register'
 ]);
 
 Route::post('/students/addDetails',[
-    'uses' => 'StudentsController@addDetails',
+    // actually add new student
+    'uses' => 'StudentsController@addNewStudent',
     'as' => 'student.addDetails'
 ]);
 

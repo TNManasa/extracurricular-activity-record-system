@@ -7,12 +7,12 @@ use Illuminate\Support\Facades\DB;
 
 class StudentsController extends Controller
 {
-    public function getIndex()
+    public function newStudent()
     {
         return view('students.register');
     }
 
-    public function addDetails(Request $request)
+    public function addNewStudent(Request $request)
     {
 
         $index_no=$request['index_no'];
