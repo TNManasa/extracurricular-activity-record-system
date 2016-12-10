@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Crypt;
 
 class StudentsController extends Controller
 {
@@ -21,7 +22,7 @@ class StudentsController extends Controller
         $dob=$request['dob'];
         $gender=$request['gender'];
         $faculty=$request['faculty'];
-        $pwd=bcrypt($request['password']);
+        $pwd=Crypt::encrypt($request['password']);
         $email= $request['email'];
         $role= 'student';
 
@@ -36,9 +37,17 @@ class StudentsController extends Controller
             $id= $user->id;
         }
 
+
         //to update student table
-        $line2= "insert into students (index_no, first_name, last_name,gender,faculty,id,dob) values ('$index_no','$first_name','$last_name','$gender','$faculty','$id','$dob')";
+        $line2= "insert into students (index_no, first_name, last_name,gender,faculty,user_id,dob) values ('$index_no','$first_name','$last_name','$gender','$faculty','$id','$dob')";
         DB::insert($line2);
+
+        $passwd = DB::select('select password from users where email = ?',[$email]);
+        $tempPwd=null;
+        foreach ($passwd as $myPasswd) {
+            $tempPwd= $myPasswd->password;
+        }
+        return Crypt::decrypt($tempPwd);
         return 'success';
     }
 }

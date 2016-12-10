@@ -9,6 +9,16 @@ Route::get('/', function () {
  * Convention for naming Controller methods: Use camelCase
  * */
 
+//user Login
+Route::get('/login',function(){
+    return view('user_login');
+});
+
+Route::post('/loginDetails',[
+    'uses' => 'UsersController@loginUser',
+    'as' => 'userLogin'
+]);
+
 
 // Student Routes
 Route::get('/students/register', [
