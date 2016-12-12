@@ -20,8 +20,11 @@
                         <option value="other">Other</option>
                     </select>
                 </div>
+                <div class="form-group">
+                    <label for="start_date">Start Date: </label>
+                    <input type="date" name="start_date" class="form-control">
+                </div>
             </form>
         </div>
     </div>
 @stop
-

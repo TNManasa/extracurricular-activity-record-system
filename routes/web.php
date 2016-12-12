@@ -9,11 +9,28 @@ Route::get('/', function () {
  * Convention for naming Controller methods: Use camelCase
  * */
 
+//user Login
+Route::get('/login',function(){
+    return view('user_login');
+});
+
+Route::post('/loginDetails',[
+    'uses' => 'UsersController@loginUser',
+    'as' => 'userLogin'
+]);
+
 
 // Student Routes
 Route::get('/students/register', [
-    'uses' => 'StudentsController@getIndex',
+    // add new student form
+    'uses' => 'StudentsController@newStudent',
     'as' => 'students.register'
+]);
+
+Route::post('/students/addDetails',[
+    // actually add new student
+    'uses' => 'StudentsController@addNewStudent',
+    'as' => 'student.addDetails'
 ]);
 
 // End of Student Routes

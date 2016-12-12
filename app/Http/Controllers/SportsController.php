@@ -32,6 +32,8 @@ class SportsController extends Controller
         $sport->title = $request->title;
         $sport->position = $request->position;
         $sport->start_date = $request->start_date;
+
+        
     }
 }
 

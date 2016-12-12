@@ -8,7 +8,9 @@
     {{--Student Sign Up Form--}}
     <div class="row">
         <div class="col-md-4">
-            <form action="" method="post">
+            <h1>Register as Student</h1>
+            <br>
+            <form action="{{ route('student.addDetails') }}" method="post">
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label for="index_no">Index No: </label>
@@ -31,6 +33,24 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" name="dob" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select name="gender" class="form-control">
+                        <option value="1">Male</option> 
+                        <option value="2">Female</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="faculty">Department</label>
+                    <input type="text" name="faculty" class="form-control">
+                </div>
+
+                <div class="form-group">
                     <label for="password">Password: </label>
                     <input type="password" name="password" class="form-control" >
                 </div>
@@ -38,6 +58,10 @@
                 <div class="form-group">
                     <label for="password_confirmation">Confirm Password: </label>
                     <input type="password" name="password_confirmation" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <input type="hidden" name="role" value="student"> 
                 </div>
 
                 <div class="form-group">
