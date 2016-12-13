@@ -20,7 +20,8 @@ class supervisorsController extends Controller
 
     public function activityValidate($id){
         $activity= DB::select('select * from activities where id = ?', [$id]);
-        return view('supervisor.validate');
+        //return $activity;
+        return view('supervisor.validate',compact('activity'));
 
     }
 }

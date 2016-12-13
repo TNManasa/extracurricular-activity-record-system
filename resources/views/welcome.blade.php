@@ -12,6 +12,7 @@
             <h4>University of Moratuwa - Department of Computer Science & Engineering</h4>
         </div>
     </div>
+
 @stop
 
 @section('content')
