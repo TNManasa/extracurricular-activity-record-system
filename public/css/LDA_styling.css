@@ -1,0 +1,169 @@
+ /*MCQ options button group styling*/
+label.btn span {
+    font-size: 1.5em ;
+}
+
+label input[type="radio"] ~ i.fa.fa-circle-o{
+    color: #c8c8c8;    display: inline;
+}
+label input[type="radio"] ~ i.fa.fa-dot-circle-o{
+    display: none;
+}
+label input[type="radio"]:checked ~ i.fa.fa-circle-o{
+    display: none;
+}
+label input[type="radio"]:checked ~ i.fa.fa-dot-circle-o{
+    color: #037ff3;    display: inline;
+}
+label:hover input[type="radio"] ~ i.fa {
+    color: rgba(3, 127, 243, 0.81);
+}
+
+div[data-toggle="buttons"] label.active{
+    color: rgba(54, 112, 167, 0.96);
+}
+
+div[data-toggle="buttons"] label {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 10px;
+    font-weight: normal;
+    line-height: 2em;
+    text-align: left;
+    white-space: nowrap;
+    vertical-align: top;
+    cursor: pointer;
+    background-color: none;
+    border: 0px solid
+    #c8c8c8;
+    border-radius: 3px;
+    color: #c8c8c8;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+div[data-toggle="buttons"] label:hover {
+    color: #3670a7;
+}
+
+div[data-toggle="buttons"] label:active, div[data-toggle="buttons"] label.active {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+
+
+
+
+
+/* removing overlapping on top with navbar */
+body { padding-top: 70px; }
+
+
+
+
+
+
+/* making the question block hovering */
+div.shadow {
+    /*width: 300px;*/
+    /*margin: 20px;*/
+    /*border: 1px solid rgba(148, 149, 145, 0.39);*/
+    padding-left: 5%;
+    padding-right: 5%;
+
+    -webkit-transition: all 0.7s ease;
+    transition: all 0.7s ease;
+}
+/*div.shadow:hover {*/
+    /*-moz-box-shadow: 0 0 5px rgba(98, 103, 112, 0.34);*/
+    /*-webkit-box-shadow: 0 0 5px rgba(98, 103, 112, 0.34);*/
+    /*box-shadow: 0 0 5px rgba(98, 103, 112, 0.34);*/
+    /*!*border: 1px solid #037FF3;*!*/
+/*}*/
+
+
+ .divider {
+     height: 1px;
+     width:100%;
+     display:block; /* for use on default inline elements like span */
+     margin: 9px 0;
+     overflow: hidden;
+     background-color: #e5e5e5;
+ }
+
+
+
+
+
+
+ /*Hover Effect*/
+ .hovereffect:hover {
+     border-color: transparent;
+     -webkit-box-shadow: 0px 0px 10px 5px rgba(3, 127, 243, 0.75);
+     box-shadow: 0px 0px 10px 5px rgba(3, 127, 243, 0.75);
+
+     -webkit-transform:scale(1.05);
+     transform:scale(1.05);
+ }
+ .hovereffect {
+     /*-webkit-box-shadow: 0px 0px 15px 5px rgba(0, 185, 233, .75);*/
+     /*box-shadow: 0px 0px 15px 5px rgba(0, 185, 233, .75);*/
+     -webkit-transition: all 0.7s ease;
+     transition: all 0.7s ease;
+ }
+
+
+
+ #LDA_landingpage_container {
+     padding-left: 10%;
+     padding-right: 10%;
+     color: white;
+ }
+
+ #LDA_resultspage_container {
+     padding-left: 10%;
+     padding-right: 10%;
+     /*color: white;*/
+ }
+
+ #bg {
+     position: fixed;
+     top: 0%;
+     left: 0%;
+     width: 100%;
+     height: 100%;
+ }
+ #bg img {
+     position: absolute;
+     top: 0;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     margin: auto;
+     min-width: 50%;
+     min-height: 50%;
+ }
+
+ .jumbowell {
+     background-color: transparent;
+ }
+
+
+
+.starttestbtn {
+    background-color: transparent;
+    border-color: white;
+}
+
+.starttestbtn:hover {
+    border-color: transparent;
+    background-color: #037FF3;
+}
+
+
+
