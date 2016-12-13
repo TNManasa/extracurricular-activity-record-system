@@ -37,13 +37,14 @@
                 <?php $b="achievements"?>
             @endif
 
+
         <tr>
 
             <td>{{$a->student_ID}}</td>
             <td>{{$a->start_date}}</td>
             <td>{{$a->end_date}}</td>
             <td>{{$b}}</td>
-            <td><div class="btn-primary"> View Activity</td>
+            <td><a href="/activity/{{$a->id}}" class="btn-primary"  >View Activity </a></td>
 
         </tr>
         @endforeach
