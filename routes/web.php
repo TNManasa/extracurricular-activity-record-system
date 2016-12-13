@@ -94,3 +94,5 @@ Route::get('new_activity', [
     'as' => 'activities.new_activity'
 ]);
 
+Route::get('/supervisor','supervisorsController@supervisorView');
+
