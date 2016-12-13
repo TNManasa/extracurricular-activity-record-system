@@ -94,5 +94,9 @@ Route::get('new_activity', [
     'as' => 'activities.new_activity'
 ]);
 
+//Gathika
+
 Route::get('/supervisor','supervisorsController@supervisorView');
+Route::get('/pending','supervisorsController@pendingActivities');
+
 
