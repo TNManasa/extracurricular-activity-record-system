@@ -16,9 +16,9 @@ class CreateValidationsTable extends Migration
         Schema::create('validations', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('rating');
-            $table->integer('supervisor_id');
+            $table->string('supervisor_id');
             $table->date('validated_date');
-            $table->integer('is_validated');
+            $table->tinyInteger('is_validated');
             // 0 - invalid
             // 1 - valid
             $table->foreign('supervisor_id')->references('emp_id')->on('supervisors');

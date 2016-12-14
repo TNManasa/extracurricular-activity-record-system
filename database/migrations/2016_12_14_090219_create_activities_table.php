@@ -15,7 +15,7 @@ class CreateActivitiesTable extends Migration
     {
         Schema::create('activities', function (Blueprint $table) {
             $table->increments('id'); //primary key
-            $table->integer('student_id');
+            $table->string('student_id');
             $table->tinyInteger('type');
             // 1 = Organization
             // 2 = Sport
@@ -23,7 +23,7 @@ class CreateActivitiesTable extends Migration
             // 4 = Achievement
             $table->date('start_date');
             $table->date('end_date')->nullable();
-            $table->integer('validation_id')->nullable();
+            $table->integer('validation_id')->unsigned()->nullable();
             // null = pending validation action
             // not null = validation action happened
             $table->string('description');

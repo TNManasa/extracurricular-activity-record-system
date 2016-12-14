@@ -14,7 +14,7 @@ class CreateSupervisorsTable extends Migration
     public function up()
     {
         Schema::create('supervisors', function (Blueprint $table) {
-            $table->integer('emp_id')->unsigned();
+            $table->string('emp_id');
             $table->string('name');
             $table->string('position');
 
