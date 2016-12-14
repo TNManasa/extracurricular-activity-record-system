@@ -12,6 +12,7 @@
             <h4>University of Moratuwa - Department of Computer Science & Engineering</h4>
         </div>
     </div>
+
 @stop
 
 @section('content')
@@ -22,6 +23,7 @@
             <a href="{{ route('societies.index') }}" class="btn btn-default">Societies</a>
             <a href="{{ route('competitions.index') }}" class="btn btn-default">Competitions</a>
             <a href="{{ route('activities.new_activity') }}" class="btn btn-default">New Activity</a>
+            <a href="/supervisor" class="btn-default"> supervisor </a>
         </div>
     </div>
 @stop
