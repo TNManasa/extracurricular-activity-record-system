@@ -15,10 +15,13 @@ class CreateSupervisorsTable extends Migration
     {
         Schema::create('supervisors', function (Blueprint $table) {
             $table->string('emp_id');
-            $table->string('name');
+            $table->string('first_name');
+            $table->string('last_name');
             $table->string('position');
+            $table->integer('user_id')->unsigned();
 
             $table->primary('emp_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
