@@ -20,10 +20,9 @@
         <div class="col-md-6 ol-md-offset-2">
             <a href="{{ route('students.register') }}" class="btn btn-default">Student Sign Up</a>
             <a href="{{ route('sports.index') }}" class="btn btn-default">Sports</a>
-            <a href="{{ route('societies.index') }}" class="btn btn-default">Societies</a>
+            <a href="{{ route('organizations.index') }}" class="btn btn-default">Societies/Organizations</a>
             <a href="{{ route('competitions.index') }}" class="btn btn-default">Competitions</a>
             <a href="{{ route('activities.new_activity') }}" class="btn btn-default">New Activity</a>
-            <a href="/supervisor" class="btn-default"> supervisor </a>
         </div>
     </div>
 @stop

@@ -10,14 +10,14 @@ class SocietiesController extends Controller
     public function getIndex()
     {
         $all_societies = Society::all();
-        return view('societies.index', [
+        return view('organizations.index', [
             'all_societies' => $all_societies
         ]);
     }
 
     public function newSociety()
     {
-        return view('societies.new_society');
+        return view('organizations.new_society');
     }
 
     public function addNewSociety(Request $request)

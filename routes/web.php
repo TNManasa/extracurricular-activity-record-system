@@ -53,22 +53,22 @@ Route::post('/add-new-sport', [
     'as' => 'sports.add-new-sport'
 ]);
 
-Route::get('/societies', [
-    // view all societies
-    'uses' => 'SocietiesController@getIndex',
-    'as' => 'societies.index'
+Route::get('/organizations', [
+    // view all organizations
+    'uses' => 'OrganizationsController@getIndex',
+    'as' => 'organizations.index'
 ]);
 
 Route::get('/new-society', [
     // add new society form
     'uses' => 'SocietiesController@newSociety',
-    'as' => 'societies.new-society'
+    'as' => 'organizations.new-society'
 ]);
 
 Route::post('/add-new-society', [
     // actually add new society
    'uses' => 'SocietiesController@addNewSociety',
-    'as' => 'societies.add-new-society'
+    'as' => 'organizations.add-new-society'
 ]);
 
 Route::get('/competitions', [
