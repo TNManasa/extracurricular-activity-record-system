@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Society extends Model
+class OrgActivity extends Model
 {
     //
 }

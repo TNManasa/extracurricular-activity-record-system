@@ -4,8 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Competition extends Model
+class Supervisor extends Model
 {
-    public $name;
-
+    //
 }

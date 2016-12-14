@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSportsTable extends Migration
+class CreateCompetitionActivitiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreateSportsTable extends Migration
      */
     public function up()
     {
-        Schema::create('sports', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('competition_activities', function (Blueprint $table) {
+            $table->integer('id')->unsigned();
+            $table->primary('id');
+            $table->foreign('id')->references('id')->on('activities');
             $table->string('name');
+            $table->string('status');
         });
     }
 
@@ -26,6 +29,6 @@ class CreateSportsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sports');
+        Schema::dropIfExists('competition_activities');
     }
 }
