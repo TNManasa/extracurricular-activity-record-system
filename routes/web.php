@@ -5,7 +5,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 /*
- * Convention for naming the routes: use lowercase letters, hiphens, periods, Use Plurals
+ * Convention for naming the routes: use lowercase letters, hyphens, periods, Use Plurals
  * Convention for naming Controller methods: Use camelCase
  * */
 
