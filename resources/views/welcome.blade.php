@@ -4,7 +4,7 @@
     Welcome to ECAM
 @stop
 
-@section('begin_body')
+@section('content')
     <div class="container">
         <div class="jumbotron">
             <h1>Welcome!</h1>
@@ -13,9 +13,7 @@
         </div>
     </div>
 
-@stop
 
-@section('content')
     <div class="row">
         <div class="col-md-6 ol-md-offset-2">
             <a href="{{ route('students.register') }}" class="btn btn-default">Student Sign Up</a>

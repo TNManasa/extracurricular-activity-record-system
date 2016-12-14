@@ -1,13 +1,13 @@
 @extends('layouts.master')
 
 @section('title')
-    Student | New Activity | Society
+    Student | New Activity | Organization/Society
 @stop
 
 @section('content')
     <div class="row">
         <div class="col-md-6">
-            <h2>New Activity (Society)</h2>
+            <h2>New Activity (Organization/Society)</h2>
             <form action="" method="post">
                 {{ csrf_field() }}
                 <div class="form-group">
