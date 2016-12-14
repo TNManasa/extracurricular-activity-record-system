@@ -7,6 +7,7 @@ class SportsTableSeeder extends Seeder
 {
     public function run()
     {
+        DB::table('sports')->delete();
         $sports = ['Cricket', 'Football', 'Volleyball', 'Basketball', 'Carom', 'Chess', 'Hockey', 'Badminton'];
 
         $count = count($sports);

@@ -7,6 +7,7 @@ class OrganizationsTableSeeder extends Seeder
 
     public function run()
     {
+        DB::table('organizations')->delete();
         $organizations = ['AIESEC', 'Rotaract', 'MoraSpirit', 'The Gavel Club', 'Media Unit'];
 
         $count = count($organizations);

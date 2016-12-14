@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('role');
+            // write the role in lowercase: 'student' or 'supervisor'
             $table->rememberToken();
         });
     }
