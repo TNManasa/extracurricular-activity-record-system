@@ -40,7 +40,7 @@
 
         <tr>
 
-            <td>{{$a->student_ID}}</td>
+            <td>{{$a->student_id}}</td>
             <td>{{$a->start_date}}</td>
             <td>{{$a->end_date}}</td>
             <td>{{$b}}</td>
