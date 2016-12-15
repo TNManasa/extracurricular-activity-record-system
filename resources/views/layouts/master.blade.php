@@ -32,10 +32,7 @@
                 <a href="{{ route('welcome') }}">Home</a>
             </li>
             <li>
-                <a href="{{ route('students.all') }}">All Students</a>
-            </li>
-            <li>
-                <a href="#">Overview</a>
+                <a href="{{ route('admin.index') }}">Admin Control</a>
             </li>
             <li>
                 <a href="#">Events</a>
