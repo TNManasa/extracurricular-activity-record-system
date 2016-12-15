@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class supervisorsController extends Controller
+class SupervisorsController extends Controller
 {
     //
     public function supervisorView(){

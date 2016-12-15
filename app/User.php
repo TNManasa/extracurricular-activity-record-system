@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\Authenticatable;
+use DB;
 
 class User implements Authenticatable
 {
@@ -12,8 +13,6 @@ class User implements Authenticatable
     public $password;
     public $role;
     public $_token;
-
-
 
     use Notifiable;
 
@@ -77,5 +76,31 @@ class User implements Authenticatable
     public function getRememberTokenName()
     {
         // TODO: Implement getRememberTokenName() method.
+    }
+
+    public static function findById($id){
+        $user = DB::select('select * from users where id=?', [$id]);
+        return $user;
+    }
+
+    public static function getEmailById($id){
+        $user = self::findById($id);
+        $email = $user[0]->email;
+        return $email;
+    }
+
+    public static function getAllUsers(){
+        $raw_users = DB::select('select * from users');
+        $users = [];
+
+        foreach($raw_users as $user){
+            $u = new User();
+            $u->id = $user->id;
+            $u->email = $user->email;
+            $u->role = $user->role;
+            array_push($users, $u);
+        }
+
+        return $users;
     }
 }

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Sport;
 use Illuminate\Http\Request;
 use DB;
-use Illuminate\Support\Facades\Crypt;
 
 class UsersController extends Controller
 {
@@ -34,7 +33,7 @@ class UsersController extends Controller
             $resultRole=$row->role;
         }
 
-        $resultPassword=Crypt::decrypt($resultPassword);
+        $resultPassword=bcrypt($resultPassword);
         if($resultPassword==$pwd){
             //if logged in user is student return to current dashboard, needs to be fixed when complete
             if($resultRole == 'student'){
@@ -48,6 +47,5 @@ class UsersController extends Controller
 
             return view('user_login', ['customMessage' => 'password missmatch error']);
         }
-
     }
 }
