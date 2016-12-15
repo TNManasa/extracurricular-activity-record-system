@@ -2,25 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Society;
+use App\Organization;
 use Illuminate\Http\Request;
 
-class SocietiesController extends Controller
+class OrganizationsController extends Controller
 {
     public function getIndex()
     {
-        $all_societies = Society::all();
+        $all_societies = Organization::all();
         return view('organizations.index', [
             'all_societies' => $all_societies
         ]);
     }
 
-    public function newSociety()
+    public function newOrganization()
     {
-        return view('organizations.new_society');
+        return view('organizations.new_organization');
     }
 
-    public function addNewSociety(Request $request)
+    public function addNewOrganization(Request $request)
     {
         $this->validate($request, [
             'name' => 'required|max:60',
@@ -32,11 +32,11 @@ class SocietiesController extends Controller
         $position = $request->position;
         $start_date = $request->start_date;
 
-        $society = new Society;
-        $society->name = $name;
-        $society->position = $position;
-        $society->start_date = $start_date;
+        $organization = new Organization;
+        $organization->name = $name;
+        $organization->position = $position;
+        $organization->start_date = $start_date;
 
-        $society->save();
+        $organization->save();
     }
 }

@@ -61,14 +61,14 @@ Route::get('/organizations', [
 
 Route::get('/new-society', [
     // add new society form
-    'uses' => 'SocietiesController@newSociety',
-    'as' => 'organizations.new-society'
+    'uses' => 'OrganizationsController@newOrganization',
+    'as' => 'organizations.new-organization'
 ]);
 
 Route::post('/add-new-society', [
     // actually add new society
    'uses' => 'SocietiesController@addNewSociety',
-    'as' => 'organizations.add-new-society'
+    'as' => 'organizations.add-new-organization'
 ]);
 
 Route::get('/competitions', [
@@ -89,9 +89,14 @@ Route::post('/add-new-competition', [
     'as' => 'competitions.add-new-competition'
 ]);
 
-Route::get('new_activity', [
+Route::get('new-activity', [
     'uses' => 'ActivitiesController@getNewActivityForm',
-    'as' => 'activities.new_activity'
+    'as' => 'activities.new-activity'
+]);
+
+Route::post('continue-to-new-activity', [
+    'uses' => 'ActivitiesController@continueToAdd',
+    'as' => 'activities.continue'
 ]);
 
 //Gathika
