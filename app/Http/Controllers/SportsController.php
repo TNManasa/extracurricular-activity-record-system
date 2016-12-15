@@ -9,10 +9,15 @@ class SportsController extends Controller
 {
     public function getIndex()
     {
-        $all_sports = Sport::all();
+        $all_sports = Sport::selectAll();
+
+        dd($all_sports);
+
         return view('sports.index', [
             'all_sports' => $all_sports
         ]);
+
+
     }
 
     public function newSport()

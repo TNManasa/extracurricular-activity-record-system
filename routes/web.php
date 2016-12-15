@@ -20,11 +20,12 @@ Route::post('/loginDetails',[
 ]);
 
 
-// Student Routes
-Route::get('students/all', [
-    'uses' => 'StudentsController@getAllStudents',
-    'as' => 'students.all'
-]);
+//// Student Routes
+//Route::get('students/all', [
+//    'uses' => 'StudentsController@getAllStudents',
+//    'as' => 'students.all'
+//]);
+
 Route::get('/students/register', [
     // add new student form
     'uses' => 'StudentsController@newStudent',
@@ -111,3 +112,22 @@ Route::get('/activity/{id}','supervisorsController@activityShow');
 Route::post('/activity/{id}/validate','supervisorsController@activityValidate');
 
 
+// Admin Routes
+
+Route::get('admin', [
+    'uses' => 'AdminController@getIndex',
+    'as' => 'admin.index'
+]);
+
+Route::get('admin/all-students', [
+    'uses' => 'AdminController@getAllStudents',
+    'as' => 'admin.all-students',
+]);
+
+Route::get('admin/all-supervisors', [
+    'uses' => 'AdminController@getAllSupervisors',
+    'as' => 'admin.all-supervisors'
+]);
+
+
+Route::get('/test', 'Sport@selectAll');
