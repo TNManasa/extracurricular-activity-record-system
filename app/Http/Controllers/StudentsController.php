@@ -2,12 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Crypt;
 
 class StudentsController extends Controller
 {
+    public function getAllStudents()
+    {
+        $students = DB::select('select * from students');
+        return view('students.all_students', [
+            'students' => $students
+        ]);
+    }
     public function newStudent()
     {
         return view('students.register');

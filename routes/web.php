@@ -3,7 +3,7 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 /*
  * Convention for naming the routes: use lowercase letters, hyphens, periods, Use Plurals
  * Convention for naming Controller methods: Use camelCase
@@ -21,6 +21,10 @@ Route::post('/loginDetails',[
 
 
 // Student Routes
+Route::get('students/all', [
+    'uses' => 'StudentsController@getAllStudents',
+    'as' => 'students.all'
+]);
 Route::get('/students/register', [
     // add new student form
     'uses' => 'StudentsController@newStudent',

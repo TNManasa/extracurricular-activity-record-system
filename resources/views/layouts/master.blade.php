@@ -29,10 +29,10 @@
                 </a>
             </li>
             <li>
-                <a href="#">Dashboard</a>
+                <a href="{{ route('welcome') }}">Home</a>
             </li>
             <li>
-                <a href="#">Shortcuts</a>
+                <a href="{{ route('students.all') }}">All Students</a>
             </li>
             <li>
                 <a href="#">Overview</a>
