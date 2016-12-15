@@ -33,12 +33,12 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="dob">Date of Birth</label>
+                    <label for="dob">Date of Birth:</label>
                     <input type="date" name="dob" class="form-control">
                 </div>
 
                 <div class="form-group">
-                    <label for="gender">Gender</label>
+                    <label for="gender">Gender:</label>
                     <select name="gender" class="form-control">
                         <option value="1">Male</option> 
                         <option value="2">Female</option>
@@ -46,8 +46,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="faculty">Department</label>
-                    <input type="text" name="faculty" class="form-control">
+                    <label for="batch">Batch:</label>
+                    <input type="number" name="batch" class="form-control">
                 </div>
 
                 <div class="form-group">
