@@ -17,6 +17,7 @@
                     <th>DoB</th>
                     <th>Batch</th>
                     <th>Email</th>
+                    <th>Actions</th>
                 </tr>
                 @foreach($students as $student)
                 <tr>
@@ -27,6 +28,14 @@
                     <td>{{ $student->dob }}</td>
                     <td>{{ $student->batch }}</td>
                     <td>{{ $student->email}}</td>
+                    <td>
+
+                            @if($student->flag == 0)
+                                <a href="{{ route('admin.flag-user', $student->user_id) }}" class="btn btn-xs btn-danger">Flag</a>
+                            @elseif($student->flag == 1)
+                                <a href="{{ route('admin.flag-user', $student->user_id) }}" class="btn btn-xs btn-warning">Un-flag</a>
+                            @endif
+                    </td>
                 </tr>
                 @endforeach
             </table>

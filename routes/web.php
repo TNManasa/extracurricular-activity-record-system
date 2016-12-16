@@ -130,5 +130,14 @@ Route::get('admin/all-supervisors', [
     'as' => 'admin.all-supervisors'
 ]);
 
+Route::get('admin/flag-user/{user_id}', [
+    'uses' => 'AdminController@flagUser',
+    'as' => 'admin.flag-user'
+]);
 
-Route::get('/test', 'Sport@selectAll');
+
+// Test Route
+Route::get('test', function() {
+    $flag = \App\User::getFlag(1);
+    dd($flag);
+});

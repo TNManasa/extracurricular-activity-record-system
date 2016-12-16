@@ -13,6 +13,7 @@ class Supervisor
     public $position;
     public $user_id;
     public $email;
+    public $flag;
 
     public static function getAllSupervisors(){
         $raw_supervisors = DB::select('select * from supervisors');
@@ -26,6 +27,7 @@ class Supervisor
             $s->position = $supervisor->position;
             $s->user_id = $supervisor->user_id;
             $s->email = User::getEmailById($supervisor->user_id);
+            $s->flag = User::getFlag($supervisor->user_id);
 
             array_push($supervisors, $s);
         }

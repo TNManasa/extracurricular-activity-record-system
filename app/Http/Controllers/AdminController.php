@@ -31,5 +31,11 @@ class AdminController extends Controller
             'supervisors' => $supervisors
         ]);
     }
+
+    public function flagUser($user_id){
+
+        User::toggleFlag($user_id);
+        return redirect()->back();
+    }
 }
 
