@@ -18,6 +18,10 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('role');
+            $table->string('rank')->nullable();
+            $table->boolean('flag')->default(0);
+            // flag = 0 => No problem
+            // flag = 1 => Problematic User
             // write the role in lowercase: 'student' or 'supervisor'
             $table->rememberToken();
         });

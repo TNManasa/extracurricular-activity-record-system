@@ -15,6 +15,7 @@
                     <th>Last Name</th>
                     <th>Position</th>
                     <th>Email</th>
+                    <th>Actions</th>
                 </tr>
                     @foreach($supervisors as $supervisor)
                        <tr>
@@ -23,6 +24,13 @@
                            <td>{{ $supervisor->last_name }}</td>
                            <td>{{ $supervisor->position }}</td>
                            <td>{{ $supervisor->email }}</td>
+                           <td>
+                               @if($supervisor->flag == 0)
+                                   <a href="{{ route('admin.flag-user', $supervisor->user_id) }}" class="btn btn-xs btn-danger">Flag</a>
+                               @elseif($supervisor->flag == 1)
+                                   <a href="{{ route('admin.flag-user', $supervisor->user_id) }}" class="btn btn-xs btn-warning">Un-flag</a>
+                               @endif
+                           </td>
                        </tr>
                     @endforeach
             </table>

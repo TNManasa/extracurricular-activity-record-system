@@ -18,6 +18,9 @@ class Student
     public $user_id;
 
     public $email;
+    public $flag;
+
+
 
 
     public static function getAllStudents(){
@@ -34,6 +37,7 @@ class Student
             $s->batch = $student->batch;
             $s->user_id = $student->user_id;
             $s->email = User::getEmailById($student->user_id);
+            $s->flag = User::getFlag($student->user_id);
             array_push($students, $s);
         }
 

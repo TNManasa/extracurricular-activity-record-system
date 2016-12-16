@@ -103,4 +103,18 @@ class User implements Authenticatable
 
         return $users;
     }
+
+    public static function getFlag($user_id){
+        $resultsSet = DB::select('select flag from users where id=?', [$user_id]);
+        $flag = $resultsSet[0]->flag;
+        return $flag;
+    }
+
+    public static function toggleFlag($user_id){
+        if(self::getFlag($user_id) == 0){
+            DB::update('update users set flag=? where id=?', ['1', $user_id]);
+        }else if(self::getFlag($user_id) == 1){
+            DB::update('update users set flag=? where id=?', ['0', $user_id]);
+        }
+    }
 }
