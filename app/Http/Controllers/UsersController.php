@@ -36,25 +36,31 @@ class UsersController extends Controller
             $resultId = null;
             foreach ($qry as $row) {
                 $resultPassword = $row->password;
-                $resultRole = $row->role;
                 $resultId = $row->id;
 
             }
 
             $resultPassword = Crypt::decrypt($resultPassword);
             if ($resultPassword == $pwd) {
-                //if logged in user is student return to current dashboard, needs to be fixed when complete
-                if ($resultRole == 'student') {
-                    $user = new User();
-                    $user->id = $resultId;
-                    $user->password = $pwd;
-                    Auth::login($user);
 
-                    return view('welcome');
-                } //if supervisor still no such view
-                else {
-                    return 'not an student';
+                //to authenticate the user, whose passwords are matched
+                $user = new User();
+                $user->id = $resultId;
+                $user->password = $pwd;
+                Auth::login($user);
+
+                //to find the type of user , omitting that role field
+                $subqry1= DB::select('select * from students where user_id = ?', [$resultId]);
+                $subqry2 = DB::select('select * from supervisors where user_id = ?', [$resultId]);
+
+                if($subqry1==null and $subqry2!=null){
+                    return redirect()->route('supervisors.dashboard');
+                }elseif ($subqry2==null and $subqry1!=null){
+                    return redirect()->route('students.dashboard');
+                }else{
+                    return 1;
                 }
+
             } else {
 
                 return view('user_login', ['customMessage' => 'password missmatch error']);

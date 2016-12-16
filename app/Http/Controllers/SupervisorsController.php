@@ -11,6 +11,8 @@ class SupervisorsController extends Controller
     public function supervisorView(){
         return view('supervisor.supervisor');
     }
+
+
     
     public function pendingActivities(){
         $pendingActivities= DB::select('select * from activities WHERE activities.id NOT IN (SELECT id FROM activities RIGHT JOIN validations on activities.id=validations.validation_id)');

@@ -10,6 +10,7 @@ Route::get('/', function () {
  * */
 
 // Dashboards
+//still not properly set
 
 Route::get('admin/dashboard', [
     'uses' => 'AdminController@getDashboard',
@@ -22,7 +23,7 @@ Route::get('student/dashboard', [
 ]);
 
 Route::get('supervisor/dashboard', [
-    'uses' => 'SupervisorsController@getDashboard',
+    'uses' => 'SupervisorsController@supervisorView',
     'as' => 'supervisors.dashboard'
 ]);
 
