@@ -22,14 +22,10 @@ class CreateActivitiesTable extends Migration
             // 3 = Competition
             // 4 = Achievement
             $table->date('start_date');
-            $table->date('end_date')->nullable();
-            //$table->integer('validation_id')->unsigned()->nullable();
-            // null = pending validation action
-            // not null = validation action happened
+            $table->string('end_date')->nullable();
             $table->string('description');
 
             $table->foreign('student_id')->references('index_no')->on('students');
-            
         });
     }
 
