@@ -59,6 +59,18 @@ Route::post('/students/addDetails',[
 
 // End of Student Routes
 
+// Supervisor Routes
+
+Route::get('/supervisors/register', [
+    'uses' => 'SupervisorsController@newSupervisor',
+    'as' => 'supervisors.register'
+]);
+
+Route::get('/supervisors/addDetails', [
+    'uses' => 'SupervisorsController@addNewSupervisor',
+    'as' => 'supervisor.addDetails'
+]);
+// End of Supervisor Routes
 Route::get('/sports', [
     // view all sports
     'uses' => 'SportsController@getIndex',

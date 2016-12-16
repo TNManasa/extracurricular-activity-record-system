@@ -47,5 +47,14 @@ class SupervisorsController extends Controller
         return view('supervisor.pending_activity', compact('pendingActivities'));
     }
 
+    public function newSupervisor()
+    {
+        return view('supervisors.register');
+    }
+
+    public function addNewSupervisor(Request $request)
+    {
+        // TODO: insert new supervisor
+    }
 
 }
