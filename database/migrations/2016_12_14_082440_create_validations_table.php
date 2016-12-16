@@ -22,11 +22,11 @@ class CreateValidationsTable extends Migration
             // 0 - pending
             // 1 - validated
             // 2 - invalid
-            $table->primary('id');
+            $table->primary('validation_id');
             $table->foreign('supervisor_id')->references('emp_id')->on('supervisors');
             
 //            $table->timestamps();
-            $table->foreign('id')->references('id')->on('activities');
+            $table->foreign('validation_id')->references('id')->on('activities');
         });
     }
 
