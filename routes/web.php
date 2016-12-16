@@ -9,6 +9,24 @@ Route::get('/', function () {
  * Convention for naming Controller methods: Use camelCase
  * */
 
+// Dashboards
+
+Route::get('admin/dashboard', [
+    'uses' => 'AdminController@getDashboard',
+    'as' => 'admin.dashboard',
+]);
+
+Route::get('student/dashboard', [
+    'uses' => 'StudentsController@getDashboard',
+    'as' => 'students.dashboard'
+]);
+
+Route::get('supervisor/dashboard', [
+    'uses' => 'SupervisorsController@getDashboard',
+    'as' => 'supervisors.dashboard'
+]);
+
+
 //user Login
 Route::get('/login',function(){
     return view('user_login');
