@@ -15,18 +15,18 @@
 
 
 
-    <div class="container">
-        <div class="jumbotron">
-            <h1>Activity Monitoring</h1>
-            <h3>Students' Extra Curricular Activity Management System</h3>
-            <h4>University of Moratuwa - Department of Computer Science & Engineering</h4>
+    <div class="col-md-offset-3">
+        <div class="container">
+            <div class="col-md-10">
+                <div class="jumbotron">
+                    <h1>Activities to be validated</h1>
+                    <h3>Students' Extra Curricular Activity Management System</h3>
+                    <h4>University of Moratuwa - Department of Computer Science & Engineering</h4>
+                </div>
+            </div>
         </div>
-    </div>
 
 
-@stop
-
-@section('content')
 
 
 
@@ -100,7 +100,7 @@
             </form>
 
 
-
+</div>
 
 
 
