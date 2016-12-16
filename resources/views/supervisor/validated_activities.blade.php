@@ -29,7 +29,7 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($pendingActivities as $a)
+            @foreach($validatedActivities as $a)
 
                 @if($a->type==1)
                     <?php $b="sports activity"?>
