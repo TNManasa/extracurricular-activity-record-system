@@ -28,10 +28,13 @@ class SupervisorsController extends Controller
     public function activityValidate(Request $request, $id){
         $input=$request->all();
         $a=$input['option'];
-        $affected = DB::update('update activities set rating = ? where id = ?', [$a,$id]);
-        $affected2= DB::update('update activities set validated = 1 where id = ?', [$id]);
-        $activities= DB::select('select * from activities where validated=0');
+        $d=date("Y-m-d");
+        DB::insert('insert into validations (validation_id,rating,supervisor_id,validated_date,is_validated ) values (?,?,?,?,?)', [$id,$a,'140B',$d,1]);
+        //$affected2= DB::update('update activities set validated = 1 where id = ?', [$id]);
+        //$activities= DB::select('select * from activities where validated=0');
 
-        return view('pending_activity',compact('activities'));
+        $pendingActivities= DB::select('select * from activities WHERE activities.id NOT IN (SELECT id FROM activities RIGHT JOIN validations on activities.id=validations.validation_id)');
+
+        return view('supervisor.pending_activity', compact('pendingActivities'));
     }
 }
