@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Faker;
 
 class ActivitiesTableSeeder extends Seeder
 {
@@ -20,6 +19,7 @@ class ActivitiesTableSeeder extends Seeder
         $types = [1,2,3,4,1,2,3,4,1];
         $student_ids = [1,2,3,4,5,1,2,3,4,5];
 
+        DB::table('activities')->delete();
         for($i=0; $i<10; $i++){
             DB::table('activities')->insert([
                 'id' => $i+1,
@@ -27,7 +27,7 @@ class ActivitiesTableSeeder extends Seeder
                 'type' => $types[$i],
                 'start_date' => $faker->date(),
                 'end_date' => "Present",
-                'description' => $faker->paragraph(6, true)
+                'description' => $faker->paragraph(2, true)
         ]);
         }
     }
