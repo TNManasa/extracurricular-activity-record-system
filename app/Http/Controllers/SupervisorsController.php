@@ -19,6 +19,15 @@ class SupervisorsController extends Controller
         
     }
 
+    public function validatedActivities(){
+        $validatedActivities= DB::select('select * from activities WHERE activities.id  IN (SELECT id FROM activities RIGHT JOIN validations on activities.id=validations.validation_id WHERE is_validated=1)');
+        return view('supervisor.validated_activities', compact('validatedActivities'));
+    }
+
+    public function rejectedActivities(){
+        
+    }
+
     public function activityShow($id){
         $activity= DB::select('select * from activities where id = ?', [$id]);
         //return $activity;
@@ -37,4 +46,6 @@ class SupervisorsController extends Controller
 
         return view('supervisor.pending_activity', compact('pendingActivities'));
     }
+
+
 }

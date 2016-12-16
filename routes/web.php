@@ -127,6 +127,8 @@ Route::post('continue-to-new-activity', [
 
 Route::get('/supervisor','supervisorsController@supervisorView');
 Route::get('/pending','supervisorsController@pendingActivities');
+Route::get('/validated','supervisorsController@validatedActivities');
+Route::get('/rejected','supervisorsController@rejecteddActivities');
 Route::get('/activity/{id}','supervisorsController@activityShow');
 Route::post('/activity/{id}/validate','supervisorsController@activityValidate');
 

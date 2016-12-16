@@ -21,8 +21,12 @@
             <a href="/pending" class="btn btn-primary">Pending Activities</a>
         </div>
         <div class="col-md-4">
-            <a href="{{ route('students.register') }}" class="btn btn-primary">Validated Activities</a>
+            <a href="/validated" class="btn btn-primary">Validated Activities</a>
         </div>
+        <div class="col-md-4">
+            <a href="/rejected" class="btn btn-primary">Validated Activities</a>
+        </div>
+
     </div>
     </div>
 @stop
