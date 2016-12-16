@@ -23,6 +23,10 @@
         <div class="col-md-4">
             <a href="/validated" class="btn btn-primary">Validated Activities</a>
         </div>
+        <div class="col-md-4">
+            <a href="/rejected" class="btn btn-primary">Validated Activities</a>
+        </div>
+
     </div>
     </div>
 @stop

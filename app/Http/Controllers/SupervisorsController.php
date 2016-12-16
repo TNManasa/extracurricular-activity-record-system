@@ -24,6 +24,10 @@ class SupervisorsController extends Controller
         return view('supervisor.validated_activities', compact('validatedActivities'));
     }
 
+    public function rejectedActivities(){
+        
+    }
+
     public function activityShow($id){
         $activity= DB::select('select * from activities where id = ?', [$id]);
         //return $activity;
