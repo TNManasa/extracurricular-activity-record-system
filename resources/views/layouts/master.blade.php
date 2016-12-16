@@ -75,6 +75,9 @@
     });
 </script>
 
+
 @stack('scripts')
+<div> @yield('begin_body')</div>
+
 </body>
 </html>
