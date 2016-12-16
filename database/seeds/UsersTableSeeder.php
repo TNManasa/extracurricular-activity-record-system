@@ -12,20 +12,22 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        $student_emails = ['harry', 'hermione', 'ron', 'ginny', 'draco'];
         DB::table('users')->delete();
         for($i=0; $i<5; $i++) {
             DB::table('users')->insert([
                 'id' => $i+1,
-                'email' => str_random(10) . '@gmail.com',
+                'email' => $student_emails[$i] . '@gmail.com',
                 'password' => bcrypt('123456'),
                 'role' => 'student'
             ]);
         }
 
+        $supervisor_emails = ['albus', 'minerva', 'severus', 'remus', 'dolores'];
         for($i=0; $i<5; $i++){
             DB::table('users')->insert([
                 'id' => $i+6,
-                'email' => str_random(10). '@yahoo.com',
+                'email' => $supervisor_emails[$i] . '@yahoo.com',
                 'password' => bcrypt('123456'),
                 'role' => 'supervisor'
             ]);
