@@ -21,6 +21,10 @@ class StudentsController extends Controller
         return view('students.register');
     }
 
+    public function getDashboard(){
+        return view('welcome');
+    }
+
     public function addNewStudent(Request $request)
     {
 
