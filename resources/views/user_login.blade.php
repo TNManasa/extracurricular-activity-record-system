@@ -27,6 +27,7 @@
     </div>
     <div class="row">
         <div class="col-md-6-offset-2">
+
             @if (isset($customMessage))
                 <h1> {{$customMessage}}</h1>
             @endif

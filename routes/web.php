@@ -20,11 +20,12 @@ Route::post('/loginDetails',[
 ]);
 
 
-//// Student Routes
+
+// Student Routes
 //Route::get('students/all', [
 //    'uses' => 'StudentsController@getAllStudents',
 //    'as' => 'students.all'
-//]);
+//])->middleware('auth','checkStudent');
 
 Route::get('/students/register', [
     // add new student form

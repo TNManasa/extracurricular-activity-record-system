@@ -25,7 +25,7 @@ class User implements Authenticatable
      */
     public function getAuthIdentifierName()
     {
-        return "email";
+        return "id";
     }
 
     /**
@@ -35,7 +35,7 @@ class User implements Authenticatable
      */
     public function getAuthIdentifier()
     {
-        return $this->email;
+        return $this->id;
     }
 
     /**
