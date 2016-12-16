@@ -29,7 +29,7 @@ class UsersTableSeeder extends Seeder
                 'id' => $i+6,
                 'email' => $supervisor_emails[$i] . '@yahoo.com',
                 'password' => bcrypt('123456'),
-                'role' => 'supervisor'
+                'role' => 'supervisors'
             ]);
         }
     }

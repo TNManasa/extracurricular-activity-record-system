@@ -22,7 +22,7 @@ Route::get('student/dashboard', [
     'as' => 'students.dashboard'
 ]);
 
-Route::get('supervisor/dashboard', [
+Route::get('supervisors/dashboard', [
     'uses' => 'SupervisorsController@supervisorView',
     'as' => 'supervisors.dashboard'
 ]);

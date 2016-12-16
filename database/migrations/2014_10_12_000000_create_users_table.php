@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->boolean('flag')->default(0);
             // flag = 0 => No problem
             // flag = 1 => Problematic User
-            // write the role in lowercase: 'student' or 'supervisor'
+            // write the role in lowercase: 'student' or 'supervisors'
             $table->rememberToken();
         });
     }

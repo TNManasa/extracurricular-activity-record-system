@@ -9,7 +9,7 @@ class SupervisorsController extends Controller
 {
     //
     public function supervisorView(){
-        return view('supervisor.supervisor');
+        return view('supervisors.supervisor');
     }
 
 
@@ -17,13 +17,13 @@ class SupervisorsController extends Controller
     public function pendingActivities(){
         $pendingActivities= DB::select('select * from activities WHERE activities.id NOT IN (SELECT id FROM activities RIGHT JOIN validations on activities.id=validations.validation_id)');
         
-        return view('supervisor.pending_activity', compact('pendingActivities'));
+        return view('supervisors.pending_activity', compact('pendingActivities'));
         
     }
 
     public function validatedActivities(){
         $validatedActivities= DB::select('select * from activities WHERE activities.id  IN (SELECT id FROM activities RIGHT JOIN validations on activities.id=validations.validation_id WHERE is_validated=1)');
-        return view('supervisor.validated_activities', compact('validatedActivities'));
+        return view('supervisors.validated_activities', compact('validatedActivities'));
     }
 
     public function rejectedActivities(){
@@ -33,7 +33,7 @@ class SupervisorsController extends Controller
     public function activityShow($id){
         $activity= DB::select('select * from activities where id = ?', [$id]);
         //return $activity;
-        return view('supervisor.validate',compact('activity'));
+        return view('supervisors.validate',compact('activity'));
 
     }
     public function activityValidate(Request $request, $id){
@@ -46,7 +46,7 @@ class SupervisorsController extends Controller
 
         $pendingActivities= DB::select('select * from activities WHERE activities.id NOT IN (SELECT id FROM activities RIGHT JOIN validations on activities.id=validations.validation_id)');
 
-        return view('supervisor.pending_activity', compact('pendingActivities'));
+        return view('supervisors.pending_activity', compact('pendingActivities'));
     }
 
     public function newSupervisor()
@@ -56,7 +56,7 @@ class SupervisorsController extends Controller
 
     public function addNewSupervisor(Request $request)
     {
-        // TODO: insert new supervisor
+        // TODO: insert new supervisors
     }
 
 }
