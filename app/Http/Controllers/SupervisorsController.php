@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class supervisorsController extends Controller
+class SupervisorsController extends Controller
 {
     //
     public function supervisorView(){
@@ -13,9 +13,9 @@ class supervisorsController extends Controller
     }
     
     public function pendingActivities(){
-        $activities= DB::select('select * from activities where validated=0');
+        $pendingActivities= DB::select('select * from activities WHERE activities.id NOT IN (SELECT id FROM activities RIGHT JOIN validations on activities.id=validations.validation_id)');
         
-        return view('pending_activity',compact('activities'));
+        return $pendingActivities;
     }
 
     public function activityShow($id){

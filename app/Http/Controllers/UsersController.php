@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Crypt;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 
+
 class UsersController extends Controller
 {
     public function loginUser(Request $request)
@@ -26,6 +27,7 @@ class UsersController extends Controller
         //if there is no such email
         if ($qry == null) {
             return view('user_login', ['customMessage' => 'email is not registered']);
+
         } else {
 
             //get the value of password
@@ -36,6 +38,7 @@ class UsersController extends Controller
                 $resultPassword = $row->password;
                 $resultRole = $row->role;
                 $resultId = $row->id;
+
             }
 
             $resultPassword = Crypt::decrypt($resultPassword);

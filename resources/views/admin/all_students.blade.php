@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-8">
             <h2>Students</h2>
             <table class="table table-bordered">
                 <tr>
@@ -26,10 +26,11 @@
                     <td>{{ $student->gender }}</td>
                     <td>{{ $student->dob }}</td>
                     <td>{{ $student->batch }}</td>
+                    <td>{{ $student->email}}</td>
                 </tr>
                 @endforeach
             </table>
         </div>
-        <a href="{{ route('admin.index') }}" class="btn btn-info"></a>
+        <a href="{{ route('admin.index') }}" class="btn btn-info">Back</a>
     </div>
 @stop

@@ -11,7 +11,6 @@ class SportsController extends Controller
     {
         $all_sports = Sport::selectAll();
 
-        dd($all_sports);
 
         return view('sports.index', [
             'all_sports' => $all_sports
@@ -37,8 +36,6 @@ class SportsController extends Controller
         $sport->title = $request->title;
         $sport->position = $request->position;
         $sport->start_date = $request->start_date;
-
-        
     }
 }
 

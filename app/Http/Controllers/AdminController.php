@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Student;
+use App\Supervisor;
+use App\User;
 use Illuminate\Http\Request;
 use DB;
 
@@ -14,7 +16,9 @@ class AdminController extends Controller
     }
     public function getAllStudents()
     {
-        $students = DB::select('select * from students');
+        $students = Student::getAllStudents();
+
+
         return view('admin.all_students', [
             'students' => $students
         ]);
@@ -22,9 +26,10 @@ class AdminController extends Controller
 
     public function getAllSupervisors()
     {
-        $supervisors = DB::select('select * from supervisors');
+        $supervisors = Supervisor::getAllSupervisors();
         return view('admin.all_supervisors', [
             'supervisors' => $supervisors
         ]);
     }
 }
+

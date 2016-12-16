@@ -9,7 +9,7 @@ class OrganizationsController extends Controller
 {
     public function getIndex()
     {
-        $all_societies = Organization::all();
+        $all_societies = Organization::selectAll();
         return view('organizations.index', [
             'all_societies' => $all_societies
         ]);
