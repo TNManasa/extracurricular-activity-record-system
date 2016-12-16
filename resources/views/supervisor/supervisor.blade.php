@@ -12,9 +12,7 @@
             <h4>University of Moratuwa - Department of Computer Science & Engineering</h4>
         </div>
     </div>
-@stop
 
-@section('content')
     <div class="row"-2>
         <div class="col-md-4">
             <a href="/pending" class="btn btn-primary">Pending Activities</a>
