@@ -19,6 +19,10 @@ class SupervisorsController extends Controller
         
     }
 
+    public function validatedActivities(){
+
+    }
+
     public function activityShow($id){
         $activity= DB::select('select * from activities where id = ?', [$id]);
         //return $activity;
@@ -37,4 +41,6 @@ class SupervisorsController extends Controller
 
         return view('supervisor.pending_activity', compact('pendingActivities'));
     }
+
+
 }
