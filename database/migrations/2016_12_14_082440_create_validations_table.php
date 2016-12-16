@@ -14,7 +14,7 @@ class CreateValidationsTable extends Migration
     public function up()
     {
         Schema::create('validations', function (Blueprint $table) {
-            $table->integer('id')->unsigned();
+            $table->integer('validation_id')->unsigned();
             $table->integer('rating');
             $table->string('supervisor_id');
             $table->date('validated_date');

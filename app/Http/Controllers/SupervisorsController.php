@@ -13,9 +13,10 @@ class SupervisorsController extends Controller
     }
     
     public function pendingActivities(){
-        $activities= DB::select('select * from activities where validated=0');
+        $activities= DB::select('select * from activities ');
+        //$activities= DB::select('select * from activities WHERE activities.id NOT IN (SELECT id FROM activities RIGHT JOIN validations on activities.id=validations.validation_id)');
         
-        return view('pending_activity',compact('activities'));
+        return $activities;
     }
 
     public function activityShow($id){

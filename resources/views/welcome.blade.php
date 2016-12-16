@@ -21,6 +21,7 @@
             <a href="{{ route('organizations.index') }}" class="btn btn-default">Societies/Organizations</a>
             <a href="{{ route('competitions.index') }}" class="btn btn-default">Competitions</a>
             <a href="{{ route('activities.new-activity') }}" class="btn btn-default">New Activity</a>
+            <a href="/supervisor" class="btn btn-default">Supervisor</a>
         </div>
     </div>
 @stop
