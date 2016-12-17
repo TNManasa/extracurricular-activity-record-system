@@ -6,6 +6,24 @@
 
 @section('content')
     <div class="row">
+        <div class="col-md-6-offset-2">
+            @if(count($errors)>0)
+                @foreach($errors->all() as $error)
+                    <li>{{$error}}</li>
+                @endforeach
+            @endif
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6-offset-2">
+
+            @if (isset($customMessage))
+                <h2> {{$customMessage}}</h2>
+            @endif
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md-8">
             <h3>New Supervisor</h3>
             <form action='{{route('supervisor.addDetails')}}' method="post">

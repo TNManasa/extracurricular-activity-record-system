@@ -58,12 +58,12 @@ class SupervisorsController extends Controller
     public function addNewSupervisor(Request $request)
     {
         $this->validate($request,[
-            'emp_id' => 'required',
+            'emp_id' => 'required|alpha_num',
             'email' => 'required|email',
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'position' => 'required',
-            'password' => 'required|same:confirm_password'
+            'first_name' => 'required|alpha',
+            'last_name' => 'required|alpha',
+            'position' => 'required|alpha',
+            'password' => 'required|same:password_confirmation'
         ]);
 
         $emp_id = $request['emp_id'];
@@ -72,6 +72,18 @@ class SupervisorsController extends Controller
         $last_name = $request['last_name'];
         $position = $request['position'];
         $pwd = Crypt::encrypt($request['password']);
+
+    //to check the uniqueness of employee number
+        $checkEmpIdQuery=DB::select('select * from supervisors where emp_id = ?',[$emp_id]);
+        if($checkEmpIdQuery!=null){
+            return view('supervisors.register', ['customMessage' => 'the employee number you entered is already exists, check and enter your details again']);
+        }
+
+        //to check the uniqueness of email
+        $checkEmailQuery=DB::select('select id from users where email = ?',[$email]);
+        if($checkEmailQuery!=null){
+            return view('supervisors.register', ['customMessage' => 'email is already acquired, try again']);
+        }
 
         //insert into users table
         //role should be removed later on .....

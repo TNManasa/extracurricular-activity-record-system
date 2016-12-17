@@ -62,8 +62,8 @@ class StudentsController extends Controller
             return view('students.register', ['customMessage' => 'index number you entered is not valid']);
         }
 
-
-        $checkIndexNoQuery=DB::select('select id from users where index_no = ?',[$index_no]);
+        //to check the uniqueness of index number
+        $checkIndexNoQuery=DB::select('select * from students where index_no = ?',[$index_no]);
         if($checkIndexNoQuery!=null){
             return view('students.register', ['customMessage' => 'the index_no you entered is already exists, check and enter your details again']);
         }
