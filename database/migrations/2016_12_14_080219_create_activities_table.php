@@ -21,7 +21,7 @@ class CreateActivitiesTable extends Migration
             // 2 = Sport
             // 3 = Competition
             // 4 = Achievement
-            $table->date('start_date');
+            $table->date('start_date')->nullable();
             $table->string('end_date')->nullable();
             $table->integer('effort');  // measured in hours
             $table->text('description')->nullable();

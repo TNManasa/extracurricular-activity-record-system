@@ -41,7 +41,7 @@ class CompetitionsController extends Controller
         $activity = new Activity();
         // TODO: Attach the authenticated Student ID before saving
         $activity->student_id = '140001A';
-        $activity->activity_type= 1;
+        $activity->activity_type= 3;
         $activity->start_date=$request['start_date'];
         $activity->end_date=$request['end_date'];
         $activity->effort=$request['effort'];
@@ -55,6 +55,8 @@ class CompetitionsController extends Controller
         $competition_activity->competition_name = $request['name'];
         $competition_activity->status = $request['status'];
         CompetitionActivity::insert($competition_activity);
+
+        return redirect()->back();
 
     }
 }
