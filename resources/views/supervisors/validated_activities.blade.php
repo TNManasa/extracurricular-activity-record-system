@@ -31,13 +31,13 @@
             <tbody>
             @foreach($validatedActivities as $a)
 
-                @if($a->type==1)
+                @if($a->activity_type==1)
                     <?php $b="sports activity"?>
-                @elseif($a->type==2)
+                @elseif($a->activity_type==2)
                     <?php $b="organizational activity"?>
-                @elseif($a->type==3)
+                @elseif($a->activity_type==3)
                     <?php $b="competition"?>
-                @elseif($a->type==4)
+                @elseif($a->activity_type==4)
                     <?php $b="achievements"?>
                 @endif
 
