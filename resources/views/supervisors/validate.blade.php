@@ -31,13 +31,13 @@
 
 
     @foreach($activity as $a)
-        @if($a->type==1)
+        @if($a->activity_type==1)
             <?php $b="Sports Activity"?>
-        @elseif($a->type==2)
+        @elseif($a->activity_type==2)
             <?php $b="Organizational Activity"?>
-        @elseif($a->type==3)
+        @elseif($a->activity_type==3)
             <?php $b="Competition"?>
-        @elseif($a->type==4)
+        @elseif($a->activity_type==4)
             <?php $b="Achievements"?>
         @endif
         <?php $id=$a->id ?>
