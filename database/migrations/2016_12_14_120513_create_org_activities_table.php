@@ -16,7 +16,7 @@ class CreateOrgActivitiesTable extends Migration
         Schema::create('org_activities', function (Blueprint $table) {
             $table->integer('id')->unsigned();
             $table->integer('org_id')->unsigned();
-            $table->string('project_name');
+            $table->string('project_name')->nullable();
             $table->string('role');
 
             $table->primary('id');

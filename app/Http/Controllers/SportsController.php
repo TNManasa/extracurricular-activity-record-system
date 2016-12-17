@@ -9,7 +9,7 @@ class SportsController extends Controller
 {
     public function getIndex()
     {
-        $all_sports = Sport::selectAll();
+        $all_sports = Sport::getAll();
 
 
         return view('sports.index', [

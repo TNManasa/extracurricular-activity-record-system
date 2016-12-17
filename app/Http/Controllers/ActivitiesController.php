@@ -17,7 +17,7 @@ class ActivitiesController extends Controller
         if($type == "sport"){
             return redirect()->route('sports.new-sport');
         }else if($type == "organization"){
-            return redirect()->route('organizations.new-organization');
+            return redirect()->route('organizations.new-organization-activity');
         }else if($type == "competition"){
             return redirect()->route('competitions.new-competition');
         }else if($type == "achievement"){

@@ -97,16 +97,16 @@ Route::get('/organizations', [
     'as' => 'organizations.index'
 ]);
 
-Route::get('/new-society', [
+Route::get('/new-organization-activity', [
     // add new society form
-    'uses' => 'OrganizationsController@newOrganization',
-    'as' => 'organizations.new-organization'
+    'uses' => 'OrganizationsController@newOrganizationActivity',
+    'as' => 'organizations.new-organization-activity'
 ]);
 
-Route::post('/add-new-society', [
+Route::post('/add-new-organization-activity', [
     // actually add new society
-   'uses' => 'SocietiesController@addNewSociety',
-    'as' => 'organizations.add-new-organization'
+   'uses' => 'OrganizationsController@addNewOrganizationActivity',
+    'as' => 'organizations.add-new-organization-activity'
 ]);
 
 Route::get('/competitions', [

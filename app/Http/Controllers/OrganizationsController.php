@@ -2,41 +2,53 @@
 
 namespace App\Http\Controllers;
 
+use App\Activity;
+use App\OrgActivity;
 use App\Organization;
 use Illuminate\Http\Request;
+
+use DB;
 
 class OrganizationsController extends Controller
 {
     public function getIndex()
     {
-        $all_societies = Organization::selectAll();
+        $all_organizations = DB::select('select * from organizations');
+//        var_dump($all_organizations);
         return view('organizations.index', [
-            'all_societies' => $all_societies
+            'all_organizations' => $all_organizations
         ]);
     }
 
-    public function newOrganization()
+    public function newOrganizationActivity()
     {
-        return view('organizations.new_organization');
+        $all_organizations = DB::select('select * from organizations');
+        return view('organizations.new_organization_activity',['all_organizations' => $all_organizations]);
     }
 
-    public function addNewOrganization(Request $request)
+    public function addNewOrganizationActivity(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required|max:60',
-            'position' => 'required|max:60|before:today',
-            'start_date' => 'required'
-        ]);
+//        $this->validate($request, [
+//            'name' => 'required|max:60',
+//            'position' => 'required|max:60',
+//            'start_date' => 'required'
+//        ]);
 
-        $name = $request->name;
-        $position = $request->position;
-        $start_date = $request->start_date;
+        $activity = new Activity();
+        $activity->student_id = '140001A'; // auth student
+        $activity->activity_type= 1;
+        $activity->start_date=$request['start_date'];
+        $activity->end_date=$request['end_date'];
+        $activity->effort=$request['effort'];
+        $activity->description=$request['description'];
+        Activity::insert($activity);
+        $id=Activity::getId($activity);
+        $org_activity=new OrgActivity();
+        $org_activity->id=$id;
+        $org_activity->org_id=$request['name'];
+        $org_activity->role=$request['role'];
+        $org_activity->project_name=$request['project_name'];
+        OrgActivity::insert($org_activity);
 
-        $organization = new Organization;
-        $organization->name = $name;
-        $organization->position = $position;
-        $organization->start_date = $start_date;
-
-        $organization->save();
     }
 }

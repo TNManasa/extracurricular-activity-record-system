@@ -89,7 +89,7 @@ class User implements Authenticatable
         return $email;
     }
 
-    public static function getAllUsers(){
+    public static function getAll(){
         $raw_users = DB::select('select * from users');
         $users = [];
 

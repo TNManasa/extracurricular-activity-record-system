@@ -16,8 +16,7 @@ class AdminController extends Controller
     }
     public function getAllStudents()
     {
-        $students = Student::getAllStudents();
-
+        $students = Student::getAll();
 
         return view('admin.all_students', [
             'students' => $students
@@ -26,7 +25,7 @@ class AdminController extends Controller
 
     public function getAllSupervisors()
     {
-        $supervisors = Supervisor::getAllSupervisors();
+        $supervisors = Supervisor::getAll();
         return view('admin.all_supervisors', [
             'supervisors' => $supervisors
         ]);

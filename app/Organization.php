@@ -7,11 +7,11 @@ use DB;
 
 class Organization
 {
-    protected $fillable = ['id', 'name'];
+//    protected $fillable = ['id', 'name'];
     public $id;
     public $name;
 
-    public static function selectAll(){
+    public static function getAll(){
         $raw_organizations = DB::select('select * from organizations');
         $organizations = [];
         foreach ($raw_organizations as $organization){
@@ -23,4 +23,5 @@ class Organization
 
         return $organizations;
     }
+
 }

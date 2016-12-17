@@ -8,12 +8,10 @@ use DB;
 
 class Sport
 {
-    protected $fillable = ['id', 'name'];
-
     public $id;
     public $name;
 
-    public static function selectAll(){
+    public static function getAll(){
         $sports_array = DB::select('select * from sports');
         $sports = array();
         foreach($sports_array as $sport){
@@ -38,6 +36,7 @@ class Sport
     public static function update(Sport $s){
         $id = $s->id;
         DB::statement('update sports set id=?,name=? where id=?',[$id,$s->name,$id]);
+        return true;
     }
 
 

@@ -15,7 +15,7 @@ class Supervisor
     public $email;
     public $flag;
 
-    public static function getAllSupervisors(){
+    public static function getAll(){
         $raw_supervisors = DB::select('select * from supervisors');
         $supervisors = [];
 

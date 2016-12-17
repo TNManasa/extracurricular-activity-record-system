@@ -2,7 +2,6 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
 use DB;
 
 class Student
@@ -16,14 +15,13 @@ class Student
     public $dob;
     public $batch;
     public $user_id;
-
     public $email;
     public $flag;
 
 
 
 
-    public static function getAllStudents(){
+    public static function getAll(){
         $raw_students = DB::select('select * from students');
         $students = [];
 
