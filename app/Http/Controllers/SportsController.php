@@ -19,12 +19,12 @@ class SportsController extends Controller
 
     }
 
-    public function newSport()
+    public function newSportActivity()
     {
-        return view('sports.new_sport');
+        return view('sports.new_sport_activity');
     }
 
-    public function addNewSport(Request $request)
+    public function addNewSportActivity(Request $request)
     {
         $this->validate($request, [
             'title' => 'required|max:60',

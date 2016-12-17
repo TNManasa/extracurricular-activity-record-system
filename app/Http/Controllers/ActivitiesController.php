@@ -15,11 +15,11 @@ class ActivitiesController extends Controller
     {
         $type = $request->type;
         if($type == "sport"){
-            return redirect()->route('sports.new-sport');
+            return redirect()->route('sports.new-sport-activity');
         }else if($type == "organization"){
             return redirect()->route('organizations.new-organization-activity');
         }else if($type == "competition"){
-            return redirect()->route('competitions.new-competition');
+            return redirect()->route('competitions.new-competition-activity');
         }else if($type == "achievement"){
             return redirect()->route('achievements.new-achievement');
         }

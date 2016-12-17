@@ -21,12 +21,12 @@ class CompetitionsController extends Controller
         ]);
     }
 
-    public function newCompetition()
+    public function newCompetitionActivity()
     {
-        return view('competitions.new_competition');
+        return view('competitions.new_competition_activity');
     }
 
-    public function addNewCompetition(Request $request)
+    public function addNewCompetitionActivity(Request $request)
     {
         dd($request);
 
