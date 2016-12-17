@@ -73,24 +73,29 @@ Route::post('/supervisors/addDetails', [
     'as' => 'supervisor.addDetails'
 ]);
 // End of Supervisor Routes
+
+// Organization, Sport, Competition, Achievement Routes
+
+//SPORTS
 Route::get('/sports', [
     // view all sports
     'uses' => 'SportsController@getIndex',
     'as' => 'sports.index'
 ]);
 
-Route::get('/new-sport', [
-    // add new sport form
-    'uses' => 'SportsController@newSport',
-    'as' => 'sports.new-sport'
+Route::get('/new-sport-activity', [
+    // add new sport activity form
+    'uses' => 'SportsController@newSportActivity',
+    'as' => 'sports.new-sport-activity'
 ]);
 
-Route::post('/add-new-sport', [
-    // actually add new sport
-    'uses' => 'SportsController@addNewSport',
-    'as' => 'sports.add-new-sport'
+Route::post('/add-new-sport-activity', [
+    // actually add new sport activity
+    'uses' => 'SportsController@addNewSportActivity',
+    'as' => 'sports.add-new-sport-activity'
 ]);
 
+//ORGANIZATION
 Route::get('/organizations', [
     // view all organizations
     'uses' => 'OrganizationsController@getIndex',
@@ -98,44 +103,63 @@ Route::get('/organizations', [
 ]);
 
 Route::get('/new-organization-activity', [
-    // add new society form
+    // add new organization activity form
     'uses' => 'OrganizationsController@newOrganizationActivity',
     'as' => 'organizations.new-organization-activity'
 ]);
 
 Route::post('/add-new-organization-activity', [
-    // actually add new society
+    // actually add new organization activity
    'uses' => 'OrganizationsController@addNewOrganizationActivity',
     'as' => 'organizations.add-new-organization-activity'
 ]);
 
+//COMPETITIONS
 Route::get('/competitions', [
     // view all competitions
     'uses' => 'CompetitionsController@getIndex',
     'as' => 'competitions.index'
 ]);
 
-Route::get('/new-competition', [
-    // add new competition form
-    'uses' => 'CompetitionsController@newCompetition',
-    'as' => 'competitions.new-competition'
+Route::get('/new-competition-activity', [
+    // add new competition activity form
+    'uses' => 'CompetitionsController@newCompetitionActivity',
+    'as' => 'competitions.new-competition-activity'
 ]);
 
-Route::post('/add-new-competition', [
-    // actually add new competition
+Route::post('/add-new-competition-activity', [
+    // actually add new competition activity
     'uses' => 'CompetitionController@addNewCompetition',
-    'as' => 'competitions.add-new-competition'
+    'as' => 'competitions.add-new-competition-activity'
 ]);
 
+//ACHIEVEMENT
+Route::get('/new-achievement',[
+    // add new achievement form
+    'uses'=>'AchievementsController@newAchievement',
+    'as'=>'achievements.new-achievement'
+]);
+
+Route::post('/add-new-achievement',[
+    // actually add new achievement
+    'uses'=>'AchievementsController@addNewAchievement',
+    'as'=>'achievements.add-new-achievement'
+]);
+
+//ACTIVITIES
 Route::get('new-activity', [
+    // add new activity form
     'uses' => 'ActivitiesController@getNewActivityForm',
     'as' => 'activities.new-activity'
 ]);
 
 Route::post('continue-to-new-activity', [
+    // continuing to add new activity after selecting the type
     'uses' => 'ActivitiesController@continueToAdd',
     'as' => 'activities.continue'
 ]);
+
+// End of Organization, Sport, Competition, Achievement Routes
 
 //Gathika
 

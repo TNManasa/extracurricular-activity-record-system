@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-md-6">
             <h2>Add New Activity (Sport)</h2>
-            <form action="{{ route('sports.add-new-sport') }}" method="post">
+            <form action="{{ route('sports.add-new-sport-activity') }}" method="post">
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label for="title">Title</label>

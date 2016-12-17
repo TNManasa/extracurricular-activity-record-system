@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-md-6">
             <h2>Add New Activity (Competitions)</h2>
-            <form action="" method="post">
+            <form action="{{route('competitions.add-new-competition-activity')}}" method="post">
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label for="title">Title</label>
