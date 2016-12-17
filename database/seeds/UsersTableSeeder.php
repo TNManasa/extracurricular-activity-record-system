@@ -32,5 +32,13 @@ class UsersTableSeeder extends Seeder
                 'role' => 'supervisors'
             ]);
         }
+
+        $admin_email = 'admin@gmail.com';
+        DB::table('users')->insert([
+            'id' => 11,
+            'email' => $admin_email,
+            'password' => bcrypt("123456"),
+            'role' => 'admin'
+        ]);
     }
 }
