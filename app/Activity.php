@@ -66,4 +66,12 @@ class Activity
         $id=DB::select('select id from activities where student_id=? and activity_type=? and start_date=? and end_date=? and effort=? and description=?', [$activity->student_id,$activity->activity_type,$activity->start_date,$activity->end_date,$activity->effort,$activity->description]);
         return $id[0]->id;
     }
+
+    public static function getPendingActivities(){
+
+    }
+
+    public static function getValidatedActivities(){
+
+    }
 }

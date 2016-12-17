@@ -172,6 +172,5 @@ Route::get('admin/flag-user/{user_id}', [
 
 // Test Route
 Route::get('test', function() {
-    $flag = \App\User::getFlag(1);
-    dd($flag);
+    \App\Activity::getPendingActivities();
 });

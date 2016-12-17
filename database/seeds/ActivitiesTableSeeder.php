@@ -24,7 +24,7 @@ class ActivitiesTableSeeder extends Seeder
             DB::table('activities')->insert([
                 'id' => $i+1,
                 'student_id' => $student_ids[$i],
-                'type' => $types[$i],
+                'activity_type' => $types[$i],
                 'start_date' => $faker->date(),
                 'end_date' => "Present",
                 'description' => $faker->paragraph(2, true)

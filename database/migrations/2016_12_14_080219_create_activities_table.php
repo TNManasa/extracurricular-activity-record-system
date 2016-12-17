@@ -23,7 +23,7 @@ class CreateActivitiesTable extends Migration
             // 4 = Achievement
             $table->date('start_date');
             $table->string('end_date')->nullable();
-            $table->integer('effort');
+//            $table->integer('effort');
             $table->text('description')->nullable();
 
             $table->foreign('student_id')->references('index_no')->on('students');
