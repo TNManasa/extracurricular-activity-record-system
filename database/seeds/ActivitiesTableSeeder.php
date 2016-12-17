@@ -16,7 +16,7 @@ class ActivitiesTableSeeder extends Seeder
 
         $faker = Faker\Factory::create();
 
-        $types = [1,2,3,4,1,2,3,4,1,2];
+        $types = [1,1,1,2,2,2,3,3,4,4];
         $index_nos = ['140001A', '140002B', '140003C', '150002D', '140200E','140001A', '140002B', '140003C', '150002D', '140200E'];
 
         DB::table('activities')->delete();
