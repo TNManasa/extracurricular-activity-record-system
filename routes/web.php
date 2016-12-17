@@ -129,7 +129,7 @@ Route::get('/new-competition-activity', [
 
 Route::post('/add-new-competition-activity', [
     // actually add new competition activity
-    'uses' => 'CompetitionController@addNewCompetition',
+    'uses' => 'CompetitionsController@addNewCompetitionActivity',
     'as' => 'competitions.add-new-competition-activity'
 ]);
 

@@ -34,7 +34,8 @@ class OrganizationsController extends Controller
 //        ]);
 
         $activity = new Activity();
-        $activity->student_id = '140001A'; // auth student
+        // TODO: Attach the authenticated Student ID before saving
+        $activity->student_id = '140001A';
         $activity->activity_type= 1;
         $activity->start_date=$request['start_date'];
         $activity->end_date=$request['end_date'];

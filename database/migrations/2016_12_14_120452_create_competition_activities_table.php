@@ -15,10 +15,11 @@ class CreateCompetitionActivitiesTable extends Migration
     {
         Schema::create('competition_activities', function (Blueprint $table) {
             $table->integer('id')->unsigned();
+            $table->string('competition_name');
+            $table->string('status');
+
             $table->primary('id');
             $table->foreign('id')->references('id')->on('activities');
-            $table->string('name');
-            $table->string('status');
         });
     }
 

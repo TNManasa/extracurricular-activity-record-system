@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Competition;
+use App\Activity;
+use App\CompetitionActivity;
 use Illuminate\Http\Request;
 use DB;
 
 class CompetitionsController extends Controller
 {
+    /* NO ALL COMPETITIONS
     public function getIndex()
     {
         $all_competitions = Competition::all();
@@ -20,6 +22,7 @@ class CompetitionsController extends Controller
             'comp'=>$comp1
         ]);
     }
+    */
 
     public function newCompetitionActivity()
     {
@@ -28,21 +31,30 @@ class CompetitionsController extends Controller
 
     public function addNewCompetitionActivity(Request $request)
     {
-        dd($request);
 
-        $this->validate($request, [
-            'title' => 'required|max:60',
-            'achievements' => 'required|max:100',
-            'start_date' => 'required'
-        ]);
+//        $this->validate($request, [
+//            'title' => 'required|max:60',
+//            'achievements' => 'required|max:100',
+//            'start_date' => 'required'
+//        ]);
 
-        $competition = new Competition;
-        $competition->title = $request->title;
-        $competition->achievements = $request->achievements;
-        $competition->start_date = $request->start_date;
-
+        $activity = new Activity();
         // TODO: Attach the authenticated Student ID before saving
-        $competition->save();
+        $activity->student_id = '140001A';
+        $activity->activity_type= 1;
+        $activity->start_date=$request['start_date'];
+        $activity->end_date=$request['end_date'];
+        $activity->effort=$request['effort'];
+        $activity->description=$request['description'];
+        Activity::insert($activity);
+
+        $id=Activity::getId($activity);
+
+        $competition_activity = new CompetitionActivity();
+        $competition_activity->id = $id;
+        $competition_activity->competition_name = $request['name'];
+        $competition_activity->status = $request['status'];
+        CompetitionActivity::insert($competition_activity);
 
     }
 }

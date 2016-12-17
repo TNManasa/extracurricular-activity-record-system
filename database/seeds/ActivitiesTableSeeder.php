@@ -28,7 +28,7 @@ class ActivitiesTableSeeder extends Seeder
                 'activity_type' => $types[$i],
                 'start_date' => $faker->date(),
                 'effort' => $faker->randomNumber(1),
-                'end_date' => "Present",
+                'end_date' => 1,
                 'description' => $faker->paragraph(2)
         ]);
         }
