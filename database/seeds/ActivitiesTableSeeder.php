@@ -16,18 +16,20 @@ class ActivitiesTableSeeder extends Seeder
 
         $faker = Faker\Factory::create();
 
-        $types = [1,2,3,4,1,2,3,4,1];
-        $student_ids = [1,2,3,4,5,1,2,3,4,5];
+        $types = [1,2,3,4,1,2,3,4,1,2];
+        $index_nos = ['140001A', '140002B', '140003C', '150002D', '140200E','140001A', '140002B', '140003C', '150002D', '140200E'];
 
         DB::table('activities')->delete();
+
         for($i=0; $i<10; $i++){
             DB::table('activities')->insert([
                 'id' => $i+1,
-                'student_id' => $student_ids[$i],
+                'student_id' => $index_nos[$i],
                 'activity_type' => $types[$i],
                 'start_date' => $faker->date(),
+                'effort' => $faker->randomNumber(1),
                 'end_date' => "Present",
-                'description' => $faker->paragraph(2, true)
+                'description' => $faker->paragraph(2)
         ]);
         }
     }

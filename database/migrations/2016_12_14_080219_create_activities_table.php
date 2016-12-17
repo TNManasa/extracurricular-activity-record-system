@@ -23,18 +23,13 @@ class CreateActivitiesTable extends Migration
             // 4 = Achievement
             $table->date('start_date');
             $table->string('end_date')->nullable();
-//            $table->integer('effort');
+            $table->integer('effort');  // measured in hours
             $table->text('description')->nullable();
 
             $table->foreign('student_id')->references('index_no')->on('students');
         });
     }
 
-   /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('activities');
