@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Student;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Crypt;
@@ -57,7 +58,7 @@ class StudentsController extends Controller
         //$line2= "insert into students (index_no, first_name, last_name,gender,faculty,user_id,dob) values ('$index_no','$first_name','$last_name','$gender','$faculty','$id','$dob')";
 
         $line2= "insert into students (index_no, first_name, last_name,gender,user_id,dob,batch) values (?,?,?,?,?,?,?)";
-        DB::insert($line2,[$index_no,$first_name,$last_name,$gender,$id,$dob,$batch]);
+        DB::statement($line2,[$index_no,$first_name,$last_name,$gender,$id,$dob,$batch]);
 
         return 'success';
     }

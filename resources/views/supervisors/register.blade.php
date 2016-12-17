@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-md-8">
             <h3>New Supervisor</h3>
-            <form action="" method="post">
+            <form action='{{route('supervisor.addDetails')}}' method="post">
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label for="emp_id">Employee ID</label>
@@ -32,11 +32,11 @@
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="text" class="form-control" name="password">
+                    <input type="password" class="form-control" name="password">
                 </div>
                 <div class="form-group">
                     <label for="confirm_password">Confirm Password</label>
-                    <input type="text" class="form-control" name="confirm_password">
+                    <input type="password" class="form-control" name="confirm_password">
                 </div>
                 <button class="btn btn-default" type="submit">Submit</button>
             </form>

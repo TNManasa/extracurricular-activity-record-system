@@ -22,6 +22,7 @@ Route::get('student/dashboard', [
     'as' => 'students.dashboard'
 ]);
 
+//not in use ??????????????????????????????????????????????
 Route::get('supervisors/dashboard', [
     'uses' => 'SupervisorsController@supervisorView',
     'as' => 'supervisors.dashboard'
@@ -67,7 +68,7 @@ Route::get('/supervisors/register', [
     'as' => 'supervisors.register'
 ]);
 
-Route::get('/supervisors/addDetails', [
+Route::post('/supervisors/addDetails', [
     'uses' => 'SupervisorsController@addNewSupervisor',
     'as' => 'supervisor.addDetails'
 ]);

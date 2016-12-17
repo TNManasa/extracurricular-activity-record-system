@@ -22,7 +22,7 @@ class UsersController extends Controller
         $email = $request['email'];
         $pwd = $request['password'];
 
-        $qry = DB::select('select id,password,role from users where email = ?', [$email]);
+        $qry = DB::select('select id,password from users where email = ?', [$email]);
 
         //if there is no such email
         if ($qry == null) {
@@ -32,7 +32,6 @@ class UsersController extends Controller
 
             //get the value of password
             $resultPassword = null;
-            $resultRole = null;
             $resultId = null;
             foreach ($qry as $row) {
                 $resultPassword = $row->password;

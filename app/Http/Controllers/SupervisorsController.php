@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Crypt;
 
 class SupervisorsController extends Controller
 {
@@ -56,7 +57,39 @@ class SupervisorsController extends Controller
 
     public function addNewSupervisor(Request $request)
     {
-        // TODO: insert new supervisors
+        $this->validate($request,[
+            'emp_id' => 'required',
+            'email' => 'required|email',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'position' => 'required',
+            'password' => 'required|same:confirm_password'
+        ]);
+
+        $emp_id = $request['emp_id'];
+        $email= $request['email'];
+        $first_name = $request['first_name'];
+        $last_name = $request['last_name'];
+        $position = $request['position'];
+        $pwd = Crypt::encrypt($request['password']);
+
+        //insert into users table
+        //role should be removed later on .....
+        $line1="insert into users (email,password,role) values (?,?,?)";
+        DB::statement($line1,[$email,$pwd,"supervisor"]);
+
+        //to fetch id, because there is no other way to get that foreign key
+        $id1 = DB::select('select id from users where email = ?',[$email]);
+        $id=null;
+        foreach ($id1 as $user) {
+            $id= $user->id;
+        }
+
+        $line2= "insert into supervisors (emp_id, first_name, last_name,position,user_id) values (?,?,?,?,?)";
+        DB::insert($line2,[$emp_id,$first_name,$last_name,$position,$id]);
+
+        return 'success';
+
     }
 
 }
