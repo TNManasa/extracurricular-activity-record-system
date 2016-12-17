@@ -29,7 +29,7 @@
         <div class="col-md-6-offset-2">
 
             @if (isset($customMessage))
-                <h1> {{$customMessage}}</h1>
+                <h2> {{$customMessage}}</h2>
             @endif
         </div>
     </div>

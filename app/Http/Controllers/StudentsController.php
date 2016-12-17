@@ -28,6 +28,18 @@ class StudentsController extends Controller
 
     public function addNewStudent(Request $request)
     {
+        $this->validate($request,[
+            'index_no' => 'required|alpha_num|size:7',
+            'email' => 'required|email',
+            'first_name' => 'required|alpha',
+            'last_name' => 'required|alpha',
+            'gender' => 'required',
+            'batch' => 'required|integer|min:2010',
+            'dob' => 'required',
+            'password' => 'required|same:password_confirmation'
+        ]);
+
+
 
         $index_no=$request['index_no'];
         $first_name=$request['first_name'];
@@ -37,7 +49,30 @@ class StudentsController extends Controller
         $batch=$request['batch'];
         $pwd=Crypt::encrypt($request['password']);
         $email= $request['email'];
-        $role= 'student';
+        $role='student';
+
+        //to check whether index number is in the format 140183H
+        $index_no_substring1=substr($index_no,0,6);
+        $index_no_substring2 = substr($index_no,-1);
+
+        $condition1=is_numeric($index_no_substring1);
+        $condition2=ctype_alpha ( $index_no_substring2 );
+
+        if(!$condition1 or !$condition2){
+            return view('students.register', ['customMessage' => 'index number you entered is not valid']);
+        }
+
+
+        $checkIndexNoQuery=DB::select('select id from users where index_no = ?',[$index_no]);
+        if($checkIndexNoQuery!=null){
+            return view('students.register', ['customMessage' => 'the index_no you entered is already exists, check and enter your details again']);
+        }
+
+        //to check the uniqueness of email
+        $checkEmailQuery=DB::select('select id from users where email = ?',[$email]);
+        if($checkEmailQuery!=null){
+            return view('students.register', ['customMessage' => 'email is already acquired, try again']);
+        }
 
         //to update user table
         //becoz , first one is not the best practice
@@ -60,6 +95,6 @@ class StudentsController extends Controller
         $line2= "insert into students (index_no, first_name, last_name,gender,user_id,dob,batch) values (?,?,?,?,?,?,?)";
         DB::statement($line2,[$index_no,$first_name,$last_name,$gender,$id,$dob,$batch]);
 
-        return 'success';
+        return view('user_login', ['customMessage' => 'registered successfully. now log in to proceed']);
     }
 }
