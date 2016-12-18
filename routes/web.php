@@ -200,6 +200,5 @@ Route::get('admin/student_profile/{index_no}',[
 // Test Route
 Route::get('test', function() {
 //    \App\Activity::getPendingActivities();
-    dd(\App\Student::findById('140001A'));
 });
 
