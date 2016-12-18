@@ -34,6 +34,7 @@ class AchievementsController extends Controller
         }
         $activity->effort=$request['effort'];
         $activity->description=$request['description'];
+//        dd($activity);
         Activity::insert($activity);
 
         $id=Activity::getId($activity);
