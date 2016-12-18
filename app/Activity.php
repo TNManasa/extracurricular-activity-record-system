@@ -10,10 +10,10 @@ class Activity
     public $id;
     public $student_id;
     public $activity_type;
-    // 1 = Organization
-    // 2 = Sport
-    // 3 = Competition
-    // 4 = Achievement
+    /*
+     keys for activity_type
+     1 = Organization, 2 = Sport, 3 = Competition, 4 = Achievement
+    */
     public $start_date;
     public $end_date;
     public $effort;

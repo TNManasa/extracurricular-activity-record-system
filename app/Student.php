@@ -18,9 +18,6 @@ class Student
     public $email;
     public $flag;
 
-
-
-
     public static function getAll(){
         $raw_students = DB::select('select * from students');
         $students = [];
@@ -41,4 +38,37 @@ class Student
 
         return $students;
     }
+
+    public static function findByIndexNo($index_no){
+        $result = DB::select('select * from students where index_no=?', [$index_no])[0];
+        $student = new Student();
+        $student->index_no = $result->index_no;
+        $student->first_name = $result->first_name;
+        $student->last_name = $result->last_name;
+        $student->gender = $result->gender;
+        $student->dob = $result->dob;
+        $student->batch = $result->batch;
+        $student->user_id = $result->user_id;
+        $student->email = User::getEmailById($result->user_id);
+        $student->flag = User::getFlag($result->user_id);
+
+        return $student;
+    }
+
+    public static function getSportsOfStudent($index_no){
+
+    }
+
+    public static function getOrganizationsOfStudent($index_no){
+
+    }
+
+    public static function getAchievementsOfStudent($index_no){
+
+    }
+
+    public static function getCompetitionsOfStudent($index_no){
+
+    }
 }
+

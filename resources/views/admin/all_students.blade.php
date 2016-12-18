@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <h2>Students</h2>
             <table class="table table-bordered">
                 <tr>
@@ -29,12 +29,17 @@
                     <td>{{ $student->batch }}</td>
                     <td>{{ $student->email}}</td>
                     <td>
+                        <div>
+                            {{--See More Button--}}
+                            <a href="{{ route('admin.student-profile',[$student->index_no]) }}" class="btn btn-xs btn-default">See More</a>
 
+                            {{--Flag/Unflag Button--}}
                             @if($student->flag == 0)
                                 <a href="{{ route('admin.flag-user', $student->user_id) }}" class="btn btn-xs btn-danger">Flag</a>
                             @elseif($student->flag == 1)
                                 <a href="{{ route('admin.flag-user', $student->user_id) }}" class="btn btn-xs btn-warning">Un-flag</a>
                             @endif
+                        </div>
                     </td>
                 </tr>
                 @endforeach

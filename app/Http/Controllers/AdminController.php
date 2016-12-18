@@ -32,9 +32,17 @@ class AdminController extends Controller
     }
 
     public function flagUser($user_id){
-
         User::toggleFlag($user_id);
         return redirect()->back();
+    }
+
+    public function getStudentProfile($index_no)
+    {
+        $student = Student::findByIndexNo($index_no);
+
+        return view('admin.student_profile',[
+            'student' => $student
+        ]);
     }
 }
 

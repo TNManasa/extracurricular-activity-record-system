@@ -1,6 +1,5 @@
 <?php
 
-
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
@@ -10,7 +9,7 @@ Route::get('/', function () {
  * */
 
 // Dashboards
-//still not properly set
+// Still not properly set
 
 Route::get('admin/dashboard', [
     'uses' => 'AdminController@getDashboard',
@@ -193,8 +192,14 @@ Route::get('admin/flag-user/{user_id}', [
     'as' => 'admin.flag-user'
 ]);
 
+Route::get('admin/student_profile/{index_no}',[
+    'uses' => 'AdminController@getStudentProfile',
+    'as' => 'admin.student-profile'
+]);
 
 // Test Route
 Route::get('test', function() {
-    \App\Activity::getPendingActivities();
+//    \App\Activity::getPendingActivities();
+    dd(\App\Student::findById('140001A'));
 });
+

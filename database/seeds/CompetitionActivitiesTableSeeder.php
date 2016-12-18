@@ -4,11 +4,6 @@ use Illuminate\Database\Seeder;
 
 class CompetitionActivitiesTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
         DB::table('competition_activities')->delete();
