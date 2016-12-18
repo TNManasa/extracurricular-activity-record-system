@@ -15,8 +15,8 @@
                 </div>
                 <div class="panel-body">
                     <ul class="list-group">
-                        <a href="{{ route('admin.all-students') }}"><li class="list-group-item">View All Students</li></a>
-                        <a href="{{ route('admin.all-supervisors') }}"><li class="list-group-item">View All Supervisors</li></a>
+                        <a href="{{ route('admin.all-students') }}"><li class="list-group-item btn btn-primary">View All Students</li></a>
+                        <a href="{{ route('admin.all-supervisors') }}"><li class="list-group-item btn btn-primary">View All Supervisors</li></a>
                     </ul>
                 </div>
             </div>
@@ -33,4 +33,3 @@
         </div>
     </div>
 @stop
-

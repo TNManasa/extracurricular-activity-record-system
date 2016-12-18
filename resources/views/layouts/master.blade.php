@@ -24,11 +24,11 @@
     <!-- Sidebar -->
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
-            <li class="sidebar-brand">
-                <a href="#">
-                   ECAM
-                </a>
-            </li>
+            {{--<li class="sidebar-brand">--}}
+                {{--<a href="#">--}}
+                   {{--ECAM--}}
+                {{--</a>--}}
+            {{--</li>--}}
             <li>
                 <a href="{{ route('welcome') }}">Home</a>
             </li>

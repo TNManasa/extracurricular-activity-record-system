@@ -13,7 +13,7 @@ class SportActivity
 
     public static function getAll()
     {
-        $raw_sport_activities = DB::statment('select * from sport_activities');
+        $raw_sport_activities = DB::select('select * from sport_activities');
         $sport_activities = array();
         foreach ($raw_sport_activities as $sport_activity) {
             $a = new SportActivity();

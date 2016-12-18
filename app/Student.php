@@ -55,20 +55,44 @@ class Student
         return $student;
     }
 
+    // 1 = Organization
+    // 2 = Sport
+    // 3 = Competition
+    // 4 = Achievement
+
     public static function getSportsOfStudent($index_no){
-        $results_set = DB::select('select activities.id from activities where ');
+        echo "<br>Test 1<br>";
+        $results_set = DB::select('select activities.id from activities where activity_type=? and student_id=?', ["2", "$index_no"]);
+        if($results_set == null || empty($results_set)){
+            return [];
+        }else{
+            $sport_activities = [];
+            foreach($results_set as $sport_activity){
+                $s = new SportActivity();
+                $s->id = $sport_activity->id;
+                $s->role = $sport_activity->role;
+                $s->sport_id = $sport_activity->sport_id;
+                array_push($sport_activities, $s);
+            }
+
+            return $sport_activities;
+        }
     }
 
     public static function getOrganizationsOfStudent($index_no){
-
+        $results_set = DB::select('select activities.id from activities where activity_type=? and student_id=?', [1, $index_no]);
+        echo "<br>$results_set<br>";
     }
 
     public static function getAchievementsOfStudent($index_no){
+        $results_set = DB::select('select activities.id from activities where activity_type=? and student_id=?', [4, $index_no]);
+        echo "<br>$results_set<br>";
 
     }
 
     public static function getCompetitionsOfStudent($index_no){
+        $results_set = DB::select('select activities.id from activities where activity_type=? and student_id=?', [3, $index_no]);
+        echo "<br>$results_set<br>";
 
     }
 }
-

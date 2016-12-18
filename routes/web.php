@@ -41,10 +41,11 @@ Route::post('/loginDetails',[
 
 
 // Student Routes
-//Route::get('students/all', [
-//    'uses' => 'StudentsController@getAllStudents',
-//    'as' => 'students.all'
-//])->middleware('auth','checkStudent');
+
+Route::get('students/student_profile/{index_no}', [
+    'uses' => 'StudentsController@getProfile',
+    'as' => 'students.profile'
+]);
 
 Route::get('/students/register', [
     // add new student form
@@ -200,5 +201,6 @@ Route::get('admin/student_profile/{index_no}',[
 // Test Route
 Route::get('test', function() {
 //    \App\Activity::getPendingActivities();
+    var_dump(\App\SportActivity::findById(4));
 });
 

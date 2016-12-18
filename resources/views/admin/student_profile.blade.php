@@ -2,9 +2,13 @@
 
 @section('title')
     Student Profile of Index No: {{ $student->index_no }} | ECAM
+    {{-- This view is for the use of admin only--}}
 @stop
 
 @section('content')
+    <div class="row">
+        <a href="{{ route('admin.all-students') }}" class="btn btn-default">Back</a>
+    </div>
     <div class="row">
         <div class="col-md-10">
             <br>
@@ -52,16 +56,59 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4>Sports</h4>
-                    <table class="table-bordered">
+                </div>
+                <div class="panel-body">
+                    <table class="table table-bordered table-responsive">
 
                     </table>
                 </div>
             </div>
         </div>
     </div>
-@stop
 
-@section('end_body')
-    <a href="{{ route('admin.all-students') }}" class="btn btn-default">Back</a>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>Organizations/Societies</h4>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-bordered table-responsive">
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>Achievements</h4>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-bordered table-responsive">
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>Competitions</h4>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-bordered table-responsive">
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 @stop
 

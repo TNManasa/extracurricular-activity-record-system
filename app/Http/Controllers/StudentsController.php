@@ -23,7 +23,7 @@ class StudentsController extends Controller
     }
 
     public function getDashboard(){
-        return view('welcome');
+        return view('students.dashboard');
     }
 
     public function addNewStudent(Request $request)
