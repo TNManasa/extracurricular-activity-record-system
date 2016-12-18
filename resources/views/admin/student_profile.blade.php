@@ -7,7 +7,6 @@
 @section('content')
     <div class="row">
         <div class="col-md-10">
-            <a href="{{ route('admin.all-students') }}" class="btn btn-default">Back</a>
             <br>
             <hr>
             <div class="panel panel-{{ $student->flag ? 'danger' : 'info' }}">
@@ -23,7 +22,6 @@
                             Flag
                         </a>
                     @endif
-
                 </div>
                 <div class="panel-body">
                     <div class="row">
@@ -45,7 +43,25 @@
                         </div>
                     </div>
                 </div>
+            </div>{{--End of Panel--}}
+        </div> {{--End of Column--}}
+    </div>{{--End of Row--}}
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>Sports</h4>
+                    <table class="table-bordered">
+
+                    </table>
+                </div>
             </div>
         </div>
     </div>
 @stop
+
+@section('end_body')
+    <a href="{{ route('admin.all-students') }}" class="btn btn-default">Back</a>
+@stop
+

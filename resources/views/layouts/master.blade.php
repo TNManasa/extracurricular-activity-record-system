@@ -19,7 +19,7 @@
 <body>
 
 
-<div id="wrapper">
+<div id="wrapper" class="toggled">
     <!-- Sidebar -->
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
@@ -55,7 +55,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+                    <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Sidebar</a>
 
                     <div class="container" style="padding: 20px">
                         @yield('content')
@@ -72,6 +72,7 @@
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
+
     });
 </script>
 

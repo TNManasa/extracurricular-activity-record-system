@@ -56,7 +56,7 @@ class Student
     }
 
     public static function getSportsOfStudent($index_no){
-
+        $results_set = DB::select('select activities.id from activities where ');
     }
 
     public static function getOrganizationsOfStudent($index_no){
