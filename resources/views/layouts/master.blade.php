@@ -18,6 +18,7 @@
 </head>
 <body>
 
+@include('layouts.navbar')
 
 <div id="wrapper" class="toggled">
     <!-- Sidebar -->
