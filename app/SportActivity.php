@@ -6,7 +6,7 @@ use DB;
 
 class SportActivity
 {
-    public $id;
+    public $activity_id;
     public $sport_id;
     public $role;
     public $sport_name;
@@ -27,19 +27,20 @@ class SportActivity
             return $sport_activities;
         }catch(Exception $e){
             return [];
+
         }
     }
 
     public static function findById($activity_id)
     {
         try {
-            $a = DB::select('select * from sport_activities where id=?', [$activity_id]);
+            $a = DB::select('select * from sport_activities where s_id=?', [$activity_id]);
             if ($a == null || empty($a)) {
                 return [];
             } else {
                 $a = $a[0];
                 $sport_activity = new SportActivity();
-                $sport_activity->id = $a->id;
+                $sport_activity->activity_id = $a->s_id;
                 $sport_activity->sport_id = $a->sport_id;
                 $sport_activity->role = $a->role;
                 $sport_activity->sport_name = Sport::findById($a->sport_id);
@@ -54,13 +55,13 @@ class SportActivity
 
     public static function update(SportActivity $sport_activity)
     {
-        DB::statement('update sport_activities set sport_id=?,role=? where id=?', [$sport_activity->sport_id, $sport_activity->role, $sport_activity->id]);
+        DB::statement('update sport_activities set sport_id=?,role=? where s_id=?', [$sport_activity->sport_id, $sport_activity->role, $sport_activity->activity_id]);
         return true;
     }
 
     public static function insert(SportActivity $sport_activity)
     {
-        DB::statement('insert into sport_activities (id,sport_id,role) values (?,?,?)', [$sport_activity->id, $sport_activity->sport_id, $sport_activity->role]);
+        DB::statement('insert into sport_activities (s_id,sport_id,role) values (?,?,?)', [$sport_activity->activity_id, $sport_activity->sport_id, $sport_activity->role]);
         return true;
     }
 }

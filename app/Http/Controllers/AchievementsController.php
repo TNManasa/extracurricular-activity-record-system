@@ -40,7 +40,7 @@ class AchievementsController extends Controller
         $id=Activity::getId($activity);
 
         $achievement=new Achievement();
-        $achievement->id=$id;
+        $achievement->activity_id=$id;
         $achievement->achievement_name=$request['name'];
         Achievement::insert($achievement);
 
