@@ -42,8 +42,8 @@ Route::post('/loginDetails',[
 
 // Student Routes
 
-Route::get('students/student_profile/{index_no}', [
-    'uses' => 'StudentsController@getProfile',
+Route::get('students/profile/{index_no}', [
+    'uses' => 'StudentsController@getDashboard',
     'as' => 'students.profile'
 ]);
 
@@ -198,9 +198,22 @@ Route::get('admin/student_profile/{index_no}',[
     'as' => 'admin.student-profile'
 ]);
 
+Route::get('admin/sport/{sport_id}', [
+    'uses' => 'AdminController@getSportProfile',
+    'as' => 'admin.sport-profile',
+]);
+
+Route::get('admin/organization{organization_id}', [
+    'uses' => 'AdminController@getOrganizationProfile',
+    'as' => 'admin.organization-profile'
+]);
+
+// end of Admin Routes
+
 // Test Route
 Route::get('test', function() {
 //    \App\Activity::getPendingActivities();
-    var_dump(\App\SportActivity::findById(4));
+//    var_dump(\App\Student::getSportsOfStudent('140001A'));
+    var_dump(\App\Student::getOrganizationsOfStudent('140002B'));
 });
 

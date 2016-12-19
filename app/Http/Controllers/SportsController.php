@@ -53,6 +53,7 @@ class SportsController extends Controller
 
         return redirect()->back();
     }
+
 }
 
 

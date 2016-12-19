@@ -22,8 +22,11 @@ class StudentsController extends Controller
         return view('students.register');
     }
 
-    public function getDashboard(){
-        return view('students.dashboard');
+    public function getDashboard($index_no){
+        $student = Student::findByIndexNo($index_no);
+        return view('students.dashboard', [
+            'student' => $student
+        ]);
     }
 
     public function addNewStudent(Request $request)

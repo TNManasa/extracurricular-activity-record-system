@@ -24,4 +24,22 @@ class Organization
         return $organizations;
     }
 
+    public static function findById($id){
+        $results_set = DB::select('select * from organizations where id=?', [$id]);
+        try{
+            $o = $results_set[0];
+            $organization = new Organization();
+            $organization->id = $o->id;
+            $organization->name = $o->name;
+            return $organization;
+        }catch(Exception $e){
+            echo "<br>Error: $e<br>";
+            return [];
+        }
+    }
+
+    public static function getAllStudents(){
+
+    }
+
 }

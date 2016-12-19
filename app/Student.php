@@ -81,18 +81,16 @@ class Student
 
     public static function getOrganizationsOfStudent($index_no){
         $results_set = DB::select('select activities.id from activities where activity_type=? and student_id=?', [1, $index_no]);
-        echo "<br>$results_set<br>";
+        return $results_set;
     }
 
     public static function getAchievementsOfStudent($index_no){
         $results_set = DB::select('select activities.id from activities where activity_type=? and student_id=?', [4, $index_no]);
-        echo "<br>$results_set<br>";
-
+        return $results_set;
     }
 
     public static function getCompetitionsOfStudent($index_no){
         $results_set = DB::select('select activities.id from activities where activity_type=? and student_id=?', [3, $index_no]);
-        echo "<br>$results_set<br>";
-
+        return $results_set;
     }
 }

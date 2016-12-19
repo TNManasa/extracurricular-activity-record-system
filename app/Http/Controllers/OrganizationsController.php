@@ -46,7 +46,7 @@ class OrganizationsController extends Controller
         $id=Activity::getId($activity);
 
         $org_activity=new OrgActivity();
-        $org_activity->id=$id;
+        $org_activity->activity_id=$id;
         $org_activity->org_id=$request['name'];
         $org_activity->role=$request['role'];
         $org_activity->project_name=$request['project_name'];

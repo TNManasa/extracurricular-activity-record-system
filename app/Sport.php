@@ -25,7 +25,7 @@ class Sport
     }
 
     public static function findById($id){
-        $s = DB::select('select * from sports where id=?', [$id]);
+        $s = DB::select('select * from sports where id=?', [$id])[0];
         $sport = new Sport();
         $sport->id = $s->id;
         $sport->name = $s->name;
@@ -39,5 +39,8 @@ class Sport
         return true;
     }
 
+    public static function getAllStudents(){
+
+    }
 
 }

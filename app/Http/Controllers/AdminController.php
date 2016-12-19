@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Organization;
+use App\Sport;
 use App\Student;
 use App\Supervisor;
 use App\User;
@@ -12,7 +14,12 @@ class AdminController extends Controller
 {
     public function getIndex()
     {
-        return view('admin.index');
+        $all_sports = Sport::getAll();
+        $all_organizations = Organization::getAll();
+        return view('admin.index', [
+            'sports' => $all_sports,
+            'organizations' => $all_organizations
+        ]);
     }
     public function getAllStudents()
     {
@@ -42,6 +49,26 @@ class AdminController extends Controller
 
         return view('admin.student_profile',[
             'student' => $student
+        ]);
+    }
+
+    public function getSportProfile($sport_id)
+    {
+        $sport = Sport::findById($sport_id);
+        $students = null;
+        return view('sports.profile', [
+            'sport' => $sport,
+            'students' => $students
+        ]);
+    }
+
+    public function getOrganizationProfile($organization_id)
+    {
+        $organization = Organization::findById($organization_id);
+        $students = null;
+        return view('organizations.profile', [
+            'organization' => $organization,
+            'students' => $students
         ]);
     }
 }

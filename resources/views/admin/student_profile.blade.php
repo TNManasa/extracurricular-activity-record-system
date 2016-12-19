@@ -1,3 +1,4 @@
+{{-- This view is for the use of admin only--}}
 @extends('layouts.master')
 
 @section('title')
@@ -6,6 +7,7 @@
 @stop
 
 @section('content')
+    {{-- This view is for the use of admin only--}}
     <div class="row">
         <a href="{{ route('admin.all-students') }}" class="btn btn-default">Back</a>
     </div>
