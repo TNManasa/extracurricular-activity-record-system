@@ -212,6 +212,6 @@ Route::get('admin/organization{organization_id}', [
 
 // Test Route
 Route::get('test', function() {
-    var_dump(\App\Organization::getStudentsByOrganization(3));
+    var_dump(\App\Student::getOrganizationsOfStudent('140001A'));
 });
 

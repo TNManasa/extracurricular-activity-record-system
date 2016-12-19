@@ -58,6 +58,11 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4>Sports</h4>
+                    <table class="table table-bordered table-responsive">
+                        <tr>
+                            <th></th>
+                        </tr>
+                    </table>
                 </div>
                 <div class="panel-body">
                     <table class="table table-bordered table-responsive">

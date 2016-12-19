@@ -17,9 +17,9 @@
                 <li class="active"><a href="{{ url('/') }}">Home<span class="sr-only">(current)</span></a></li>
                 <li><a href="{{ route('admin.index') }}">Admin Control</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Student <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="{{ route('admin.index') }}">Admin Control</a></li>
+                        {{--<li><a href="{{ route('students.dashboard', [Student::findById(Auth::User()->id)])->index_no }}">Student Dashboard</a></li>--}}
                         <li role="separator" class="divider"></li>
                         <li><a href="#">One more separated link</a></li>
                     </ul>

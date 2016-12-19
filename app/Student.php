@@ -61,8 +61,7 @@ class Student
     // 4 = Achievement
 
     public static function getSportsOfStudent($index_no){
-        echo "<br>Test 1<br>";
-        $results_set = DB::select('select activities.id from activities where activity_type=? and student_id=?', ["2", "$index_no"]);
+        $results_set = DB::select('select * from sport_activities where id in (select id from activities where student_id=?)', [$index_no]);
         if($results_set == null || empty($results_set)){
             return [];
         }else{
@@ -80,17 +79,31 @@ class Student
     }
 
     public static function getOrganizationsOfStudent($index_no){
-        $results_set = DB::select('select activities.id from activities where activity_type=? and student_id=?', [1, $index_no]);
-        return $results_set;
+        $results_set = DB::select('select * from org_activities where id in (select id from activities where student_id=?)',[$index_no]);
+
+        if($results_set == null || empty($results_set)){
+            return [];
+        }else {
+            $org_activities = [];
+            foreach ($results_set as $org_activity) {
+                $o = new OrgActivity();
+                $o->activity_id = $org_activity->id;
+                $o->org_id = $org_activity->org_id;
+                $o->project_name = $org_activity->project_name;
+                $o->role = $org_activity->role;
+                array_push($org_activities, $o);
+            }
+
+            return $org_activities;
+        }
     }
 
     public static function getAchievementsOfStudent($index_no){
-        $results_set = DB::select('select activities.id from activities where activity_type=? and student_id=?', [4, $index_no]);
-        return $results_set;
+
+
     }
 
     public static function getCompetitionsOfStudent($index_no){
-        $results_set = DB::select('select activities.id from activities where activity_type=? and student_id=?', [3, $index_no]);
-        return $results_set;
+
     }
 }
