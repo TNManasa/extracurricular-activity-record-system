@@ -18,7 +18,7 @@ class OrgActivity
         $org_activities = array();
         foreach($raw_org_activities as $org_activity){
             $a = new OrgActivity();
-            $a->activity_id = $org_activity->id;
+            $a->activity_id = $org_activity->o_id;
             $a->org_id = $org_activity->org_id;
             $a->project_name = $org_activity->project_name;
             $a->role = $org_activity->role;
@@ -30,9 +30,9 @@ class OrgActivity
 
     public function findById($id)
     {
-        $a = DB::select('select * from org_activities where id=?', [$id]);
+        $a = DB::select('select * from org_activities where o_id=?', [$id]);
         $org_activity = new OrgActivity();
-        $org_activity->activity_id = $a->id;
+        $org_activity->activity_id = $a->o_id;
         $org_activity->org_id = $a->org_id;
         $org_activity->project_name = $a->project_name;
         $org_activity->role = $a->role;
@@ -40,12 +40,12 @@ class OrgActivity
     }
 
     public static function update(OrgActivity $org_activity){
-        DB::statement('update org_activities set org_id=?,project_name=?,role=? where id=?',[$org_activity->org_id,$org_activity->project_name,$org_activity->role,$org_activity->activity_id]);
+        DB::statement('update org_activities set org_id=?,project_name=?,role=? where o_id=?',[$org_activity->org_id,$org_activity->project_name,$org_activity->role,$org_activity->activity_id]);
         return true;
     }
 
     public static function insert(OrgActivity $org_activity){
-        DB::statement('insert into org_activities (id,org_id,project_name,role) values (?,?,?,?)',[$org_activity->activity_id,$org_activity->org_id,$org_activity->project_name,$org_activity->role]);
+        DB::statement('insert into org_activities (o_id,org_id,project_name,role) values (?,?,?,?)',[$org_activity->activity_id,$org_activity->org_id,$org_activity->project_name,$org_activity->role]);
         return true;
     }
 

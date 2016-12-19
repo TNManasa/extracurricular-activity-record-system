@@ -51,7 +51,7 @@ class CompetitionsController extends Controller
         $id=Activity::getId($activity);
 
         $competition_activity = new CompetitionActivity();
-        $competition_activity->id = $id;
+        $competition_activity->activity_id = $id;
         $competition_activity->competition_name = $request['name'];
         $competition_activity->status = $request['status'];
         CompetitionActivity::insert($competition_activity);

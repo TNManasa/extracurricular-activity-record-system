@@ -46,7 +46,7 @@ class SportsController extends Controller
         $id=Activity::getId($activity);
 
         $sport_activity=new SportActivity();
-        $sport_activity->id=$id;
+        $sport_activity->activity_id=$id;
         $sport_activity->sport_id=$request['name'];
         $sport_activity->role=$request['role'];
         SportActivity::insert($sport_activity);
