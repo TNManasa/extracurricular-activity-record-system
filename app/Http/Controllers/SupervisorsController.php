@@ -34,9 +34,12 @@ class SupervisorsController extends Controller
     }
 
     public function activityShow($id){
-        $activity= DB::select('select * from activities where id = ?', [$id]);
+        //$activity= DB::select('select * from activities where id = ?', [$id]);
+        $activity= DB::select('select *  FROM  (select first_name,last_name,index_no from students) as s RIGHT JOIN (select * from activities where id = ? ) as t on s.index_no=t.student_id', [$id]);
+
         //return $activity;
-        return view('supervisors.validate',compact('activity'));
+        return $activity;
+       // return view('supervisors.validate',compact('activity'));
 
     }
     public function activityValidate(Request $request, $id){

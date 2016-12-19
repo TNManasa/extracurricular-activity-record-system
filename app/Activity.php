@@ -107,4 +107,9 @@ class Activity
         }
         return $validated_activities;
     }
+
+    public static function showPendingActivity($id){
+        
+    }
+
 }
