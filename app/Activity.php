@@ -72,6 +72,21 @@ class Activity
     }
 
     public static function getPendingActivities(){
+        $p_activities= DB::select('select * from activities WHERE activities.id NOT IN (SELECT id FROM activities RIGHT JOIN validations on activities.id=validations.validation_id)');
+        $pending_activities=array();
+        foreach($p_activities as $activity){
+            $b = new Activity();
+            $b->id = $activity->id;
+            $b->student_id = $activity->student_id;
+            $b->activity_type = $activity->activity_type;
+            $b->start_date = $activity->start_date;
+            $b->end_date = $activity->end_date;
+            $b->effort = $activity->effort;
+            $b->description = $activity->description;
+
+            array_push($pending_activities, $b);
+        }
+        return $pending_activities;
 
     }
 
