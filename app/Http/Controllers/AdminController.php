@@ -46,9 +46,13 @@ class AdminController extends Controller
     public function getStudentProfile($index_no)
     {
         $student = Student::findByIndexNo($index_no);
+        $sports = Student::getSportsOfStudent($index_no);
+        $organizations = Student::getOrganizationsOfStudent($index_no);
 
         return view('admin.student_profile',[
-            'student' => $student
+            'student' => $student,
+            'sports' => $sports,
+            'organizations' => $organizations
         ]);
     }
 

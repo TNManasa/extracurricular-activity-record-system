@@ -9,21 +9,26 @@ class SportActivity
     public $activity_id;
     public $sport_id;
     public $role;
-
+    public $sport_name;
 
     public static function getAll()
     {
-        $raw_sport_activities = DB::select('select * from sport_activities');
-        $sport_activities = array();
-        foreach ($raw_sport_activities as $sport_activity) {
-            $a = new SportActivity();
-            $a->activity_id = $sport_activity->s_id;
-            $a->sport_id = $sport_activity->sport_id;
-            $a->role = $sport_activity->role;
+        try{
+            $raw_sport_activities = DB::select('select * from sport_activities');
+            $sport_activities = array();
+            foreach ($raw_sport_activities as $sport_activity) {
+                $a = new SportActivity();
+                $a->id = $sport_activity->id;
+                $a->sport_id = $sport_activity->sport_id;
+                $a->role = $sport_activity->role;
+                $a->sport_name = Sport::findById($a->sport_id);
+                array_push($sport_activities, $a);
+            }
+            return $sport_activities;
+        }catch(Exception $e){
+            return [];
 
-            array_push($sport_activities, $a);
         }
-        return $sport_activities;
     }
 
     public static function findById($activity_id)
@@ -31,18 +36,19 @@ class SportActivity
         try {
             $a = DB::select('select * from sport_activities where s_id=?', [$activity_id]);
             if ($a == null || empty($a)) {
-                return null;
+                return [];
             } else {
                 $a = $a[0];
                 $sport_activity = new SportActivity();
                 $sport_activity->activity_id = $a->s_id;
                 $sport_activity->sport_id = $a->sport_id;
                 $sport_activity->role = $a->role;
+                $sport_activity->sport_name = Sport::findById($a->sport_id);
                 return $sport_activity;
             }
         } catch (Exception $e) {
             echo "Exception: ". $e ."<br>";
-            return null;
+            return [];
         }
 
     }
