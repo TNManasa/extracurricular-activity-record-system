@@ -14,13 +14,13 @@ class CreateOrgActivitiesTable extends Migration
     public function up()
     {
         Schema::create('org_activities', function (Blueprint $table) {
-            $table->integer('id')->unsigned();
+            $table->integer('o_id')->unsigned();
             $table->integer('org_id')->unsigned();
             $table->string('project_name')->nullable();
             $table->string('role');
 
-            $table->primary('id');
-            $table->foreign('id')->references('id')->on('activities');
+            $table->primary('o_id');
+            $table->foreign('o_id')->references('id')->on('activities');
             $table->foreign('org_id')->references('id')->on('organizations');
         });
     }

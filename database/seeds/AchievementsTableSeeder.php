@@ -9,12 +9,12 @@ class AchievementsTableSeeder extends Seeder
         DB::table('achievements')->delete();
 
         DB::table('achievements')->insert([
-            'id' => 9,
+            'a_id' => 9,
             'achievement_name' => 'CSE 14 Batch Representative',
         ]);
 
         DB::table('achievements')->insert([
-            'id' => 10,
+            'a_id' => 10,
             'achievement_name' => 'AIESEC CS Member of the Month',
         ]);
 

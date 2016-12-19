@@ -41,7 +41,7 @@
             <?php $b="Achievements"?>
         @endif
         <?php $id=$a->id ?>
-        <div class="row"><h3>Student ID : {{$a->id}} </h3></div>
+        <div class="row"><h3>Student ID : {{$a->student_id}} </h3></div>
         <div class="row"><h3>Activity Type:  {{$b}}</h3></div>
         <div class="row"><h3>Description </h3></div>
         <div class="row"><h4>{{$a->description}} </h4></div>
