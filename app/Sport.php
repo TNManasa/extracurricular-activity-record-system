@@ -40,7 +40,53 @@ class Sport
     }
 
     public static function getAllStudents(){
+        $results_set = DB::select('select * from students where index_no in (select student_id from activities where activity_type=2)');
+        if($results_set == null || empty($results_set)){
+            return [];
+        }
 
+        $students = [];
+        foreach($results_set as $result){
+            $student = new Student();
+            $student->index_no = $result->index_no;
+            $student->first_name = $result->first_name;
+            $student->last_name = $result->last_name;
+            $student->gender = $result->gender;
+            $student->dob = $result->dob;
+            $student->batch = $result->batch;
+            $student->user_id = $result->user_id;
+            $student->email = User::getEmailById($result->user_id);
+            $student->flag = User::getFlag($result->user_id);
+
+            array_push($students, $student);
+        }
+
+        return $students;
+    }
+
+    public static function getStudentsBySport($sport_id){
+        $results_set = DB::select('select * from students where index_no in (select student_id from activities  join sport_activities on sport_activities.id=activities.id where activity_type=2 and sport_id=?)', [$sport_id]);
+        if($results_set == null || empty($results_set)){
+            return [];
+        }
+
+        $students = [];
+        foreach($results_set as $result){
+            $student = new Student();
+            $student->index_no = $result->index_no;
+            $student->first_name = $result->first_name;
+            $student->last_name = $result->last_name;
+            $student->gender = $result->gender;
+            $student->dob = $result->dob;
+            $student->batch = $result->batch;
+            $student->user_id = $result->user_id;
+            $student->email = User::getEmailById($result->user_id);
+            $student->flag = User::getFlag($result->user_id);
+
+            array_push($students, $student);
+        }
+
+        return $students;
     }
 
 }

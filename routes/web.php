@@ -212,8 +212,6 @@ Route::get('admin/organization{organization_id}', [
 
 // Test Route
 Route::get('test', function() {
-//    \App\Activity::getPendingActivities();
-//    var_dump(\App\Student::getSportsOfStudent('140001A'));
-    var_dump(\App\Student::getOrganizationsOfStudent('140002B'));
+    var_dump(\App\Organization::getStudentsByOrganization(3));
 });
 

@@ -39,7 +39,53 @@ class Organization
     }
 
     public static function getAllStudents(){
+        $results_set = DB::select('select * from students where index_no in (select student_id from activities where activity_type=1)');
+        if($results_set == null || empty($results_set)){
+            return null;
+        }
 
+        $students = [];
+        foreach($results_set as $result){
+            $student = new Student();
+            $student->index_no = $result->index_no;
+            $student->first_name = $result->first_name;
+            $student->last_name = $result->last_name;
+            $student->gender = $result->gender;
+            $student->dob = $result->dob;
+            $student->batch = $result->batch;
+            $student->user_id = $result->user_id;
+            $student->email = User::getEmailById($result->user_id);
+            $student->flag = User::getFlag($result->user_id);
+
+            array_push($students, $student);
+        }
+
+        return $students;
+    }
+
+    public static function getStudentsByOrganization($organization_id){
+        $results_set = DB::select('select * from students where index_no in (select student_id from activities  join org_activities on org_activities.id=activities.id where activity_type=1 and org_id=?)', [$organization_id]);
+        if($results_set == null || empty($results_set)){
+            return [];
+        }
+
+        $students = [];
+        foreach($results_set as $result){
+            $student = new Student();
+            $student->index_no = $result->index_no;
+            $student->first_name = $result->first_name;
+            $student->last_name = $result->last_name;
+            $student->gender = $result->gender;
+            $student->dob = $result->dob;
+            $student->batch = $result->batch;
+            $student->user_id = $result->user_id;
+            $student->email = User::getEmailById($result->user_id);
+            $student->flag = User::getFlag($result->user_id);
+
+            array_push($students, $student);
+        }
+
+        return $students;
     }
 
 }

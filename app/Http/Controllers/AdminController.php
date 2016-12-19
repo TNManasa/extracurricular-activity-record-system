@@ -55,7 +55,7 @@ class AdminController extends Controller
     public function getSportProfile($sport_id)
     {
         $sport = Sport::findById($sport_id);
-        $students = null;
+        $students = Sport::getStudentsBySport($sport_id);
         return view('sports.profile', [
             'sport' => $sport,
             'students' => $students
@@ -65,7 +65,7 @@ class AdminController extends Controller
     public function getOrganizationProfile($organization_id)
     {
         $organization = Organization::findById($organization_id);
-        $students = null;
+        $students = Organization::getStudentsByOrganization($organization_id);
         return view('organizations.profile', [
             'organization' => $organization,
             'students' => $students
