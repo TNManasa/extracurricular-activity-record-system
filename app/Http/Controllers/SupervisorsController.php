@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Activity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Crypt;
@@ -16,14 +17,15 @@ class SupervisorsController extends Controller
 
     
     public function pendingActivities(){
-        $pendingActivities= DB::select('select * from activities WHERE activities.id NOT IN (SELECT id FROM activities RIGHT JOIN validations on activities.id=validations.validation_id)');
-        
+       // $pendingActivities= DB::select('select * from activities WHERE activities.id NOT IN (SELECT id FROM activities RIGHT JOIN validations on activities.id=validations.validation_id)');
+        $pendingActivities= Activity::getPendingActivities();
         return view('supervisors.pending_activity', compact('pendingActivities'));
         
     }
 
     public function validatedActivities(){
-        $validatedActivities= DB::select('select * from activities WHERE activities.id  IN (SELECT id FROM activities RIGHT JOIN validations on activities.id=validations.validation_id WHERE is_validated=1)');
+        //$validatedActivities= DB::select('select * from activities WHERE activities.id  IN (SELECT id FROM activities RIGHT JOIN validations on activities.id=validations.validation_id WHERE is_validated=1)');
+        $validatedActivities=Activity::getValidatedActivities();
         return view('supervisors.validated_activities', compact('validatedActivities'));
     }
 
