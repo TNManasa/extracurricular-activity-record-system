@@ -23,7 +23,7 @@ class Activity
     public $institute_name;
     public $activity_name;
     public $role;
-    public $supervisor_id="0";
+    public $supervisor_name;
 
     public static function getAll()
     {
@@ -158,10 +158,11 @@ class Activity
                 $b->role=$achievement[0]->achievement_name;
                 $b->institute_name="";
             }
-            if(!($isValidated==false)){
-                $array=newArray();
+            if(!($isValidated==null)){
+                $array=array();
                 array_push($array,$b );
                 array_push($array,$isValidated );
+                return $array;
 
             }else {
                 return $b;
