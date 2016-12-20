@@ -78,7 +78,7 @@ class Activity
     }
 
     public static function getPendingActivities(){
-        $p_activities= DB::select('select * from activities WHERE activities.id NOT IN (SELECT id FROM activities RIGHT JOIN validations on activities.id=validations.validation_id)');
+        $p_activities= DB::select('select * from activities WHERE activities.id NOT IN (SELECT activities.id FROM activities RIGHT JOIN validations on activities.id=validations.validation_id)');
         $pending_activities=array();
         foreach($p_activities as $activity){
             $b = new Activity();
@@ -93,7 +93,6 @@ class Activity
             array_push($pending_activities, $b);
         }
         return $pending_activities;
-
     }
 
     public static function getValidatedActivities(){
@@ -129,7 +128,7 @@ class Activity
             $b->s_first_name=$a->first_name;
             $b->s_last_name=$a->last_name;
             if($a->activity_type==1){
-                $org=DB::select('select name,project_name,role from organizations RIGHT JOIN (select org_id,project_name,role from org_activities where o_id=?) as t on organizations.id=t.org_id ',[$id]);
+                $org=DB::select('select name,project_name,role from organizations RIGHT JOIN (select org_id,project_name,role from org_activities where organizations.id=?) as t on organizations.id=t.org_id ',[$id]);
                 $b->activity_name=$org[0]->project_name;
                 $b->role=$org[0]->role;
                 $b->institute_name=$org[0]->name;
