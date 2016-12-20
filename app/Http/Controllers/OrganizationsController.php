@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Activity;
 use App\OrgActivity;
 use App\Organization;
+use App\User;
 use Illuminate\Http\Request;
 
 use DB;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class OrganizationsController extends Controller
@@ -23,6 +25,7 @@ class OrganizationsController extends Controller
 
     public function newOrganization()
     {
+//        dd(Auth::user()->id);
         return view('organizations.new_organization');
     }
 
@@ -66,7 +69,8 @@ class OrganizationsController extends Controller
 
         $activity = new Activity();
         // TODO: Attach the authenticated Student ID before saving
-        $activity->student_id = '140001A';
+
+        $activity->student_id = User::findStudentIndex(Auth::id());
         $activity->activity_type= 1;
         $activity->start_date=$request['start_date'];
         $activity->end_date=$request['end_date'];

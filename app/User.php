@@ -78,6 +78,16 @@ class User implements Authenticatable
         // TODO: Implement getRememberTokenName() method.
     }
 
+    //by salaka
+    public static function findStudentIndex($id){
+        $studentqry= DB::select('select index_no from students where user_id= ?',[$id]);
+        $result_index = null;
+        foreach ($studentqry as $student) {
+            $result_index = $student->index_no;
+        }
+        return $result_index;
+    }
+
     public static function findById($id){
         $user = DB::select('select * from users where id=?', [$id]);
         return $user;
