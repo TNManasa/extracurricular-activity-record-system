@@ -65,9 +65,7 @@ class StudentsController extends Controller
         $condition1 = is_numeric($index_no_substring1);
         $condition2 = ctype_alpha($index_no_substring2);
 
-<<<<<<< HEAD
-        if (!$condition1 or !$condition2) {
-=======
+
         $condition1=is_numeric($index_no_substring1);
         $condition2=ctype_alpha ( $index_no_substring2 );
 
@@ -76,7 +74,6 @@ class StudentsController extends Controller
 //        return 1;
 
         if(!$condition1 or !$condition2){
->>>>>>> b642c005463bf02df1e17751786a451d478180df
             return view('students.register', ['customMessage' => 'index number you entered is not valid']);
         }
 
