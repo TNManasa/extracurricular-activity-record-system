@@ -17,7 +17,7 @@ class Sport
         foreach($sports_array as $sport){
             $s = new Sport();
             $s->id = $sport->id;
-            $s->name = $sport->sport_name;
+            $s->name = $sport->name;
             array_push($sports, $s);
         }
 
