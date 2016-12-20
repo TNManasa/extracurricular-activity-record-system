@@ -14,8 +14,7 @@ class OrganizationsTableSeeder extends Seeder
         for($i=0; $i<$count; $i++){
             DB::table('organizations')->insert([
                 'id' => $i+1,
-                'organization_name' => $organizations[$i],
-                'logo' => $organizations[$i].'.png'
+                'organization_name' => $organizations[$i]
             ]);
         }
     }

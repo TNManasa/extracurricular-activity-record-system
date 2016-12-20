@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Storage;
 
 class ActivitiesController extends Controller
 {
@@ -23,5 +25,12 @@ class ActivitiesController extends Controller
         }else if($type == "achievement"){
             return redirect()->route('achievements.new-achievement');
         }
+    }
+
+    public function getImage($activity_id){
+        $path='/activities/'.$activity_id.'.jpg';
+        $image=Storage::disk('local')->get($path);
+        ob_end_clean();
+        return new Response($image,200);
     }
 }

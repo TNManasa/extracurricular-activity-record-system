@@ -189,6 +189,11 @@ Route::post('continue-to-new-activity', [
     'as' => 'activities.continue'
 ]);
 
+Route::get('/activities/{activity_id}',[
+    'uses'=>'ActivitiesController@getImage',
+    'as'=>'activities.get-image'
+]);
+
 // End of Organization, Sport, Competition, Achievement Routes
 
 // Gathika

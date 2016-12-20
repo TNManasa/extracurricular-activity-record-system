@@ -29,7 +29,8 @@ class ActivitiesTableSeeder extends Seeder
                 'start_date' => $faker->date(),
                 'effort' => $faker->randomNumber(1),
                 'end_date' => 1,
-                'description' => $faker->paragraph(2)
+                'description' => $faker->paragraph(2),
+                'image'=>0
         ]);
         }
     }

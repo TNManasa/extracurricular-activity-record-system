@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-md-6">
             <h2>New Activity (Organization/Society)</h2>
-            <form action="{{route('organizations.add-new-organization-activity')}}" method="post" onsubmit="return validateForm()" name="activity">
+            <form action="{{route('organizations.add-new-organization-activity')}}" method="post" onsubmit="return validateForm()" name="activity" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label for="name">Name of the Society/Organization: (*)</label>
@@ -56,6 +56,11 @@
                 <div class="form-group">
                     <label for="description">Description: (*)</label>
                     <textarea class="form-control" rows="5" name="description" id="description"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="image">Proof Image (jpg only): </label>
+                    <input type="file" class="form-control" name="image" id="image">
                 </div>
 
                 <br>
@@ -124,7 +129,6 @@
                 }
             }
 
-
             var effort = document.getElementById("effort").value;
 
             if(effort == null || effort === ""){
@@ -140,6 +144,16 @@
             var description = document.getElementById("description").value;
             if(description == null || description === ""){
                 alert("Description field cannot be empty");
+                valid = false;
+                return false;
+            }
+
+            var file = $('#image').val().split('.').pop().toLowerCase();
+
+            if(file === ""){
+
+            }else if(!( file === "jpg")){
+                alert("Only add images of type jpg");
                 valid = false;
                 return false;
             }
