@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Achievement;
 use App\Activity;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AchievementsController extends Controller
 {
@@ -61,7 +63,7 @@ class AchievementsController extends Controller
         $achievement->achievement_name=$request['name'];
         Achievement::insert($achievement);
 
-        return redirect()->back();
+        return redirect()->route('students.dashboard');
 
     }
 }

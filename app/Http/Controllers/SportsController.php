@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Activity;
 use App\Sport;
 use App\SportActivity;
+use App\User;
 use Illuminate\Http\Request;
+use Auth;
 
 class SportsController extends Controller
 {
@@ -85,7 +87,7 @@ class SportsController extends Controller
         $sport_activity->role=$request['role'];
         SportActivity::insert($sport_activity);
 
-        return redirect()->back();
+        return redirect()->route('students.dashboard');
     }
 
 }

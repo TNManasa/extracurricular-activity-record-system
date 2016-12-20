@@ -16,7 +16,7 @@ Route::get('admin/dashboard', [
     'as' => 'admin.dashboard'
 ]);
 
-Route::get('student/dashboard', [
+Route::get('students/dashboard', [
     'uses' => 'StudentsController@getDashboard',
     'as' => 'students.dashboard',
 ])->middleware('auth','checkStudent');
@@ -39,7 +39,6 @@ Route::post('/loginDetails',[
 ]);
 
 
-
 // Student Routes
 
 Route::get('students/profile/{index_no}', [
@@ -51,13 +50,13 @@ Route::get('/students/register', [
     // add new student form
     'uses' => 'StudentsController@newStudent',
     'as' => 'students.register'
-])->middleware('auth', 'checkStudent');
+]);
 
 Route::post('/students/addDetails',[
     // actually add new student
     'uses' => 'StudentsController@addNewStudent',
     'as' => 'student.addDetails'
-])->middleware('auth', 'checkStudent');
+]);
 
 // End of Student Routes
 

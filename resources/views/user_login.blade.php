@@ -35,9 +35,6 @@
     </div>
     <div class="row">
         <div class="col-md-6 ol-md-offset-2">
-
-
-
             <form action="{{ route('userLogin') }}" method="post">
                 {{ csrf_field() }}
 
@@ -55,7 +52,7 @@
 
 
                 <div class="form-group">
-                    <button type="submit" class="btn btn-info btn-lg">Sign Up</button>
+                    <button type="submit" class="btn btn-info btn-lg">Sign In</button>
                 </div>
             </form>
         </div>

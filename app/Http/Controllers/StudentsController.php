@@ -104,6 +104,7 @@ class StudentsController extends Controller
             $id = $user->id;
         }
 
+
         // to update student table
         // first one is  created by concatanating, abd it is not the best practice, Thats y second one
         // $line2= "insert into students (index_no, first_name, last_name,gender,faculty,user_id,dob) values ('$index_no','$first_name','$last_name','$gender','$faculty','$id','$dob')";

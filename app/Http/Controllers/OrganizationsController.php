@@ -105,7 +105,7 @@ class OrganizationsController extends Controller
         $org_activity->project_name=$request['project_name'];
         OrgActivity::insert($org_activity);
 
-        return redirect()->back();
+        return redirect()->route('students.dashboard');
     }
 
 }

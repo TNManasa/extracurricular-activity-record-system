@@ -25,6 +25,9 @@
             </ul>
             {{--</div>--}}
         </div>
+        <div class="col-md-6">
+            <a href="{{ route('activities.new-activity') }}" class="btn btn-primary">Add New Activity</a>
+        </div>
     </div>
     <hr><br>
     <div class="row">

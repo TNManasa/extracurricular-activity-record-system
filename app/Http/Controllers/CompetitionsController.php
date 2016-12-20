@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Activity;
 use App\CompetitionActivity;
+use App\User;
 use Illuminate\Http\Request;
 use DB;
+use Illuminate\Support\Facades\Auth;
 
 class CompetitionsController extends Controller
 {
@@ -74,7 +76,7 @@ class CompetitionsController extends Controller
         $competition_activity->status = $request['status'];
         CompetitionActivity::insert($competition_activity);
 
-        return redirect()->back();
+        return redirect()->route('students.dashboard');
 
     }
 }
