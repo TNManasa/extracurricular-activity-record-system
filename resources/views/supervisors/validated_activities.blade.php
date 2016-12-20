@@ -32,13 +32,13 @@
             @foreach($validatedActivities as $a)
 
                 @if($a->activity_type==1)
-                    <?php $b="sports activity"?>
+                    <?php $b="Organizational Activity"?>
                 @elseif($a->activity_type==2)
-                    <?php $b="organizational activity"?>
+                    <?php $b="Sports Activity"?>
                 @elseif($a->activity_type==3)
-                    <?php $b="competition"?>
+                    <?php $b="Competition"?>
                 @elseif($a->activity_type==4)
-                    <?php $b="achievements"?>
+                    <?php $b="Achievements"?>
                 @endif
 
 
