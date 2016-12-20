@@ -7,6 +7,7 @@ use App\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Crypt;
+use Auth;
 
 class StudentsController extends Controller
 {
@@ -23,11 +24,12 @@ class StudentsController extends Controller
         return view('students.register');
     }
 
-    public function getDashboard($index_no)
+
+    public function getDashboard()
     {
-        $student = Student::findByIndexNo($index_no);
-        $sports = Student::getSportsOfStudent($index_no);
-        $organizations = Student::getOrganizationsOfStudent($index_no);
+        $student = Student::findByUserId(Auth::User()->id);
+        $sports = Student::getSportsOfStudent($student->index_no);
+        $organizations = Student::getOrganizationsOfStudent($student->index_no);
         return view('students.dashboard', [
             'student' => $student,
             'sports' => $sports,

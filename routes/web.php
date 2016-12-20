@@ -16,7 +16,7 @@ Route::get('admin/dashboard', [
     'as' => 'admin.dashboard'
 ]);
 
-Route::get('student/dashboard', [
+Route::get('student/dashboard/', [
     'uses' => 'StudentsController@getDashboard',
     'as' => 'students.dashboard',
 ])->middleware('auth','checkStudent');

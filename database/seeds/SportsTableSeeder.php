@@ -18,5 +18,4 @@ class SportsTableSeeder extends Seeder
             ]);
         }
     }
-
 }
