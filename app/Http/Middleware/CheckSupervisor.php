@@ -15,6 +15,20 @@ class CheckSupervisor
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+
+        if(Auth::check()){
+            $id=Auth::id();
+            $qry=DB::select('select * from supervisors where user_id = ?',[$id]);
+            if($qry==null){
+                return redirect()->back();
+            }else{
+                return $next($request);
+            }
+
+        }else{
+            return redirect()->route('/login');
+        }
+
+
     }
 }
