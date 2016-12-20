@@ -58,6 +58,19 @@
     {{--@endforeach--}}
 
     <form method="post" action="{{$id}}/validate">
+
+        <div class="well well-sm well-primary">
+            <br>
+            <h3>Add a note </h3>
+            </br>
+
+        </div>
+
+        <div class="input">
+            <input type="text" name="v_description">
+        </div>
+
+
         <div class="well well-sm well-primary">
             <br>
             <h3>Rate the effort </h3>

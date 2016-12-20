@@ -16,6 +16,7 @@ class CreateValidationsTable extends Migration
         Schema::create('validations', function (Blueprint $table) {
             $table->integer('validation_id')->unsigned();
             $table->integer('rating');
+            $table->string('validation_description');
             $table->string('supervisor_id');
             $table->date('validated_date');
             $table->tinyInteger('is_validated');
