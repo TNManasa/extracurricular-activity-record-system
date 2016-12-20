@@ -34,10 +34,26 @@ class AchievementsController extends Controller
         }
         $activity->effort=$request['effort'];
         $activity->description=$request['description'];
-//        dd($activity);
+
+        if($request['image']==null){
+            $activity->image=0;
+        }else{
+            $activity->image=1;
+        }
+
         Activity::insert($activity);
 
         $id=Activity::getId($activity);
+
+        if($activity->image==1){
+            $image_name=$id.'.'.$request->file('image')->getClientOriginalExtension();
+
+            if(!is_dir(base_path() . '/storage/app/activities/')){
+                mkdir(base_path() . '/storage/app/activities/',0777,true);
+            }
+
+            $request->file('image')->move(base_path() . '/storage/app/activities/', $image_name);
+        }
 
         $achievement=new Achievement();
         $achievement->activity_id=$id;

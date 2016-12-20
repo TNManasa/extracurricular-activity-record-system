@@ -68,6 +68,7 @@ class SportsController extends Controller
         $id=Activity::getId($activity);
 
         if($activity->image==1){
+
             $image_name=$id.'.'.$request->file('image')->getClientOriginalExtension();
 
             if(!is_dir(base_path() . '/storage/app/activities/')){

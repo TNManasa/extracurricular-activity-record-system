@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-md-6">
             <h2>Add New Activity (Competitions)</h2>
-            <form action="{{route('competitions.add-new-competition-activity')}}" method="post" onsubmit="return validateForm()">
+            <form action="{{route('competitions.add-new-competition-activity')}}" method="post" onsubmit="return validateForm()" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label for="name">Competition Name: (*)</label>
@@ -47,6 +47,11 @@
                 <div class="form-group">
                     <label for="description">Description: (*)</label>
                     <textarea class="form-control" rows="5" name="description" id="description"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="image">Proof Image (jpg only): </label>
+                    <input type="file" class="form-control" name="image" id="image">
                 </div>
 
                 <br>
@@ -103,22 +108,23 @@
             alert("Cannot mark Present and add a End Date");
             valid = false;
             return false;
-        }else if(!(end_date_option) && !(end_date==="")){
-            var endDate=new Date(end_date);
-            var startDate=new Date(start_date);
+        }else if(!(end_date_option) && !(end_date==="")) {
+            var endDate = new Date(end_date);
+            var startDate = new Date(start_date);
 
-            if(startDate>endDate){
+            if (startDate > endDate) {
                 alert("End Date cannot be before Start Date");
-                valid=false;
+                valid = false;
                 return false;
-            }else{
-                var currDate=new Date();
-                if(endDate>currDate){
+            } else {
+                var currDate = new Date();
+                if (endDate > currDate) {
                     alert("End Date cannot be in future. Mark as Present");
-                    valid=false;
+                    valid = false;
                     return false;
                 }
             }
+        }
 
 
         var effort = document.getElementById("effort").value;
@@ -136,6 +142,16 @@
         var description = document.getElementById("description").value;
         if(description == null || description === ""){
             alert("Description field cannot be empty");
+            valid = false;
+            return false;
+        }
+
+        var file = $('#image').val().split('.').pop().toLowerCase();
+
+        if(file === ""){
+
+        }else if(!( file === "jpg")){
+            alert("Only add images of type jpg");
             valid = false;
             return false;
         }

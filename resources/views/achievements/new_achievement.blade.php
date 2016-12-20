@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-md-6">
             <h2>Add New Activity (Achievement)</h2>
-            <form action="{{ route('achievements.add-new-achievement') }}" method="post" onsubmit="return validateForm()">
+            <form action="{{ route('achievements.add-new-achievement') }}" method="post" onsubmit="return validateForm()" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label for="name">Achievement Name: (*)</label>
@@ -59,7 +59,14 @@
                     <label for="description">Description: (*)</label>
                     <textarea class="form-control" rows="5" name="description" id="description"></textarea>
                 </div>
+
+                <div class="form-group">
+                    <label for="image">Proof Image (jpg only): </label>
+                    <input type="file" class="form-control" name="image" id="image">
+                </div>
+
                 <br>
+
                 <div class="form-group">
                     <button type="submit" name="btnSubmit" class="btn btn-primary">Submit</button>
                 </div>
@@ -147,6 +154,16 @@
         var description = document.getElementById("description").value;
         if(description == null || description === ""){
             alert("Description field cannot be empty");
+            valid = false;
+            return false;
+        }
+
+        var file = $('#image').val().split('.').pop().toLowerCase();
+
+        if(file === ""){
+
+        }else if(!( file === "jpg")){
+            alert("Only add images of type jpg");
             valid = false;
             return false;
         }
