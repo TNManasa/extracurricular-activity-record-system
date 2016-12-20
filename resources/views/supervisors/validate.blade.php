@@ -7,7 +7,7 @@
 
 
 @section('title')
-    Activity
+   activity to be validated
 
 @stop
 
@@ -19,9 +19,9 @@
         <div class="container">
             <div class="col-md-10">
                 <div class="jumbotron">
-                    <h1>Activity</h1>
-                    <h3>Students' Extra Curricular Activity Management System</h3>
-                    <h4>University of Moratuwa - Department of Computer Science & Engineering</h4>
+                    <h1>{{$a->role}}</h1>
+                    <h3>{{$a->institute_name}}</h3>
+                    <h4>University of Moratuwa </h4>
                 </div>
             </div>
         </div>
@@ -30,7 +30,7 @@
 
 
 
-    @foreach($activity as $a)
+   {{-- @foreach($activity as $a)--}}
         @if($a->activity_type==1)
             <?php $b="Organizational Activity"?>
         @elseif($a->activity_type==2)
@@ -41,6 +41,7 @@
             <?php $b="Achievements"?>
         @endif
         <?php $id=$a->id ?>
+        <div class="row"><h3>Student ID : {{$a->s_first_name}}  {{$a->s_last_name}} </h3></div>
         <div class="row"><h3>Student ID : {{$a->student_id}} </h3></div>
         <div class="row"><h3>Activity Type:  {{$b}}</h3></div>
         <div class="row"><h3>Description </h3></div>
@@ -55,7 +56,7 @@
             <div class="col-md-2"><h4>To </h4></div>
             <div class="col-md-2"><h4>{{$a->end_date}} </h4></div>
         </div>
-            @endforeach
+            {{--@endforeach--}}
 
 
 

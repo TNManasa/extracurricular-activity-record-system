@@ -141,11 +141,12 @@ class Activity
 
             }elseif ($a->activity_type==3){
                 $competition=DB::select('select competition_name,status from competition_activities WHERE c_id = ?',[$id]);
-                $b->activity_name=$competition[0]->competition_name;
+                $b->institute_name=$competition[0]->competition_name;
                 $b->role=$competition[0]->status;
             }elseif ($a->activity_type==4){
                 $achievement=DB::select('select achievement_name from achievements WHERE a_id = ?',[$id]);
                 $b->role=$achievement[0]->achievement_name;
+                $b->institute_name="";
             }
             return $b;
 
