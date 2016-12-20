@@ -35,9 +35,10 @@ class SupervisorsController extends Controller
 
     public function activityShow($id){
         //$activity= DB::select('select * from activities where id = ?', [$id]);
-        $activity= DB::select('select *  FROM  (select first_name,last_name,index_no from students) as s RIGHT JOIN (select * from activities where id = ? ) as t on s.index_no=t.student_id', [$id]);
-        $sport=DB::select('select name,role from sports RIGHT JOIN (select sport_id,role from sport_activities where s_id=?) as t on sports.id=t.sport_id ',[$id]);
-        return $sport;
+        //$activity= DB::select('select *  FROM  (select first_name,last_name,index_no from students) as s RIGHT JOIN (select * from activities where id = ? ) as t on s.index_no=t.student_id', [$id]);
+        //$sport=DB::select('select name,role from sports RIGHT JOIN (select sport_id,role from sport_activities where s_id=?) as t on sports.id=t.sport_id ',[$id]);
+        $pendingActivity=Activity::showPendingActivity($id);
+        return $pendingActivity->s_first_name;
         //return $activity;
        // return $activity[0]->first_name;
        // return view('supervisors.validate',compact('activity'));

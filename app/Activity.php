@@ -127,28 +127,30 @@ class Activity
             $b->description = $a->description;
             $b->s_first_name=$a->first_name;
             $b->s_last_name=$a->last_name;
-            if($a->activity_type=1){
+            if($a->activity_type==1){
+                $org=DB::select('select name,project_name,role from organizations RIGHT JOIN (select org_id,project_name,role from org_activities where o_id=?) as t on organizations.id=t.org_id ',[$id]);
+                $b->activity_name=$org[0]->project_name;
+                $b->role=$org[0]->role;
+                $b->institute_name=$org[0]->name;
+
+            }elseif ($a->activity_type==2){
                 $sport=DB::select('select name,role from sports RIGHT JOIN (select sport_id,role from sport_activities where s_id=?) as t on sports.id=t.sport_id ',[$id]);
                 $b->activity_name=$sport[0]->role;
                 $b->role=$sport[0]->role;
                 $b->institute_name=$sport[0]->name;
 
-            }elseif ($a->activity_type=2){
-                $sport=DB::select('select name,role from sports RIGHT JOIN (select sport_id,role from sport_activities where s_id=?) as t on sports.id=t.sport_id ',[$id]);
-                $b->activity_name=$sport[0]->role;
-                $b->role=$sport[0]->role;
-                $b->institute_name=$sport[0]->name;
-
-            }elseif ($a->activity_type=3){
-                $sport=DB::select('select name from sports WHERE id in (select sport_id from sport_activities where s_id=?) ',[$id]);
-                $b->activity_name=$sport[0]->name;
-            }elseif ($a->activity_type=4){
-                $sport=DB::select('select name from sports WHERE id in (select sport_id from sport_activities where s_id=?) ',[$id]);
-                $b->activity_name=$sport[0]->name;
+            }elseif ($a->activity_type==3){
+                $competition=DB::select('select competition_name,status from competition_activities WHERE c_id = ?',[$id]);
+                $b->activity_name=$competition[0]->competition_name;
+                $b->role=$competition[0]->status;
+            }elseif ($a->activity_type==4){
+                $achievement=DB::select('select achievement_name from achievements WHERE a_id = ?',[$id]);
+                $b->role=$achievement[0]->achievement_name;
             }
+            return $b;
 
         }
 
-    
+
 
 }
