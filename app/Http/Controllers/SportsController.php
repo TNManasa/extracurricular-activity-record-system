@@ -18,6 +18,21 @@ class SportsController extends Controller
         ]);
     }
 
+    public function newSport()
+    {
+        return view('sports.new_sport');
+    }
+
+    public function addNewSport(Request $request)
+    {
+        $sport = new Sport();
+        $sport -> name = $request['name'];
+
+        Sport::insert($sport);
+
+        return redirect()->back();
+    }
+
     public function newSportActivity()
     {
         $all_sports = Sport::getAll();

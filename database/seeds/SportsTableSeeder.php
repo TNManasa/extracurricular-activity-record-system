@@ -14,7 +14,7 @@ class SportsTableSeeder extends Seeder
         for($i=1; $i<=$count; $i++){
             DB::table('sports')->insert([
                 'id' => $i,
-                'name' => $sports[$i-1]
+                'sport_name' => $sports[$i-1]
             ]);
         }
     }
