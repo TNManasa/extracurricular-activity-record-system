@@ -18,6 +18,11 @@ class Activity
     public $end_date;
     public $effort;
     public $description;
+    public $s_first_name;
+    public $s_last_name;
+    public $intitute_name;
+    public $activity_name;
+    public $role;
 
     public static function getAll()
     {
@@ -109,7 +114,37 @@ class Activity
     }
 
     public static function showPendingActivity($id){
-        
+        $activity= DB::select('select *  FROM  (select first_name,last_name,index_no from students) as s RIGHT JOIN (select * from activities where id = ? ) as t on s.index_no=t.student_id', [$id]);
+        $activities=array();
+        $a=$activity[0];
+            $b = new Activity();
+            $b->id = $a->id;
+            $b->student_id = $a->student_id;
+            $b->activity_type = $a->activity_type;
+            $b->start_date = $a->start_date;
+            $b->end_date = $a->end_date;
+            $b->effort = $a->effort;
+            $b->description = $a->description;
+            $b->s_first_name=$a->first_name;
+            $b->s_last_name=$a->last_name;
+            if($a->activity_type=1){
+                $sport=DB::select('select project_name,role from sports WHERE id in (select sport_id from sport_activities where s_id=?) ',[$id]);
+                $b->activity_name=$sport[0]->name;
+
+            }elseif ($a->activity_type=2){
+                $sport=DB::select('select name from sports WHERE id in (select sport_id,role from sport_activities where s_id=?) ',[$id]);
+                $b->activity_name=$sport[0]->name;
+
+            }elseif ($a->activity_type=3){
+                $sport=DB::select('select name from sports WHERE id in (select sport_id from sport_activities where s_id=?) ',[$id]);
+                $b->activity_name=$sport[0]->name;
+            }elseif ($a->activity_type=4){
+                $sport=DB::select('select name from sports WHERE id in (select sport_id from sport_activities where s_id=?) ',[$id]);
+                $b->activity_name=$sport[0]->name;
+            }
+
+        }
+
     }
 
 }
