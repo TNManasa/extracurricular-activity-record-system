@@ -8,6 +8,8 @@ use App\Organization;
 use Illuminate\Http\Request;
 
 use DB;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Storage;
 
 class OrganizationsController extends Controller
 {
@@ -17,6 +19,36 @@ class OrganizationsController extends Controller
         return view('organizations.index', [
             'all_organizations' => $all_organizations
         ]);
+    }
+
+    public function addNewOrganization(Request $request)
+    {
+        $organization = new Organization();
+        $organization -> name = $request['name'];
+        $image_name=$request['name'].'.'.$request->file('logo')->getClientOriginalExtension();
+
+        if(!is_dir(base_path() . '/storage/app/organizations/')){
+            mkdir(base_path() . '/storage/app/organizations/',0777,true);
+        }
+
+        $request->file('logo')->move(base_path() . '/storage/app/organizations/', $image_name);
+
+        $organization->logo=$image_name;
+        Organization::insert($organization);
+
+        return redirect()->back();
+    }
+
+    public function getLogo($logo_name){
+        $path='/organizations/'.$logo_name;
+        $logo=Storage::disk('local')->get($path);
+        ob_end_clean();
+        return new Response($logo,200);
+    }
+
+    public function newOrganization()
+    {
+        return view('organizations.new_organization');
     }
 
     public function newOrganizationActivity()
