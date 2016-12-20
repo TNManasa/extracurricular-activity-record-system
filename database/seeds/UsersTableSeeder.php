@@ -19,7 +19,7 @@ class UsersTableSeeder extends Seeder
             DB::table('users')->insert([
                 'id' => $i+1,
                 'email' => $student_emails[$i] . '@gmail.com',
-                'password' => Crypt::encrpyt('123456'),
+                'password' => Crypt::encrypt('123456'),
                 'role' => 'student'
             ]);
         }
