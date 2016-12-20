@@ -32,9 +32,9 @@
 
     @foreach($activity as $a)
         @if($a->activity_type==1)
-            <?php $b="Sports Activity"?>
-        @elseif($a->activity_type==2)
             <?php $b="Organizational Activity"?>
+        @elseif($a->activity_type==2)
+            <?php $b="Sports Activity"?>
         @elseif($a->activity_type==3)
             <?php $b="Competition"?>
         @elseif($a->activity_type==4)

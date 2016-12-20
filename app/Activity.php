@@ -20,7 +20,7 @@ class Activity
     public $description;
     public $s_first_name;
     public $s_last_name;
-    public $intitute_name;
+    public $institute_name;
     public $activity_name;
     public $role;
 
@@ -128,12 +128,16 @@ class Activity
             $b->s_first_name=$a->first_name;
             $b->s_last_name=$a->last_name;
             if($a->activity_type=1){
-                $sport=DB::select('select project_name,role from sports WHERE id in (select sport_id from sport_activities where s_id=?) ',[$id]);
-                $b->activity_name=$sport[0]->name;
+                $sport=DB::select('select name,role from sports RIGHT JOIN (select sport_id,role from sport_activities where s_id=?) as t on sports.id=t.sport_id ',[$id]);
+                $b->activity_name=$sport[0]->role;
+                $b->role=$sport[0]->role;
+                $b->institute_name=$sport[0]->name;
 
             }elseif ($a->activity_type=2){
-                $sport=DB::select('select name from sports WHERE id in (select sport_id,role from sport_activities where s_id=?) ',[$id]);
-                $b->activity_name=$sport[0]->name;
+                $sport=DB::select('select name,role from sports RIGHT JOIN (select sport_id,role from sport_activities where s_id=?) as t on sports.id=t.sport_id ',[$id]);
+                $b->activity_name=$sport[0]->role;
+                $b->role=$sport[0]->role;
+                $b->institute_name=$sport[0]->name;
 
             }elseif ($a->activity_type=3){
                 $sport=DB::select('select name from sports WHERE id in (select sport_id from sport_activities where s_id=?) ',[$id]);
