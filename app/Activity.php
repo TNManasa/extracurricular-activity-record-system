@@ -23,6 +23,7 @@ class Activity
     public $institute_name;
     public $activity_name;
     public $role;
+    public $supervisor_id="0";
 
     public static function getAll()
     {
@@ -115,7 +116,7 @@ class Activity
 
     public static function showPendingActivity($id){
         $activity= DB::select('select *  FROM  (select first_name,last_name,index_no from students) as s RIGHT JOIN (select * from activities where id = ? ) as t on s.index_no=t.student_id', [$id]);
-        $activities=array();
+        $isValidated=Validation::findByID($id);
         $a=$activity[0];
             $b = new Activity();
             $b->id = $a->id;
@@ -147,6 +148,9 @@ class Activity
                 $achievement=DB::select('select achievement_name from achievements WHERE a_id = ?',[$id]);
                 $b->role=$achievement[0]->achievement_name;
                 $b->institute_name="";
+            }
+            if(!($isValidated==false)){
+                $b->supervisor_id=$isValidated[0]->supervisor_id;
             }
             return $b;
 
