@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Activity;
+//use App\Validation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Crypt;
@@ -46,6 +47,9 @@ class SupervisorsController extends Controller
     }
 
     public function validatedActivityShow($id){
+        $a=Activity::showPendingActivity($id);
+        
+        return view('supervisors.validatedActivity',compact('a'));
 
     }
 
@@ -53,14 +57,16 @@ class SupervisorsController extends Controller
     public function activityValidate(Request $request, $id){
         $input=$request->all();
         $a=$input['option'];
+        $vd=$input['v_description'];
         $d=date("Y-m-d");
-        DB::insert('insert into validations (validation_id,rating,supervisor_id,validated_date,is_validated ) values (?,?,?,?,?)', [$id,$a,'140B',$d,1]);
-        //$affected2= DB::update('update activities set validated = 1 where id = ?', [$id]);
-        //$activities= DB::select('select * from activities where validated=0');
+
+        DB::insert('insert into validations (validation_id,rating,validation_description,supervisor_id,validated_date,is_validated ) values (?,?,?,?,?,?)', [$id,$a,$vd,'140B',$d,1]);
+
 
         $pendingActivities= DB::select('select * from activities WHERE activities.id NOT IN (SELECT id FROM activities RIGHT JOIN validations on activities.id=validations.validation_id)');
 
         return view('supervisors.pending_activity', compact('pendingActivities'));
+
     }
 
     public function newSupervisor()

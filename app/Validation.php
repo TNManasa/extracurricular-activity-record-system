@@ -17,17 +17,18 @@ class Validation
     public static function findByID($id){
 
         $a = DB::select('select * from validations where validation_id=?', [$id]);
-        if(!emptyArray($a)) {
-            $validation = new Activity();
-            $validation->validation_id = $a->validation_id;
-            $validation->rating = $a->rating;
-            $validation->supervisor_id = $a->supervisor_id;
-            $validation->validated_date = $a->validated_date;
-            $validation->is_validated = $a->is_validate;
+        if(empty($a)) {
+            return null;
+        }else{
+
+            $validation = new Validation();
+            $validation->validation_id = $a[0]->validation_id;
+            $validation->rating = $a[0]->rating;
+            $validation->supervisor_id = $a[0]->supervisor_id;
+            $validation->validated_date = $a[0]->validated_date;
+            $validation->is_validated = $a[0]->is_validated;
 
             return $validation;
-        }else{
-            return false;
         }
     }
 }
