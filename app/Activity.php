@@ -132,16 +132,16 @@ class Activity
             $b->s_first_name=$a->first_name;
             $b->s_last_name=$a->last_name;
             if($a->activity_type==1){
-                $org=DB::select('select name,project_name,role from organizations RIGHT JOIN (select org_id,project_name,role from org_activities where id=?) as t on organizations.id=t.org_id ',[$id]);
+                $org=DB::select('select organization_name,project_name,role from organizations RIGHT JOIN (select org_id,project_name,role from org_activities where id=?) as t on organizations.id=t.org_id ',[$id]);
                 $b->activity_name=$org[0]->project_name;
                 $b->role=$org[0]->role;
-                $b->institute_name=$org[0]->name;
+                $b->institute_name=$org[0]->organization_name;
 
             }elseif ($a->activity_type==2){
-                $sport=DB::select('select name,role from sports RIGHT JOIN (select sport_id,role from sport_activities where id=?) as t on sports.id=t.sport_id ',[$id]);
+                $sport=DB::select('select sport_name,role from sports RIGHT JOIN (select sport_id,role from sport_activities where id=?) as t on sports.id=t.sport_id ',[$id]);
                 $b->activity_name=$sport[0]->role;
                 $b->role=$sport[0]->role;
-                $b->institute_name=$sport[0]->name;
+                $b->institute_name=$sport[0]->sport_name;
 
             }elseif ($a->activity_type==3){
                 $competition=DB::select('select competition_name,status from competition_activities WHERE id = ?',[$id]);
@@ -153,12 +153,13 @@ class Activity
                 $b->institute_name="";
             }
             if(!($isValidated==false)){
-                $b->supervisor_id=$isValidated[0]->supervisor_id;
+                $array=newArray();
+                array_push($array,$b );
+                array_push($array,$isValidated );
+
+            }else {
+                return $b;
             }
-            return $b;
-
         }
-
-
 
 }

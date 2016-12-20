@@ -21,6 +21,11 @@ class OrganizationsController extends Controller
         ]);
     }
 
+    public function newOrganization()
+    {
+        return view('organizations.new_organization');
+    }
+
     public function addNewOrganization(Request $request)
     {
         $organization = new Organization();
@@ -33,22 +38,16 @@ class OrganizationsController extends Controller
 
         $request->file('logo')->move(base_path() . '/storage/app/organizations/', $image_name);
 
-        $organization->logo=$image_name;
         Organization::insert($organization);
 
         return redirect()->back();
     }
 
     public function getLogo($logo_name){
-        $path='/organizations/'.$logo_name;
+        $path='/organizations/'.$logo_name.'.png';
         $logo=Storage::disk('local')->get($path);
         ob_end_clean();
         return new Response($logo,200);
-    }
-
-    public function newOrganization()
-    {
-        return view('organizations.new_organization');
     }
 
     public function newOrganizationActivity()

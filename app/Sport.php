@@ -17,7 +17,7 @@ class Sport
         foreach($sports_array as $sport){
             $s = new Sport();
             $s->id = $sport->id;
-            $s->name = $sport->name;
+            $s->name = $sport->sport_name;
             array_push($sports, $s);
         }
 
@@ -28,14 +28,14 @@ class Sport
         $s = DB::select('select * from sports where id=?', [$id])[0];
         $sport = new Sport();
         $sport->id = $s->id;
-        $sport->name = $s->name;
+        $sport->name = $s->sport_name;
 
         return $sport;
     }
 
     public static function update(Sport $s){
         $id = $s->id;
-        DB::statement('update sports set id=?,name=? where id=?',[$id,$s->name,$id]);
+        DB::statement('update sports set id=?,sport_name=? where id=?',[$id,$s->name,$id]);
         return true;
     }
 
@@ -87,6 +87,11 @@ class Sport
         }
 
         return $students;
+    }
+
+    public static function insert(Sport $sport){
+        DB::statement('insert into sports (sport_name) values (?)',[$sport->name]);
+        return true;
     }
 
 }
