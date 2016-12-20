@@ -13,19 +13,19 @@ Route::get('/', function () {
 
 Route::get('admin/dashboard', [
     'uses' => 'AdminController@getDashboard',
-    'as' => 'admin.dashboard',
+    'as' => 'admin.dashboard'
 ]);
 
 Route::get('student/dashboard', [
     'uses' => 'StudentsController@getDashboard',
-    'as' => 'students.dashboard'
-]);
+    'as' => 'students.dashboard',
+])->middleware('auth','checkStudent');
 
 //not in use ??????????????????????????????????????????????
 Route::get('supervisors/dashboard', [
     'uses' => 'SupervisorsController@supervisorView',
     'as' => 'supervisors.dashboard'
-]);
+])->middleware('auth', 'checkSupervisor');
 
 
 //user Login
@@ -45,19 +45,19 @@ Route::post('/loginDetails',[
 Route::get('students/profile/{index_no}', [
     'uses' => 'StudentsController@getDashboard',
     'as' => 'students.profile'
-]);
+])->middleware('auth', 'checkStudent');
 
 Route::get('/students/register', [
     // add new student form
     'uses' => 'StudentsController@newStudent',
     'as' => 'students.register'
-]);
+])->middleware('auth', 'checkStudent');
 
 Route::post('/students/addDetails',[
     // actually add new student
     'uses' => 'StudentsController@addNewStudent',
     'as' => 'student.addDetails'
-]);
+])->middleware('auth', 'checkStudent');
 
 // End of Student Routes
 
@@ -66,12 +66,12 @@ Route::post('/students/addDetails',[
 Route::get('/supervisors/register', [
     'uses' => 'SupervisorsController@newSupervisor',
     'as' => 'supervisors.register'
-]);
+])->middleware('auth', 'checkSupervisor');
 
 Route::post('/supervisors/addDetails', [
     'uses' => 'SupervisorsController@addNewSupervisor',
     'as' => 'supervisor.addDetails'
-]);
+])->middleware('auth', 'checkSupervisor');
 // End of Supervisor Routes
 
 
@@ -88,25 +88,25 @@ Route::get('/new-sport-activity', [
     // add new sport activity form
     'uses' => 'SportsController@newSportActivity',
     'as' => 'sports.new-sport-activity'
-]);
+])->middleware('auth', 'checkStudent');
 
 Route::post('/add-new-sport-activity', [
     // actually add new sport activity
     'uses' => 'SportsController@addNewSportActivity',
     'as' => 'sports.add-new-sport-activity'
-]);
+])->middleware('auth', 'checkStudent');
 
 Route::get('/new-sport', [
     // add new sport form
     'uses' => 'SportsController@newSport',
     'as' => 'sports.new-sport'
-]);
+])->middleware('auth', 'checkSupervisor');
 
 Route::post('/add-new-sport', [
     // actually add new sport
     'uses' => 'SportsController@addNewSport',
     'as' => 'sports.add-new-sport'
-]);
+])->middleware('auth', 'checkSupervisor');
 
 // ORGANIZATION
 Route::get('/organizations', [
@@ -119,25 +119,25 @@ Route::get('/new-organization-activity', [
     // add new organization activity form
     'uses' => 'OrganizationsController@newOrganizationActivity',
     'as' => 'organizations.new-organization-activity'
-]);
+])->middleware('auth', 'checkStudent');
 
 Route::post('/add-new-organization-activity', [
     // actually add new organization activity
    'uses' => 'OrganizationsController@addNewOrganizationActivity',
     'as' => 'organizations.add-new-organization-activity'
-]);
+])->middleware('auth', 'checkStudent');
 
 Route::get('/new-organization', [
     // add new organization form
     'uses' => 'OrganizationsController@newOrganization',
     'as' => 'organizations.new-organization'
-]);
+])->middleware('auth', 'checkSupervisor');
 
 Route::post('/add-new-organization', [
     // actually add new organization
     'uses' => 'OrganizationsController@addNewOrganization',
     'as' => 'organizations.add-new-organization'
-]);
+])->middleware('auth', 'checkSupervisor');
 
 Route::get('/organizations/{logo_name}',[
     'uses'=>'OrganizationsController@getLogo',
@@ -155,56 +155,59 @@ Route::get('/new-competition-activity', [
     // add new competition activity form
     'uses' => 'CompetitionsController@newCompetitionActivity',
     'as' => 'competitions.new-competition-activity'
-]);
+])->middleware('auth', 'checkStudent');
 
 Route::post('/add-new-competition-activity', [
     // actually add new competition activity
     'uses' => 'CompetitionsController@addNewCompetitionActivity',
     'as' => 'competitions.add-new-competition-activity'
-]);
+])->middleware('auth', 'checkStudent');
 
 // ACHIEVEMENT
 Route::get('/new-achievement',[
     // add new achievement form
     'uses'=>'AchievementsController@newAchievement',
     'as'=>'achievements.new-achievement'
-]);
+])->middleware('auth', 'checkStudent');
 
 Route::post('/add-new-achievement',[
     // actually add new achievement
     'uses'=>'AchievementsController@addNewAchievement',
     'as'=>'achievements.add-new-achievement'
-]);
+])->middleware('auth', 'checkStudent');
 
 // ACTIVITIES
 Route::get('new-activity', [
     // add new activity form
     'uses' => 'ActivitiesController@getNewActivityForm',
     'as' => 'activities.new-activity'
-]);
+])->middleware('auth','checkStudent');
 
 Route::post('continue-to-new-activity', [
     // continuing to add new activity after selecting the type
     'uses' => 'ActivitiesController@continueToAdd',
     'as' => 'activities.continue'
-]);
+])->middleware('auth', 'checkStudent');
 
 Route::get('/activities/{activity_id}',[
     'uses'=>'ActivitiesController@getImage',
     'as'=>'activities.get-image'
-]);
+])->middleware('auth');
 
 // End of Organization, Sport, Competition, Achievement Routes
 
 // Gathika
 
-Route::get('/supervisor','supervisorsController@supervisorView');
-Route::get('/pending','supervisorsController@pendingActivities');
-Route::get('/validated','supervisorsController@validatedActivities');
-Route::get('/rejected','supervisorsController@rejectedActivities');
-Route::get('/pending_activity/{id}','supervisorsController@activityShow');
-Route::get('/validated_activity/{id}','supervisorsController@validatedActivityShow');
-Route::post('/activity/{id}/validate','supervisorsController@activityValidate');
+Route::group(['middleware' => ['auth', 'checkSupervisor']], function(){
+    Route::get('/supervisor','supervisorsController@supervisorView');
+    Route::get('/pending','supervisorsController@pendingActivities');
+    Route::get('/validated','supervisorsController@validatedActivities');
+    Route::get('/rejected','supervisorsController@rejectedActivities');
+    Route::get('/pending_activity/{id}','supervisorsController@activityShow');
+    Route::get('/validated_activity/{id}','supervisorsController@validatedActivityShow');
+    Route::post('/activity/{id}/validate','supervisorsController@activityValidate');
+
+});
 
 
 // Admin Routes
