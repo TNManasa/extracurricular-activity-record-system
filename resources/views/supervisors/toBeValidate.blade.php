@@ -56,6 +56,13 @@
     <br>
     <br>
     {{--@endforeach--}}
+    @if($a->image==1)
+    <div class="image">
+        <img src="{{route('activities.get-image',['activity_id'=>$a->id])}}">
+        
+        
+    </div>
+    @endif
 
     <form method="post" action="{{$id}}/validate">
 

@@ -36,7 +36,7 @@ class Supervisor
     }
 
     public static function getNameByID($ID){
-        $supervisor_name= DB::select('select * from supervisors');
+        $supervisor_name= DB::select('select name from supervisors where emp_id=?',[$ID]);
     }
 
 
