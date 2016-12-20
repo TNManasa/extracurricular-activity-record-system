@@ -10,6 +10,7 @@ class Organization
 //    protected $fillable = ['id', 'name'];
     public $id;
     public $name;
+    public $logo;
 
     public static function getAll(){
         $raw_organizations = DB::select('select * from organizations');
@@ -17,7 +18,8 @@ class Organization
         foreach ($raw_organizations as $organization){
             $o = new Organization();
             $o->id = $organization->id;
-            $o->name = $organization->name;
+            $o->name = $organization->organization_name;
+            $o->logo = $organization -> logo;
             array_push($organizations, $o);
         }
 
@@ -30,7 +32,7 @@ class Organization
             $o = $results_set[0];
             $organization = new Organization();
             $organization->id = $o->id;
-            $organization->name = $o->name;
+            $organization->name = $o->organization_name;
             return $organization;
         }catch(Exception $e){
             echo "<br>Error: $e<br>";
@@ -86,6 +88,11 @@ class Organization
         }
 
         return $students;
+    }
+
+    public static function insert(Organization $organization){
+        DB::statement('insert into organizations (organization_name,logo) values (?,?)',[$organization->name,$organization->logo]);
+        return true;
     }
 
 }
