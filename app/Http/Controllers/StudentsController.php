@@ -24,8 +24,12 @@ class StudentsController extends Controller
 
     public function getDashboard($index_no){
         $student = Student::findByIndexNo($index_no);
+        $sports = Student::getSportsOfStudent($index_no);
+        $organizations = Student::getOrganizationsOfStudent($index_no);
         return view('students.dashboard', [
-            'student' => $student
+            'student' => $student,
+            'sports' => $sports,
+            'organizations' => $organizations
         ]);
     }
 

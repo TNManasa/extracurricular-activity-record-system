@@ -35,12 +35,20 @@
     <div class="row">
         <div class="col-md-3">
             <h4>Sports</h4>
-            <table class="table table-bordered table-responsive">
 
-            </table>
+            <ul class="list-group">
+                @foreach($sports as $sport)
+                    <li class="list-group-item">{{ $sport->sport_name }}</li>
+                @endforeach
+            </ul>
         </div>
         <div class="col-md-3">
             <h4>Organizations</h4>
+            <ul class="list-group">
+                @foreach($organizations as $organization)
+                    <li class="list-group-item">{{ $organization->org_name }}</li>
+                @endforeach
+            </ul>
         </div>
         <div class="col-md-3">
             <h4>Competitions</h4>

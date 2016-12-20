@@ -108,7 +108,7 @@ Route::post('/add-new-sport', [
     'as' => 'sports.add-new-sport'
 ]);
 
-//ORGANIZATION
+// ORGANIZATION
 Route::get('/organizations', [
     // view all organizations
     'uses' => 'OrganizationsController@getIndex',
@@ -144,7 +144,7 @@ Route::get('/organizations/{logo_name}',[
     'as'=>'organizations.get-logo'
 ]);
 
-//COMPETITIONS
+// COMPETITIONS
 Route::get('/competitions', [
     // view all competitions
     'uses' => 'CompetitionsController@getIndex',
@@ -163,7 +163,7 @@ Route::post('/add-new-competition-activity', [
     'as' => 'competitions.add-new-competition-activity'
 ]);
 
-//ACHIEVEMENT
+// ACHIEVEMENT
 Route::get('/new-achievement',[
     // add new achievement form
     'uses'=>'AchievementsController@newAchievement',
@@ -176,7 +176,7 @@ Route::post('/add-new-achievement',[
     'as'=>'achievements.add-new-achievement'
 ]);
 
-//ACTIVITIES
+// ACTIVITIES
 Route::get('new-activity', [
     // add new activity form
     'uses' => 'ActivitiesController@getNewActivityForm',
@@ -191,7 +191,7 @@ Route::post('continue-to-new-activity', [
 
 // End of Organization, Sport, Competition, Achievement Routes
 
-//Gathika
+// Gathika
 
 Route::get('/supervisor','supervisorsController@supervisorView');
 Route::get('/pending','supervisorsController@pendingActivities');
