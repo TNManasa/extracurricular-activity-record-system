@@ -17,7 +17,7 @@ class CheckAdmin
     {
         if(Auth::check()){
             $id=Auth::id();
-            $qry=DB::select('select * from students where user_id = ?',[$id]);
+            $qry=DB::select('select * from admin where user_id = ?',[$id]);
             if($qry==null){
                 return redirect()->back();
             }else{
