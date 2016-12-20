@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Achievement;
+use App\CompetitionActivity;
 use App\Organization;
 use App\Sport;
 use App\Student;
@@ -16,9 +18,13 @@ class AdminController extends Controller
     {
         $all_sports = Sport::getAll();
         $all_organizations = Organization::getAll();
+        $all_competitions = CompetitionActivity::getAll();
+        $all_achievements = Achievement::getAll();
         return view('admin.index', [
             'sports' => $all_sports,
-            'organizations' => $all_organizations
+            'organizations' => $all_organizations,
+            'competitions' => $all_competitions,
+            'achievements' => $all_achievements
         ]);
     }
     public function getAllStudents()
@@ -50,11 +56,13 @@ class AdminController extends Controller
         $student = Student::findByIndexNo($index_no);
         $sports = Student::getSportsOfStudent($index_no);
         $organizations = Student::getOrganizationsOfStudent($index_no);
+        $achievements = Student::getAchievementsOfStudent($index_no);
 
         return view('admin.student_profile',[
             'student' => $student,
             'sports' => $sports,
-            'organizations' => $organizations
+            'organizations' => $organizations,
+            'achievements' => $achievements
         ]);
     }
 

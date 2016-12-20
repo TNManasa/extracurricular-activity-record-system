@@ -251,6 +251,7 @@ Route::get('/reports/bar-charts', [
 Route::get('test', function() {
 //    var_dump(\App\Student::getOrganizationsOfStudent('140001A'));
 //    var_dump(\App\Student::getSportsOfStudent('140001A'));
-    var_dump(\App\Student::getOrganizationsOfStudent('140001A'));
+//    var_dump(\App\Student::getOrganizationsOfStudent('140001A'));
+    var_dump(\App\Student::getAchievementsOfStudent('150002D'));
 });
 

@@ -6,7 +6,6 @@ use DB;
 
 class Activity
 {
-
     public $id;
     public $student_id;
     public $activity_type;
@@ -44,18 +43,22 @@ class Activity
         return $activities;
     }
 
-    public function findById($id)
+    public static function findById($id)
     {
-        $a = DB::select('select * from activities where id=?', [$id]);
-        $activity = new Activity();
-        $activity->id = $a->id;
-        $activity->student_id = $a->student_id;
-        $activity->activity_type = $a->activity_type;
-        $activity->start_date = $a->start_date;
-        $activity->end_date = $a->end_date;
-        $activity->effort = $a->effort;
-        $activity->description = $a->description;
-        return $activity;
+        try{
+            $a = DB::select('select * from activities where id=?', [$id])[0];
+            $activity = new Activity();
+            $activity->id = $a->id;
+            $activity->student_id = $a->student_id;
+            $activity->activity_type = $a->activity_type;
+            $activity->start_date = $a->start_date;
+            $activity->end_date = $a->end_date;
+            $activity->effort = $a->effort;
+            $activity->description = $a->description;
+            return $activity;
+        }catch(Exceptoin $e){
+            return [];
+        }
     }
 
     public static function update(Activity $activity){
