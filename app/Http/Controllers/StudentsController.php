@@ -24,8 +24,12 @@ class StudentsController extends Controller
 
     public function getDashboard($index_no){
         $student = Student::findByIndexNo($index_no);
+        $sports = Student::getSportsOfStudent($index_no);
+        $organizations = Student::getOrganizationsOfStudent($index_no);
         return view('students.dashboard', [
-            'student' => $student
+            'student' => $student,
+            'sports' => $sports,
+            'organizations' => $organizations
         ]);
     }
 
@@ -60,6 +64,10 @@ class StudentsController extends Controller
 
         $condition1=is_numeric($index_no_substring1);
         $condition2=ctype_alpha ( $index_no_substring2 );
+
+        /////////////////  is to be added later, because of ease
+//        DB::statement("Call InsertStudent(?,?,?,?,?,?,?,?)",[$index_no,$email,$first_name,$last_name,$gender,$batch,$dob,$pwd]);
+//        return 1;
 
         if(!$condition1 or !$condition2){
             return view('students.register', ['customMessage' => 'index number you entered is not valid']);

@@ -10,6 +10,7 @@ class OrgActivity
     public $org_id;
     public $project_name;
     public $role;
+    public $org_name;
 
 
     public static function getAll()
@@ -28,14 +29,15 @@ class OrgActivity
         return $org_activities;
     }
 
-    public function findById($id)
+    public static function findById($id)
     {
-        $a = DB::select('select * from org_activities where id=?', [$id]);
+        $a = DB::select('select * from org_activities where id=?', [$id])[0];
         $org_activity = new OrgActivity();
         $org_activity->activity_id = $a->id;
         $org_activity->org_id = $a->org_id;
         $org_activity->project_name = $a->project_name;
         $org_activity->role = $a->role;
+        $org_activity->org_name = Organization::findById($a->org_id)->name;
         return $org_activity;
     }
 

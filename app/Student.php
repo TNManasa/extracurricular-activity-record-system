@@ -67,10 +67,11 @@ class Student
         }else{
             $sport_activities = [];
             foreach($results_set as $sport_activity){
-                $s = new SportActivity();
-                $s->id = $sport_activity->id;
-                $s->role = $sport_activity->role;
-                $s->sport_id = $sport_activity->sport_id;
+//                $s = new SportActivity();
+//                $s->id = $sport_activity->id;
+//                $s->role = $sport_activity->role;
+//                $s->sport_id = $sport_activity->sport_id;
+                $s = SportActivity::findById($sport_activity->id);
                 array_push($sport_activities, $s);
             }
 
@@ -86,15 +87,16 @@ class Student
         }else {
             $org_activities = [];
             foreach ($results_set as $org_activity) {
-                $o = new OrgActivity();
-                $o->activity_id = $org_activity->id;
-                $o->org_id = $org_activity->org_id;
-                $o->project_name = $org_activity->project_name;
-                $o->role = $org_activity->role;
+//                $o = new OrgActivity();
+//                $o->activity_id = $org_activity->id;
+//                $o->org_id = $org_activity->org_id;
+//                $o->project_name = $org_activity->project_name;
+//                $o->role = $org_activity->role;
+                $o = OrgActivity::findById($org_activity->id);
                 array_push($org_activities, $o);
             }
 
-            return $org_activities;
+        return $org_activities;
         }
     }
 
