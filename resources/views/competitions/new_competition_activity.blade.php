@@ -82,6 +82,14 @@
             alert("Start Date cannot be empty");
             valid = false;
             return false;
+        }else{
+            var date=new Date(start_date);
+            var curr_date=new Date();
+            if(date>curr_date){
+                alert("Start Date cannot be in future");
+                valid=false;
+                return false;
+            }
         }
 
         var end_date_option = document.getElementById("end_date_option").checked;
@@ -103,8 +111,14 @@
                 alert("End Date cannot be before Start Date");
                 valid=false;
                 return false;
+            }else{
+                var currDate=new Date();
+                if(endDate>currDate){
+                    alert("End Date cannot be in future. Mark as Present");
+                    valid=false;
+                    return false;
+                }
             }
-        }
 
 
         var effort = document.getElementById("effort").value;

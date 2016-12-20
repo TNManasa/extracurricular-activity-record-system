@@ -8,5 +8,4 @@
     <div id="chart_div"></div>
     // With Lava class alias
     <?= Lava::render('DonutChart', 'IMDB', 'chart-div') ?>
-
 @stop

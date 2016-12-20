@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\User;
+use Illuminate\Support\Facades\Crypt;
 
 class UsersTableSeeder extends Seeder
 {
@@ -18,7 +19,7 @@ class UsersTableSeeder extends Seeder
             DB::table('users')->insert([
                 'id' => $i+1,
                 'email' => $student_emails[$i] . '@gmail.com',
-                'password' => bcrypt('123456'),
+                'password' => Crypt::encrpyt('123456'),
                 'role' => 'student'
             ]);
         }
@@ -28,7 +29,7 @@ class UsersTableSeeder extends Seeder
             DB::table('users')->insert([
                 'id' => $i+6,
                 'email' => $supervisor_emails[$i] . '@yahoo.com',
-                'password' => bcrypt('123456'),
+                'password' => Crypt::encrypt('123456'),
                 'role' => 'supervisors'
             ]);
         }
@@ -37,7 +38,7 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'id' => 11,
             'email' => $admin_email,
-            'password' => bcrypt("123456"),
+            'password' => Crypt::encrypt("123456"),
             'role' => 'admin'
         ]);
     }
