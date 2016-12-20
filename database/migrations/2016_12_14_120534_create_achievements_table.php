@@ -14,11 +14,11 @@ class CreateAchievementsTable extends Migration
     public function up()
     {
         Schema::create('achievements', function (Blueprint $table) {
-            $table->integer('a_id')->unsigned();
+            $table->integer('id')->unsigned();
             $table->string('achievement_name');
 
-            $table->primary('a_id');
-            $table->foreign('a_id')->references('id')->on('activities');
+            $table->primary('id');
+            $table->foreign('id')->references('id')->on('activities');
         });
     }
 

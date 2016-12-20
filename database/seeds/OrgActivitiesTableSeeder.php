@@ -13,7 +13,7 @@ class OrgActivitiesTableSeeder extends Seeder
 
         for ($i = 0; $i < 3; $i++) {
             DB::table('org_activities')->insert([
-                'o_id' => $i+1,
+                'id' => $i+1,
                 'org_id' => $i+1,
                 'project_name' => $faker->sentence(2),
                 'role' => $faker->sentence(2)
