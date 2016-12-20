@@ -40,7 +40,8 @@ class CompetitionsController extends Controller
 
         $activity = new Activity();
         // TODO: Attach the authenticated Student ID before saving
-        $activity->student_id = '140001A';
+        $activity->student_id = User::findStudentIndex(Auth::id());
+//        $activity->student_id = '140001A';
         $activity->activity_type= 3;
         $activity->start_date=$request['start_date'];
         $activity->end_date=$request['end_date'];

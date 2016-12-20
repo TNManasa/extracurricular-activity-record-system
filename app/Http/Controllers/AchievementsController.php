@@ -23,7 +23,8 @@ class AchievementsController extends Controller
 
         $activity = new Activity();
         // TODO: Attach the authenticated Student ID before saving
-        $activity->student_id = '140001A';
+        $activity->student_id = User::findStudentIndex(Auth::id());
+//        $activity->student_id = '140001A';
         $activity->activity_type= 4;
         if($request['no_time']=="1"){
             $activity->start_date=null;
