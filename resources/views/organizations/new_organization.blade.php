@@ -16,7 +16,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="logo">Organization Logo (jpg/png only): (*)</label>
+                    <label for="logo">Organization Logo (png only): (*)</label>
                     <input type="file" class="form-control" name="logo" id="logo">
                 </div>
 

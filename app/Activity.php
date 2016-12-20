@@ -18,6 +18,7 @@ class Activity
     public $end_date;
     public $effort;
     public $description;
+    public $image;
     public $s_first_name;
     public $s_last_name;
     public $institute_name;
@@ -38,6 +39,7 @@ class Activity
             $a->end_date = $activity->end_date;
             $a->effort = $activity->effort;
             $a->description = $activity->description;
+            $a->image = $activity->image;
 
             array_push($activities, $a);
         }
@@ -55,24 +57,25 @@ class Activity
         $activity->end_date = $a->end_date;
         $activity->effort = $a->effort;
         $activity->description = $a->description;
+        $activity->image=$a->image;
         return $activity;
     }
 
     public static function update(Activity $activity){
-        DB::statement('update activities set activity_type=?,start_date=?,end_date=?,effort=?,description=? where id=?',[$activity->activity_type,$activity->start_date,$activity->end_date,$activity->effort,$activity->description,$activity->id]);
+        DB::statement('update activities set activity_type=?,start_date=?,end_date=?,effort=?,description=?,image=? where id=?',[$activity->activity_type,$activity->start_date,$activity->end_date,$activity->effort,$activity->description,$activity->image,$activity->id]);
         return true;
     }
 
     public static function insert(Activity $activity){
-        DB::statement('insert into activities (student_id,activity_type,start_date,end_date,effort,description) values (?,?,?,?,?,?)',[$activity->student_id,$activity->activity_type,$activity->start_date,$activity->end_date,$activity->effort,$activity->description]);
+        DB::statement('insert into activities (student_id,activity_type,start_date,end_date,effort,description,image) values (?,?,?,?,?,?,?)',[$activity->student_id,$activity->activity_type,$activity->start_date,$activity->end_date,$activity->effort,$activity->description,$activity->image]);
         return true;
     }
 
     public static function getId(Activity $activity){
         if($activity->end_date==null and $activity->start_date==null){
-            $id=DB::select('select id from activities where student_id=? and activity_type=? and effort=? and description=?', [$activity->student_id,$activity->activity_type,$activity->effort,$activity->description]);
+            $id=DB::select('select id from activities where student_id=? and activity_type=? and effort=? and description=? and image=?', [$activity->student_id,$activity->activity_type,$activity->effort,$activity->description,$activity->image]);
         }else{
-            $id=DB::select('select id from activities where student_id=? and activity_type=? and start_date=? and end_date=? and effort=? and description=?', [$activity->student_id,$activity->activity_type,$activity->start_date,$activity->end_date,$activity->effort,$activity->description]);
+            $id=DB::select('select id from activities where student_id=? and activity_type=? and start_date=? and end_date=? and effort=? and description=? and image=?', [$activity->student_id,$activity->activity_type,$activity->start_date,$activity->end_date,$activity->effort,$activity->description,$activity->image]);
         }
         return $id[0]->id;
     }
@@ -89,6 +92,7 @@ class Activity
             $b->end_date = $activity->end_date;
             $b->effort = $activity->effort;
             $b->description = $activity->description;
+            $b->image=$activity->image;
 
             array_push($pending_activities, $b);
         }
@@ -108,6 +112,7 @@ class Activity
             $b->end_date = $activity->end_date;
             $b->effort = $activity->effort;
             $b->description = $activity->description;
+            $b->image=$activity->image;
 
             array_push($validated_activities, $b);
         }
@@ -126,6 +131,7 @@ class Activity
             $b->end_date = $a->end_date;
             $b->effort = $a->effort;
             $b->description = $a->description;
+            $b->image = $a->image;
             $b->s_first_name=$a->first_name;
             $b->s_last_name=$a->last_name;
             if($a->activity_type==1){
