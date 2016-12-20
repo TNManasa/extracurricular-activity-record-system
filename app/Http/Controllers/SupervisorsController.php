@@ -41,9 +41,15 @@ class SupervisorsController extends Controller
 
         //return $activity;
        // return $activity[0]->first_name;
-       return view('supervisors.validate',compact('a'));
+       return view('supervisors.toBeValidate',compact('a'));
 
     }
+
+    public function validatedActivityShow($id){
+
+    }
+
+
     public function activityValidate(Request $request, $id){
         $input=$request->all();
         $a=$input['option'];

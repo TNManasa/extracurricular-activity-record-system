@@ -197,7 +197,8 @@ Route::get('/supervisor','supervisorsController@supervisorView');
 Route::get('/pending','supervisorsController@pendingActivities');
 Route::get('/validated','supervisorsController@validatedActivities');
 Route::get('/rejected','supervisorsController@rejectedActivities');
-Route::get('/activity/{id}','supervisorsController@activityShow');
+Route::get('/pending_activity/{id}','supervisorsController@activityShow');
+Route::get('/validated_activity/{id}','supervisorsController@validatedActivityShow');
 Route::post('/activity/{id}/validate','supervisorsController@activityValidate');
 
 
