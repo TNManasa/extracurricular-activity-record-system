@@ -43,7 +43,7 @@ class SportActivity
                 $sport_activity->activity_id = $a->id;
                 $sport_activity->sport_id = $a->sport_id;
                 $sport_activity->role = $a->role;
-                $sport_activity->sport_name = Sport::findById($a->sport_id);
+                $sport_activity->sport_name = Sport::findById($a->sport_id)->name;
                 return $sport_activity;
             }
         } catch (Exception $e) {

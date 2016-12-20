@@ -38,11 +38,13 @@ class AdminController extends Controller
         ]);
     }
 
+    // actually a toggles the flag
     public function flagUser($user_id){
         User::toggleFlag($user_id);
         return redirect()->back();
     }
 
+    // for a single student
     public function getStudentProfile($index_no)
     {
         $student = Student::findByIndexNo($index_no);
@@ -56,6 +58,7 @@ class AdminController extends Controller
         ]);
     }
 
+    // for a single sport
     public function getSportProfile($sport_id)
     {
         $sport = Sport::findById($sport_id);
@@ -66,6 +69,7 @@ class AdminController extends Controller
         ]);
     }
 
+    // for a single organization
     public function getOrganizationProfile($organization_id)
     {
         $organization = Organization::findById($organization_id);

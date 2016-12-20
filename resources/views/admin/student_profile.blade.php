@@ -58,16 +58,13 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4>Sports</h4>
-                    <table class="table table-bordered table-responsive">
-                        <tr>
-                            <th></th>
-                        </tr>
-                    </table>
                 </div>
                 <div class="panel-body">
-                    <table class="table table-bordered table-responsive">
-
-                    </table>
+                    <ul class="list-group">
+                        @foreach($sports as $sport)
+                            <li class="list-group-item">{{ $sport->sport_name }}</li>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
         </div>
@@ -80,9 +77,11 @@
                     <h4>Organizations/Societies</h4>
                 </div>
                 <div class="panel-body">
-                    <table class="table table-bordered table-responsive">
-
-                    </table>
+                    <ul class="list-group">
+                        @foreach($organizations as $organization)
+                            <li class="list-group-item">{{ $organization->org_name }}</li>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
         </div>
