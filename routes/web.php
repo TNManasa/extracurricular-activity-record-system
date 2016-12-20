@@ -204,7 +204,7 @@ Route::get('/validated','supervisorsController@validatedActivities');
 Route::get('/rejected','supervisorsController@rejectedActivities');
 Route::get('/pending_activity/{id}','supervisorsController@activityShow');
 Route::get('/validated_activity/{id}','supervisorsController@validatedActivityShow');
-Route::post('/activity/{id}/validate','supervisorsController@activityValidate');
+Route::post('/pending_activity/{id}/validate','supervisorsController@activityValidate');
 
 
 // Admin Routes

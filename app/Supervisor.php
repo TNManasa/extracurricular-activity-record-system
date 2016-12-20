@@ -35,5 +35,9 @@ class Supervisor
         return $supervisors;
     }
 
+    public static function getNameByID($ID){
+        $supervisor_name= DB::select('select * from supervisors');
+    }
+
 
 }
