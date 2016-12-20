@@ -96,13 +96,23 @@ class Student
                 array_push($org_activities, $o);
             }
 
-        return $org_activities;
+            return $org_activities;
         }
     }
 
     public static function getAchievementsOfStudent($index_no){
+        try{
+            $raw_achievements = DB::select('select * from activities where student_id=? and activity_type=?', [$index_no, 4]);
+            $achievements = [];
+            foreach ($raw_achievements as $result){
+                $a = Activity::findById($result->id);
+                array_push($achievements, $a);
+            }
 
-
+            return $achievements;
+        }catch(Exception $e){
+            return [];
+        }
     }
 
     public static function getCompetitionsOfStudent($index_no){

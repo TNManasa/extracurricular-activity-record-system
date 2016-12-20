@@ -12,17 +12,21 @@ class CompetitionActivity {
 
     public static function getAll()
     {
-        $raw_competition_activities = DB::statment('select * from competition_activities');
-        $competition_activities = array();
-        foreach($raw_competition_activities as $competition_activity){
-            $a = new CompetitionActivity();
-            $a->activity_id = $competition_activity->id;
-            $a->competition_name = $competition_activity->competition_name;
-            $a->status = $competition_activity->status;
+        try{
+            $raw_competition_activities = DB::select('select * from competition_activities');
+            $competition_activities = array();
+            foreach($raw_competition_activities as $competition_activity){
+                $a = new CompetitionActivity();
+                $a->activity_id = $competition_activity->id;
+                $a->competition_name = $competition_activity->competition_name;
+                $a->status = $competition_activity->status;
 
-            array_push($competition_activities, $a);
+                array_push($competition_activities, $a);
+            }
+            return $competition_activities;
+        }catch(Exception $e){
+            return [];
         }
-        return $competition_activities;
     }
 
     public function findById($id)

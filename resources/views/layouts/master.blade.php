@@ -41,15 +41,6 @@
             <li>
                 <a href="#">Events</a>
             </li>
-            <li>
-                <a href="#">About</a>
-            </li>
-            <li>
-                <a href="#">Services</a>
-            </li>
-            <li>
-                <a href="#">Contact</a>
-            </li>
         </ul>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -76,7 +67,6 @@
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
-
     });
 </script>
 
