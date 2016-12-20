@@ -210,6 +210,13 @@ Route::get('admin/organization{organization_id}', [
 
 // end of Admin Routes
 
+// Reports Routes
+
+Route::get('/reports/bar-charts', [
+    'uses' => 'ReportsController@getBarCharts',
+    'as' => 'reports.bar-charts'
+]);
+
 // Test Route
 Route::get('test', function() {
     var_dump(\App\Student::getOrganizationsOfStudent('140001A'));

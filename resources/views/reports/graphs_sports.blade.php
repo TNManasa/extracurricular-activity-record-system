@@ -1,13 +1,12 @@
 @extends('layouts.master')
 
 @section('title')
-    Graphs | Sports | ECAM
+    Bar Charts | Sports | Admin | ECAM
 @stop
 
 @section('content')
-    <div class="row">
-        <div class="col-md-6">
+    <div id="chart_div"></div>
+    // With Lava class alias
+    <?= Lava::render('DonutChart', 'IMDB', 'chart-div') ?>
 
-        </div>
-    </div>
 @stop

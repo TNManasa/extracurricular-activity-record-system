@@ -14,12 +14,12 @@ class CreateSportActivitiesTable extends Migration
     public function up()
     {
         Schema::create('sport_activities', function (Blueprint $table) {
-            $table->integer('s_id')->unsigned();
+            $table->integer('id')->unsigned();
             $table->integer('sport_id')->unsigned();
             $table->string('role');
 
-            $table->primary('s_id');
-            $table->foreign('s_id')->references('id')->on('activities');
+            $table->primary('id');
+            $table->foreign('id')->references('id')->on('activities');
             $table->foreign('sport_id')->references('id')->on('sports');
         });
     }
