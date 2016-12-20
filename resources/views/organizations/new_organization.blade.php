@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-md-6">
             <h2>New Organization/Society</h2>
-            <form action="{{route('organizations.add-new-organization')}}" method="post" onsubmit="return validateForm()" name="activity" enctype="multipart/form-data">
+            <form action="{{route('organizations.add-new-organization')}}" method="post" onsubmit="return validateForm()" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label for="name">Name of the Society/Organization: (*)</label>
@@ -46,8 +46,8 @@
             alert("Organization Logo cannot be empty");
             valid = false;
             return false;
-        }else if(!(file === "jpg" || file === "png")){
-            alert("Only add images of type jpg/png");
+        }else if(!( file === "png")){
+            alert("Only add images of type png");
             valid = false;
             return false;
         }

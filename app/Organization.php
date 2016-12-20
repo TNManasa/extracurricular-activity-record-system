@@ -10,7 +10,6 @@ class Organization
 //    protected $fillable = ['id', 'name'];
     public $id;
     public $name;
-    public $logo;
 
     public static function getAll(){
         $raw_organizations = DB::select('select * from organizations');
@@ -19,7 +18,6 @@ class Organization
             $o = new Organization();
             $o->id = $organization->id;
             $o->name = $organization->organization_name;
-            $o->logo = $organization -> logo;
             array_push($organizations, $o);
         }
 
@@ -91,7 +89,7 @@ class Organization
     }
 
     public static function insert(Organization $organization){
-        DB::statement('insert into organizations (organization_name,logo) values (?,?)',[$organization->name,$organization->logo]);
+        DB::statement('insert into organizations (organization_name) values (?)',[$organization->name]);
         return true;
     }
 

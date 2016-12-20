@@ -16,7 +16,6 @@ class CreateOrganizationsTable extends Migration
         Schema::create('organizations', function (Blueprint $table) {
             $table->increments('id');
             $table->string('organization_name');
-            $table->string('logo');
         });
     }
 
