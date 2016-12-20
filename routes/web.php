@@ -202,7 +202,8 @@ Route::get('/supervisor','supervisorsController@supervisorView');
 Route::get('/pending','supervisorsController@pendingActivities');
 Route::get('/validated','supervisorsController@validatedActivities');
 Route::get('/rejected','supervisorsController@rejectedActivities');
-Route::get('/activity/{id}','supervisorsController@activityShow');
+Route::get('/pending_activity/{id}','supervisorsController@activityShow');
+Route::get('/validated_activity/{id}','supervisorsController@validatedActivityShow');
 Route::post('/activity/{id}/validate','supervisorsController@activityValidate');
 
 
@@ -256,6 +257,7 @@ Route::get('/reports/bar-charts', [
 Route::get('test', function() {
 //    var_dump(\App\Student::getOrganizationsOfStudent('140001A'));
 //    var_dump(\App\Student::getSportsOfStudent('140001A'));
-    var_dump(\App\Student::getOrganizationsOfStudent('140001A'));
+//    var_dump(\App\Student::getOrganizationsOfStudent('140001A'));
+    var_dump(\App\Student::getAchievementsOfStudent('150002D'));
 });
 

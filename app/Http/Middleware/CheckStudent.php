@@ -18,8 +18,8 @@ class CheckStudent
     public function handle($request, Closure $next)
     {
         if(Auth::check()){
-            $id=Auth::user()->id;
-            $qry=DB::select('select role from users where id = ?',[$id]);
+            $id=Auth::id();
+            $qry=DB::select('select * from students where user_id = ?',[$id]);
             if($qry==null){
                 return redirect()->back();
             }else{
@@ -27,7 +27,7 @@ class CheckStudent
             }
 
         }else{
-            return redirect()->back();
+            return redirect()->route('/login');
         }
 
     }

@@ -15,8 +15,8 @@
                 </div>
                 <div class="panel-body">
                     <ul class="list-group">
-                        <a href="{{ route('admin.all-students') }}"><li class="list-group-item btn btn-primary">View All Students</li></a>
-                        <a href="{{ route('admin.all-supervisors') }}"><li class="list-group-item btn btn-primary">View All Supervisors</li></a>
+                        <li class="list-group-item"><a href="{{ route('admin.all-students') }}">View All Students</a></li>
+                        <li class="list-group-item"><a href="{{ route('admin.all-supervisors') }}">View All Supervisors</a></li>
                     </ul>
                 </div>
             </div>
@@ -38,13 +38,13 @@
                 </div>
             </div>
         </div>
-    </div>
+    {{--</div>--}}
 
-    <div class="row">
+    {{--<div class="row">--}}
         <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Organizations
+                    <h3>Organizations</h3>
                 </div>
                 <div class="panel-body">
                     <ul class="list-group">
@@ -61,23 +61,31 @@
         <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Competitions
+                    <h3>Competitions</h3>
                 </div>
                 <div class="panel-body">
-
+                    <ul class="list-group">
+                        @foreach($competitions as $competition)
+                            <li class="list-group-item">{{ $competition->competition_name }}</li>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
         </div>
-    </div>
+    {{--</div>--}}
 
-    <div class="row">
+    {{--<div class="row">--}}
         <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Achievements
+                    <h3>Achievements</h3>
                 </div>
                 <div class="panel-body">
-
+                    <ul class="list-group">
+                        @foreach($achievements as $achievement)
+                            <li class="list-group-item">{{ $achievement->achievement_name }}</li>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
         </div>

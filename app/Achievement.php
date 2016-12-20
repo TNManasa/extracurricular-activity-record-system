@@ -8,11 +8,11 @@ class Achievement{
 
     public $activity_id;
     public $achievement_name;
-
+    public $activity;
 
     public static function getAll()
     {
-        $raw_achievements = DB::statment('select * from achievements');
+        $raw_achievements = DB::select('select * from achievements');
         $achievements = array();
         foreach($raw_achievements as $achievement){
             $a = new Achievement();
@@ -26,12 +26,17 @@ class Achievement{
 
     public function findById($id)
     {
-        $a = DB::select('select * from achievements where id=?', [$id]);
-        $achievement = new Achievement();
-        $achievement->activity_id = $a->id;
-        $achievement->achievement_name = $a->achievement_name;
+        try{
+            $a = DB::select('select * from achievements where id=?', [$id])[0];
+            $achievement = new Achievement();
+            $achievement->activity_id = $a->id;
+            $achievement->achievement_name = $a->achievement_name;
+            $achievement->activity = Activity::findById($a->id);
 
-        return $achievement;
+            return $achievement;
+        }catch(Exception $e){
+            return [];
+        }
     }
 
     public static function update(Achievement $achievement){

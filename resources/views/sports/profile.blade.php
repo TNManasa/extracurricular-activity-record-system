@@ -7,7 +7,7 @@
 @section('content')
     <div class="row">
         <div><h3 class="title" style="text-align: center">{{ $sport->name }}</h3></div>
-        <div class="col-md-6">
+        <div class="col-md-8">
             <h4>Students who participate in  <strong>{{ $sport->name }}</strong></h4>
             <div>
                 <table class="table table-bordered">

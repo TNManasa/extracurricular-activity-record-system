@@ -41,9 +41,15 @@ class SupervisorsController extends Controller
 
         //return $activity;
        // return $activity[0]->first_name;
-       return view('supervisors.validate',compact('a'));
+       return view('supervisors.toBeValidate',compact('a'));
 
     }
+
+    public function validatedActivityShow($id){
+
+    }
+
+
     public function activityValidate(Request $request, $id){
         $input=$request->all();
         $a=$input['option'];
@@ -79,6 +85,11 @@ class SupervisorsController extends Controller
         $last_name = $request['last_name'];
         $position = $request['position'];
         $pwd = Crypt::encrypt($request['password']);
+
+
+        /////// needs to be inserted later, .sql file is in sqlfunctions
+//        DB::statement("Call InsertSupervisor(?,?,?,?,?,?)",[$emp_id,$email,$first_name,$last_name,$position,$pwd]);
+//        return 1;
 
     //to check the uniqueness of employee number
         $checkEmpIdQuery=DB::select('select * from supervisors where emp_id = ?',[$emp_id]);
