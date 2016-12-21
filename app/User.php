@@ -16,6 +16,22 @@ class User implements Authenticatable
 
     use Notifiable;
 
+    public static function getUserRole($id){
+        $studentCheck = DB::select('select * from students where students.user_id=?', [$id]);
+        if($studentCheck != null){
+            return 1;   // student
+        }
+
+        $supervisorCheck = DB::select('select * from supervisors where supervisors.user_id=?', [$id]);
+        if($supervisorCheck != null){
+            return 2;   // supervisor
+        }
+
+        $adminCheck = DB::select('select * from admin where admin.user_id=?', [$id]);
+        if($adminCheck != null){
+            return 3;
+        }
+    }
 
     /**
      * Get the name of the unique identifier for the user.
@@ -87,6 +103,15 @@ class User implements Authenticatable
         }
         return $result_index;
     }
+
+    public static function findSupervisorID($id){
+    $studentqry= DB::select('select emp_id from supervisors where user_id= ?',[$id]);
+    $result_index = null;
+    foreach ($studentqry as $student) {
+        $result_index = $student->emp_id;
+    }
+    return $result_index;
+}
 
     public static function findById($id){
         $user = DB::select('select * from users where id=?', [$id]);

@@ -1,7 +1,7 @@
 <?php
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome-page.index');
 })->name('welcome');
 /*
  * Convention for naming the routes: use lowercase letters, hyphens, periods, Use Plurals
@@ -14,7 +14,7 @@ Route::get('/', function () {
 Route::get('admin/dashboard', [
     'uses' => 'AdminController@getDashboard',
     'as' => 'admin.dashboard'
-]);
+])->middleware('auth', 'admin');
 
 Route::get('students/dashboard', [
     'uses' => 'StudentsController@getDashboard',
@@ -31,13 +31,12 @@ Route::get('supervisors/dashboard', [
 //user Login
 Route::get('/login',function(){
     return view('user_login');
-});
+})->name('user.login');
 
 Route::post('/loginDetails',[
     'uses' => 'UsersController@loginUser',
     'as' => 'userLogin'
 ]);
-
 
 // Student Routes
 
@@ -71,6 +70,7 @@ Route::post('/supervisors/addDetails', [
     'uses' => 'SupervisorsController@addNewSupervisor',
     'as' => 'supervisor.addDetails'
 ])->middleware('auth', 'checkSupervisor');
+
 // End of Supervisor Routes
 
 
@@ -142,6 +142,8 @@ Route::get('/organizations/{logo_name}',[
     'uses'=>'OrganizationsController@getLogo',
     'as'=>'organizations.get-logo'
 ]);
+
+Route::get('auth/logout', 'UsersController@logout')->name('logout');
 
 // COMPETITIONS
 Route::get('/competitions', [

@@ -4,7 +4,12 @@
     Supervisor Dash Board
 @stop
 
+
+
 @section('begin_body')
+    <div class="col-md-offset-2">
+    <a href="/supervisor" class="btn btn-primary">Back</a>
+    </div>
     <div class="col-md-offset-3">
         <div class="container">
             <div class="col-md-10">

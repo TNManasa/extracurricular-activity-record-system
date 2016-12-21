@@ -24,7 +24,7 @@ class CreateStudentsTable extends Migration
 
             $table->primary('index_no');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->index('index_no', 'first_name','last_name');
+            
         });
     }
 

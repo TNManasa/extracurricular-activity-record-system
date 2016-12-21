@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Activity;
 //use App\Validation;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Crypt;
 
@@ -67,11 +69,13 @@ class SupervisorsController extends Controller
     public function activityValidate(Request $request, $id){
         $input=$request->all();
         $a=$input['option'];
-        $vd=$input['va_description'];
+        $vd=$input['v_description'];
         $d=date("Y-m-d");
+        $auth_id = Auth::id();
+        $supervisor_id=User::findSupervisorID($auth_id);
 
 
-       DB::insert('insert into validations (validation_id,rating,validation_description,supervisor_id,validated_date,is_validated ) values (?,?,?,?,?,?)', [$id,$a,$vd,'140B',$d,1]);
+       DB::insert('insert into validations (validation_id,rating,validation_description,supervisor_id,validated_date,is_validated ) values (?,?,?,?,?,?)', [$id,$a,$vd,$supervisor_id,$d,1]);
 
 
        $pendingActivities= DB::select('select * from activities WHERE activities.id NOT IN (SELECT id FROM activities RIGHT JOIN validations on activities.id=validations.validation_id)');
@@ -86,9 +90,11 @@ class SupervisorsController extends Controller
 
         $rd=$input['r_description'];
         $d=date("Y-m-d");
+        $auth_id = Auth::id();
+        $supervisor_id=User::findSupervisorID($auth_id);
 
 
-        DB::insert('insert into validations (validation_id,rating,validation_description,supervisor_id,validated_date,is_validated ) values (?,?,?,?,?,?)', [$id,0,$rd,'140B',$d,0]);
+        DB::insert('insert into validations (validation_id,rating,validation_description,supervisor_id,validated_date,is_validated ) values (?,?,?,?,?,?)', [$id,0,$rd,$supervisor_id,$d,0]);
 
 
         $pendingActivities= DB::select('select * from activities WHERE activities.id NOT IN (SELECT id FROM activities RIGHT JOIN validations on activities.id=validations.validation_id)');
