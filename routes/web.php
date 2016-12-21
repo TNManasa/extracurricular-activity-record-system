@@ -99,13 +99,13 @@ Route::get('/new-sport', [
     // add new sport form
     'uses' => 'SportsController@newSport',
     'as' => 'sports.new-sport'
-])->middleware('auth', 'checkSupervisor');
+])->middleware('auth', 'checkAdmin');
 
 Route::post('/add-new-sport', [
     // actually add new sport
     'uses' => 'SportsController@addNewSport',
     'as' => 'sports.add-new-sport'
-])->middleware('auth', 'checkSupervisor');
+])->middleware('auth', 'checkAdmin');
 
 // ORGANIZATION
 Route::get('/organizations', [
@@ -130,13 +130,13 @@ Route::get('/new-organization', [
     // add new organization form
     'uses' => 'OrganizationsController@newOrganization',
     'as' => 'organizations.new-organization'
-])->middleware('auth', 'checkSupervisor');
+])->middleware('auth', 'checkAdmin');
 
 Route::post('/add-new-organization', [
     // actually add new organization
     'uses' => 'OrganizationsController@addNewOrganization',
     'as' => 'organizations.add-new-organization'
-])->middleware('auth', 'checkSupervisor');
+])->middleware('auth', 'checkAdmin');
 
 Route::get('/organizations/{logo_name}',[
     'uses'=>'OrganizationsController@getLogo',
