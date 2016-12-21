@@ -124,11 +124,12 @@ class Activity
 
     public static function showPendingActivity($id){
         //$activity= DB::select('select *  FROM  (select first_name,last_name,index_no from students) as s RIGHT JOIN (select * from activities where id = ? ) as t on s.index_no=t.student_id', [$id]);
-        $activity=DB::select('select * from student_activity');
+        $activity=DB::select('select * from student_activity where id=?',[$id]);
         $isValidated=Validation::findByID($id);
         $a=$activity[0];
             $b = new Activity();
             $b->id = $a->id;
+            
             $b->student_id = $a->student_id;
             $b->activity_type = $a->activity_type;
             $b->start_date = $a->start_date;

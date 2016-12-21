@@ -64,7 +64,7 @@
     </div>
     @endif
 
-    <form method="post" action="{{$id}}/validate">
+    <form method="post" action="{{$a->id}}/validate">
 
         <div class="well well-sm well-primary">
             <br>
@@ -84,6 +84,16 @@
             </br>
 
         </div>
+
+
+
+
+
+
+
+
+
+
         <div class="btn-group btn-group-vertical" data-toggle="buttons">
             <div class="radio">
                 <label>
