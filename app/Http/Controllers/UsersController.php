@@ -58,12 +58,18 @@ class UsersController extends Controller
                 $subqry1= DB::select('select * from students where user_id = ?', [$resultId]);
                 $subqry2 = DB::select('select * from supervisors where user_id = ?', [$resultId]);
 
+
                 if($subqry1==null and $subqry2!=null){
                     return redirect()->route('supervisors.dashboard');
                 }elseif ($subqry2==null and $subqry1!=null){
                     return redirect()->route('students.dashboard');
                 }else{
-                    return 1;
+                    $subqry3 = DB::select('select * from admin where user_id=?',[$resultId]);
+                    if($subqry3!=null){
+                        return redirect()->route('admin.index');
+                    }else{
+                        return redirect()->back();
+                    }
                 }
 
             } else {
