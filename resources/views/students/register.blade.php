@@ -19,18 +19,17 @@
     </div>
     <div class="row">
         <div class="col-md-6-offset-2">
-
             @if (isset($customMessage))
                 <h2> {{$customMessage}}</h2>
             @endif
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4">
-            <h1>Register as Student</h1>
-            <br>
-            <form action="{{ route('student.addDetails') }}" method="post">
-                {{ csrf_field() }}
+        <h1>Register as Student</h1>
+        <br>
+        <form action="{{ route('student.addDetails') }}" method="post">
+            {{ csrf_field() }}
+            <div class="col-md-4">
                 <div class="form-group">
                     <label for="index_no">Index No: </label>
                     <input type="text" name="index_no" class="form-control">
@@ -46,6 +45,8 @@
                     <input type="text" name="last_name" class="form-control">
                 </div>
 
+            </div>
+            <div class="col-md-4">
                 <div class="form-group">
                     <label for="email">Email: </label>
                     <input type="text" name="email" class="form-control">
@@ -59,11 +60,13 @@
                 <div class="form-group">
                     <label for="gender">Gender:</label>
                     <select name="gender" class="form-control">
-                        <option value="1">Male</option> 
+                        <option value="1">Male</option>
                         <option value="2">Female</option>
                     </select>
                 </div>
+            </div>
 
+            <div class="col-md-4">
                 <div class="form-group">
                     <label for="batch">Batch:</label>
                     <input type="number" name="batch" class="form-control">
@@ -71,7 +74,7 @@
 
                 <div class="form-group">
                     <label for="password">Password: </label>
-                    <input type="password" name="password" class="form-control" >
+                    <input type="password" name="password" class="form-control">
                 </div>
 
                 <div class="form-group">
@@ -80,13 +83,16 @@
                 </div>
 
                 <div class="form-group">
-                    <input type="hidden" name="role" value="student"> 
+                    <input type="hidden" name="role" value="student">
                 </div>
+            </div>
 
+            <div class="col-md-6 col-md-offset-3">
                 <div class="form-group">
-                    <button type="submit" class="btn btn-info btn-lg">Sign Up</button>
+                    <br><br>
+                    <button type="submit" class="btn btn-info btn-lg btn-block">Sign Up</button>
                 </div>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
 @stop

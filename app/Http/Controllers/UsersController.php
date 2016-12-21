@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
+    public function logout()
+    {
+        Auth::logout();
+        return view('user_login');
+    }
     public function loginUser(Request $request)
     {
         $this->validate($request, [
@@ -45,6 +50,7 @@ class UsersController extends Controller
                 //to authenticate the user, whose passwords are matched
                 $user = new User();
                 $user->id = $resultId;
+                $user->email = $email;
                 $user->password = $pwd;
                 Auth::login($user);
 
@@ -64,8 +70,6 @@ class UsersController extends Controller
 
                 return view('user_login', ['customMessage' => 'password missmatch error']);
             }
-
-
         }
     }
 }
