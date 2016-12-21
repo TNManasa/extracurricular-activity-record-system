@@ -3,6 +3,7 @@
 namespace App;
 
 use DB;
+use Exception;
 
 class Activity
 {
@@ -27,28 +28,38 @@ class Activity
 
     public static function getAll()
     {
-        $raw_activities = DB::statment('select * from activities');
-        $activities = array();
-        foreach($raw_activities as $activity){
-            $a = new Activity();
-            $a->id = $activity->id;
-            $a->student_id = $activity->student_id;
-            $a->activity_type = $activity->activity_type;
-            $a->start_date = $activity->start_date;
-            $a->end_date = $activity->end_date;
-            $a->effort = $activity->effort;
-            $a->description = $activity->description;
-            $a->image = $activity->image;
+        try {
+            $raw_activities = DB::statment('select * from activities');
+            if($raw_activities== null || empty($raw_activities)){
+                return [];
+            }
+            $activities = array();
+            foreach ($raw_activities as $activity) {
+                $a = new Activity();
+                $a->id = $activity->id;
+                $a->student_id = $activity->student_id;
+                $a->activity_type = $activity->activity_type;
+                $a->start_date = $activity->start_date;
+                $a->end_date = $activity->end_date;
+                $a->effort = $activity->effort;
+                $a->description = $activity->description;
+                $a->image = $activity->image;
 
-            array_push($activities, $a);
+                array_push($activities, $a);
+            }
+            return $activities;
+        }catch (Exception $e){
+            return [];
         }
-        return $activities;
     }
 
     public static function findById($id)
     {
         try{
             $a = DB::select('select * from activities where id=?', [$id])[0];
+            if($a== null || empty($a)){
+                return [];
+            }
             $activity = new Activity();
             $activity->id = $a->id;
             $activity->student_id = $a->student_id;
@@ -59,28 +70,43 @@ class Activity
             $activity->description = $a->description;
             $activity->image=$a->image;
             return $activity;
-        }catch(Exceptoin $e){
+        }catch(Exception $e){
             return [];
         }
     }
 
     public static function update(Activity $activity){
-        DB::statement('update activities set activity_type=?,start_date=?,end_date=?,effort=?,description=?,image=? where id=?',[$activity->activity_type,$activity->start_date,$activity->end_date,$activity->effort,$activity->description,$activity->image,$activity->id]);
+        try {
+            DB::statement('update activities set activity_type=?,start_date=?,end_date=?,effort=?,description=?,image=? where id=?', [$activity->activity_type, $activity->start_date, $activity->end_date, $activity->effort, $activity->description, $activity->image, $activity->id]);
+        }catch (Exception $e){
+            return false;
+        }
         return true;
     }
 
     public static function insert(Activity $activity){
-        DB::statement('insert into activities (student_id,activity_type,start_date,end_date,effort,description,image) values (?,?,?,?,?,?,?)',[$activity->student_id,$activity->activity_type,$activity->start_date,$activity->end_date,$activity->effort,$activity->description,$activity->image]);
+        try{
+            DB::statement('insert into activities (student_id,activity_type,start_date,end_date,effort,description,image) values (?,?,?,?,?,?,?)',[$activity->student_id,$activity->activity_type,$activity->start_date,$activity->end_date,$activity->effort,$activity->description,$activity->image]);
+        }catch (Exception $e){
+            return false;
+        }
         return true;
     }
 
     public static function getId(Activity $activity){
-        if($activity->end_date==null and $activity->start_date==null){
-            $id=DB::select('select id from activities where student_id=? and activity_type=? and effort=? and description=? and image=?', [$activity->student_id,$activity->activity_type,$activity->effort,$activity->description,$activity->image]);
-        }else{
-            $id=DB::select('select id from activities where student_id=? and activity_type=? and start_date=? and end_date=? and effort=? and description=? and image=?', [$activity->student_id,$activity->activity_type,$activity->start_date,$activity->end_date,$activity->effort,$activity->description,$activity->image]);
+        try {
+            if ($activity->end_date == null and $activity->start_date == null) {
+                $id = DB::select('select id from activities where student_id=? and activity_type=? and effort=? and description=? and image=?', [$activity->student_id, $activity->activity_type, $activity->effort, $activity->description, $activity->image]);
+            } else {
+                $id = DB::select('select id from activities where student_id=? and activity_type=? and start_date=? and end_date=? and effort=? and description=? and image=?', [$activity->student_id, $activity->activity_type, $activity->start_date, $activity->end_date, $activity->effort, $activity->description, $activity->image]);
+            }
+            if($id== null || empty($id)){
+                return null;
+            }
+            return $id[0]->id;
+        }catch (Exception $e){
+            return null;
         }
-        return $id[0]->id;
     }
 
     public static function getPendingActivities(){
@@ -190,5 +216,4 @@ class Activity
                 return $b;
             }
         }
-
 }

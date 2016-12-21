@@ -3,6 +3,7 @@
 namespace App;
 
 use DB;
+use Exception;
 
 class CompetitionActivity {
 
@@ -14,6 +15,9 @@ class CompetitionActivity {
     {
         try{
             $raw_competition_activities = DB::select('select * from competition_activities');
+            if($raw_competition_activities== null || empty($raw_competition_activities)){
+                return [];
+            }
             $competition_activities = array();
             foreach($raw_competition_activities as $competition_activity){
                 $a = new CompetitionActivity();
@@ -40,12 +44,20 @@ class CompetitionActivity {
     }
 
     public static function update(CompetitionActivity $competition_activity){
-        DB::statement('update competition_activities set competioion_name=?,status=? where id=?',[$competition_activity->competition_name,$competition_activity->status,$competition_activity->activity_id]);
+        try {
+            DB::statement('update competition_activities set competioion_name=?,status=? where id=?', [$competition_activity->competition_name, $competition_activity->status, $competition_activity->activity_id]);
+        }catch (Exception $e){
+            return false;
+        }
         return true;
     }
 
     public static function insert(CompetitionActivity $competition_activity){
-        DB::statement('insert into competition_activities (id,competition_name,status) values (?,?,?)',[$competition_activity->activity_id,$competition_activity->competition_name,$competition_activity->status]);
+        try {
+            DB::statement('insert into competition_activities (id,competition_name,status) values (?,?,?)', [$competition_activity->activity_id, $competition_activity->competition_name, $competition_activity->status]);
+        }catch (Exception $e){
+            return false;
+        }
         return true;
     }
 }

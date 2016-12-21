@@ -3,6 +3,7 @@
 namespace App;
 
 use DB;
+use Exception;
 
 class OrgActivity
 {
@@ -15,18 +16,25 @@ class OrgActivity
 
     public static function getAll()
     {
-        $raw_org_activities = DB::statement('select * from org_activities');
-        $org_activities = array();
-        foreach($raw_org_activities as $org_activity){
-            $a = new OrgActivity();
-            $a->activity_id = $org_activity->id;
-            $a->org_id = $org_activity->org_id;
-            $a->project_name = $org_activity->project_name;
-            $a->role = $org_activity->role;
+        try {
+            $raw_org_activities = DB::statement('select * from org_activities');
+            if($raw_org_activities== null || empty($raw_org_activities)){
+                return [];
+            }
+            $org_activities = array();
+            foreach ($raw_org_activities as $org_activity) {
+                $a = new OrgActivity();
+                $a->activity_id = $org_activity->id;
+                $a->org_id = $org_activity->org_id;
+                $a->project_name = $org_activity->project_name;
+                $a->role = $org_activity->role;
 
-            array_push($org_activities, $a);
+                array_push($org_activities, $a);
+            }
+            return $org_activities;
+        }catch (Exception $e){
+            return [];
         }
-        return $org_activities;
     }
 
     public static function findById($id)
@@ -42,12 +50,20 @@ class OrgActivity
     }
 
     public static function update(OrgActivity $org_activity){
-        DB::statement('update org_activities set org_id=?,project_name=?,role=? where id=?',[$org_activity->org_id,$org_activity->project_name,$org_activity->role,$org_activity->activity_id]);
+        try {
+            DB::statement('update org_activities set org_id=?,project_name=?,role=? where id=?', [$org_activity->org_id, $org_activity->project_name, $org_activity->role, $org_activity->activity_id]);
+        }catch (Exception $e){
+            return false;
+        }
         return true;
     }
 
     public static function insert(OrgActivity $org_activity){
-        DB::statement('insert into org_activities (id,org_id,project_name,role) values (?,?,?,?)',[$org_activity->activity_id,$org_activity->org_id,$org_activity->project_name,$org_activity->role]);
+        try {
+            DB::statement('insert into org_activities (id,org_id,project_name,role) values (?,?,?,?)', [$org_activity->activity_id, $org_activity->org_id, $org_activity->project_name, $org_activity->role]);
+        }catch (Exception $e){
+            return false;
+        }
         return true;
     }
 
