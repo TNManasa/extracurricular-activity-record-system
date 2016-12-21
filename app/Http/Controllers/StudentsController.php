@@ -94,7 +94,7 @@ class StudentsController extends Controller
         }
 
 
-        DB::statement("Call InsertStudent(?,?,?,?,?,?,?,?)",[$index_no,$email,$first_name,$last_name,$gender,$batch,$dob,$pwd]);
+        //DB::statement("Call InsertStudent(?,?,?,?,?,?,?,?)",[$index_no,$email,$first_name,$last_name,$gender,$batch,$dob,$pwd]);
 
 //        $line1 = "insert into users (email,password,role) values (?,?,?)";
 //        DB::statement($line1, [$email, $pwd, $role]);

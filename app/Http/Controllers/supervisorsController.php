@@ -133,7 +133,6 @@ class SupervisorsController extends Controller
 
 
         /////// needs to be inserted later, .sql file is in sqlfunctions
-        DB::statement("Call InsertSupervisor(?,?,?,?,?,?)",[$emp_id,$email,$first_name,$last_name,$position,$pwd]);
 //        return 1;
 
     //to check the uniqueness of employee number
