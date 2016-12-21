@@ -8,7 +8,10 @@
     <div class="row">
         <div class="col-md-6">
             <h2>New Activity (Organization/Society)</h2>
-            <form action="{{route('organizations.add-new-organization-activity')}}" method="post" onsubmit="return validateForm()" name="activity" enctype="multipart/form-data">
+            @if($all_organizations == null ||empty($all_organizations))
+                <h3>No Organizations added yet.</h3>
+            @else
+                <form action="{{route('organizations.add-new-organization-activity')}}" method="post" onsubmit="return validateForm()" name="activity" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label for="name">Name of the Society/Organization: (*)</label>
@@ -69,6 +72,7 @@
                     <button type="submit" name="btnSubmit" class="btn btn-primary">Submit</button>
                 </div>
             </form>
+            @endif
         </div>
     </div>
 @stop

@@ -92,67 +92,68 @@
         var end_date_option = document.getElementById("end_date_option").checked;
         var end_date = document.getElementById("end_date").value;
 
-        if(!(no_time)){
-            if(start_date === ""){
+        if(!(no_time)) {
+            if (start_date === "") {
                 alert("Start Date cannot be empty");
                 valid = false;
                 return false;
-            }else{
-                var date=new Date(start_date);
-                var curr_date=new Date();
-                if(date>curr_date){
+            } else {
+                var date = new Date(start_date);
+                var curr_date = new Date();
+                if (date > curr_date) {
                     alert("Start Date cannot be in future");
-                    valid=false;
+                    valid = false;
                     return false;
                 }
             }
 
-            if(!(end_date_option) && end_date===""){
+            if (!(end_date_option) && end_date === "") {
                 alert("Add End Date or Mark as Present");
                 valid = false;
                 return false;
-            }else if(end_date_option && !(end_date==="")) {
+            } else if (end_date_option && !(end_date === "")) {
                 alert("Cannot mark Present and add a End Date");
                 valid = false;
                 return false;
-            }else if(!(end_date_option) && !(end_date==="")){
-                var endDate=new Date(end_date);
-                var startDate=new Date(start_date);
+            } else if (!(end_date_option) && !(end_date === "")) {
+                var endDate = new Date(end_date);
+                var startDate = new Date(start_date);
 
-                if(startDate>endDate){
+                if (startDate > endDate) {
                     alert("End Date cannot be before Start Date");
-                    valid=false;
+                    valid = false;
                     return false;
-                }else{
-                    var currDate=new Date();
-                    if(endDate>currDate){
+                } else {
+                    var currDate = new Date();
+                    if (endDate > currDate) {
                         alert("End Date cannot be in future. Mark as Present");
-                        valid=false;
+                        valid = false;
                         return false;
                     }
                 }
-        }else{
-            if(end_date_option || !(end_date==="") || !(start_date=="")){
+            }
+        } else {
+            if (end_date_option || !(end_date === "") || !(start_date == "")) {
                 alert("If No Time Duration, time fields cannot be filled");
-                valid=false;
+                valid = false;
                 return false;
             }
         }
 
         var effort = document.getElementById("effort").value;
 
-        if(effort == null || effort === ""){
+        if (effort == null || effort === "") {
             alert("Effort field cannot be empty");
             valid = false;
             return false;
-        }else if(effort<=0 ){
+        } else if (effort <= 0) {
             alert("Effort hours cannot be zero or negative");
             valid = false;
             return false;
         }
 
         var description = document.getElementById("description").value;
-        if(description == null || description === ""){
+        if (description == null || description === "") {
             alert("Description field cannot be empty");
             valid = false;
             return false;
@@ -160,17 +161,17 @@
 
         var file = $('#image').val().split('.').pop().toLowerCase();
 
-        if(file === ""){
+        if (file === "") {
 
-        }else if(!( file === "jpg")){
+        } else if (!( file === "jpg")) {
             alert("Only add images of type jpg");
             valid = false;
             return false;
         }
 
-        if(valid){
+        if (valid) {
             return confirm("Are you sure you want to add this activity ?");
-        }else{
+        } else {
             return false;
         }
     }

@@ -4,7 +4,6 @@ namespace App;
 
 use DB;
 use Symfony\Component\HttpFoundation\AcceptHeaderItem;
-
 class Achievement{
 
     public $activity_id;
@@ -13,17 +12,24 @@ class Achievement{
 
     public static function getAll()
     {
-        $raw_achievements = DB::select('select * from achievements');
-        $achievements = array();
-        foreach($raw_achievements as $achievement){
-            $a = new Achievement();
-            $a->activity_id = $achievement->id;
-            $a->achievement_name= $achievement->achievement_name;
-            $a->activity = Activity::findById($a->activity_id);
+        try{
+            $raw_achievements = DB::select('select * from achievements');
+            if($raw_achievements == null || empty($raw_achievements)){
+                return [];
+            }
+            $achievements = array();
+            foreach($raw_achievements as $achievement){
+                $a = new Achievement();
+                $a->activity_id = $achievement->id;
+                $a->achievement_name= $achievement->achievement_name;
 
-            array_push($achievements, $a);
+                array_push($achievements, $a);
+            }
+            return $achievements;
+        }catch (Exception $e){
+            return [];
         }
-        return $achievements;
+
     }
 
     public static function findById($id)
@@ -37,17 +43,25 @@ class Achievement{
 
             return $achievement;
         }catch(Exception $e){
-            return [];
+            return null;
         }
     }
 
     public static function update(Achievement $achievement){
-        DB::statement('update achievements set achievement_name=? where id=?',[$achievement->achievement_name,$achievement->activity_id]);
+        try{
+            DB::statement('update achievements set achievement_name=? where id=?',[$achievement->achievement_name,$achievement->activity_id]);
+        }catch(Exception $e){
+            return false;
+        }
         return true;
     }
 
     public static function insert(Achievement $achievement){
-        DB::statement('insert into achievements (id,achievement_name) values (?,?)',[$achievement->activity_id,$achievement->achievement_name]);
+        try{
+            DB::statement('insert into achievements (id,achievement_name) values (?,?)',[$achievement->activity_id,$achievement->achievement_name]);
+        }catch (Exception $e){
+            return false;
+        }
         return true;
     }
 

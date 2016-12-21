@@ -3,6 +3,7 @@
 namespace App;
 
 use DB;
+use Exception;
 
 class SportActivity
 {
@@ -16,6 +17,9 @@ class SportActivity
     {
         try{
             $raw_sport_activities = DB::select('select * from sport_activities');
+            if($raw_sport_activities== null || empty($raw_sport_activities)){
+                return [];
+            }
             $sport_activities = array();
             foreach ($raw_sport_activities as $sport_activity) {
                 $a = new SportActivity();
@@ -58,13 +62,21 @@ class SportActivity
 
     public static function update(SportActivity $sport_activity)
     {
-        DB::statement('update sport_activities set sport_id=?,role=? where id=?', [$sport_activity->sport_id, $sport_activity->role, $sport_activity->activity_id]);
+        try {
+            DB::statement('update sport_activities set sport_id=?,role=? where id=?', [$sport_activity->sport_id, $sport_activity->role, $sport_activity->activity_id]);
+        }catch (Exception $e){
+            return false;
+        }
         return true;
     }
 
     public static function insert(SportActivity $sport_activity)
     {
-        DB::statement('insert into sport_activities (id,sport_id,role) values (?,?,?)', [$sport_activity->activity_id, $sport_activity->sport_id, $sport_activity->role]);
+        try {
+            DB::statement('insert into sport_activities (id,sport_id,role) values (?,?,?)', [$sport_activity->activity_id, $sport_activity->sport_id, $sport_activity->role]);
+        }catch (Exception $e){
+            return false;
+        }
         return true;
     }
 }

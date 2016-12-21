@@ -19,9 +19,13 @@ class SupervisorsController extends Controller
     
     public function pendingActivities(){
        // $pendingActivities= DB::select('select * from activities WHERE activities.id NOT IN (SELECT id FROM activities RIGHT JOIN validations on activities.id=validations.validation_id)');
-        $pendingActivities= Activity::getPendingActivities();
+
+      
+
+       $pendingActivities= Activity::getPendingActivities();
+        //var_dump($pendingActivities);
         return view('supervisors.pending_activity', compact('pendingActivities'));
-        
+
     }
 
     public function validatedActivities(){
@@ -31,7 +35,8 @@ class SupervisorsController extends Controller
     }
 
     public function rejectedActivities(){
-        
+        $rejectedActivities=Activity::getRejectedActivities();
+        return view('supervisors.rejected_activities', compact('rejectedActivities'));
     }
 
     public function activityShow($id){
@@ -40,29 +45,47 @@ class SupervisorsController extends Controller
         //$sport=DB::select('select name,role from sports RIGHT JOIN (select sport_id,role from sport_activities where s_id=?) as t on sports.id=t.sport_id ',[$id]);
         $a=Activity::showPendingActivity($id);
 
-        //return $activity;
-       // return $activity[0]->first_name;
-       return view('supervisors.toBeValidate',compact('a'));
+        return view('supervisors.toBeValidate',compact('a'));
 
     }
 
     public function validatedActivityShow($id){
-        //$a=Activity::showPendingActivity($id);
+        $a=Activity::showPendingActivity($id);
         
-        //return view('supervisors.validatedActivity',compact('a'));
+        return view('supervisors.validatedActivity',compact('a'));
 
-        $supervisor_name= DB::select('select concat(first_name," ",last_name) as name from supervisors where emp_id =?',["140B"]);
-        return $supervisor_name[0]->name;
+       // $supervisor_name= DB::select('select concat(first_name," ",last_name) as name from supervisors where emp_id =?',["140B"]);
+        //return $supervisor_name[0]->name;
     }
+
+    
 
 
     public function activityValidate(Request $request, $id){
         $input=$request->all();
         $a=$input['option'];
-        $vd=$input['v_description'];
+        $vd=$input['va_description'];
         $d=date("Y-m-d");
 
-        DB::insert('insert into validations (validation_id,rating,validation_description,supervisor_id,validated_date,is_validated ) values (?,?,?,?,?,?)', [$id,$a,$vd,'140B',$d,1]);
+
+       DB::insert('insert into validations (validation_id,rating,validation_description,supervisor_id,validated_date,is_validated ) values (?,?,?,?,?,?)', [$id,$a,$vd,'140B',$d,1]);
+
+
+       $pendingActivities= DB::select('select * from activities WHERE activities.id NOT IN (SELECT id FROM activities RIGHT JOIN validations on activities.id=validations.validation_id)');
+
+        return view('supervisors.pending_activity', compact('pendingActivities'));
+
+    }
+
+
+    public function activityReject(Request $request, $id){
+        $input=$request->all();
+
+        $rd=$input['r_description'];
+        $d=date("Y-m-d");
+
+
+        DB::insert('insert into validations (validation_id,rating,validation_description,supervisor_id,validated_date,is_validated ) values (?,?,?,?,?,?)', [$id,0,$rd,'140B',$d,0]);
 
 
         $pendingActivities= DB::select('select * from activities WHERE activities.id NOT IN (SELECT id FROM activities RIGHT JOIN validations on activities.id=validations.validation_id)');
@@ -70,6 +93,11 @@ class SupervisorsController extends Controller
         return view('supervisors.pending_activity', compact('pendingActivities'));
 
     }
+
+
+
+
+
 
     public function newSupervisor()
     {

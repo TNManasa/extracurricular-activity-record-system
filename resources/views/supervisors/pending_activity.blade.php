@@ -40,7 +40,7 @@
             @elseif($a->activity_type==4)
                 <?php $b="Achievements"?>
             @endif
-
+            <?php $id=$a->id?>
 
         <tr>
 
@@ -48,7 +48,7 @@
             <td>{{$a->start_date}}</td>
             <td>{{$a->end_date}}</td>
             <td>{{$b}}</td>
-            <td><a href="/pending_activity/{{$a->id}}" class=" btn btn-primary"  >View Activity </a></td>
+            <td><a href="/pending_activity/{{$id}}" class=" btn btn-primary"  >View Activity </a></td>
 
         </tr>
         @endforeach

@@ -10,6 +10,7 @@ class Validation
     //
     public $validation_id;
     public $rating;
+    public $validation_description;
     public $supervisor_id;
     public $validated_date;
     public $is_validated;
@@ -24,6 +25,7 @@ class Validation
             $validation = new Validation();
             $validation->validation_id = $a[0]->validation_id;
             $validation->rating = $a[0]->rating;
+            $validation->validation_description=$a[0]->validation_description;
             $validation->supervisor_id = $a[0]->supervisor_id;
             $validation->validated_date = $a[0]->validated_date;
             $validation->is_validated = $a[0]->is_validated;

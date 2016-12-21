@@ -19,8 +19,8 @@
     <div class="container">
         <div class="col-md-10">
             <div class="jumbotron">
-                <h1>Role: {{$a->role}}</h1>
-                <h3>Project Name: {{$a->institute_name}}</h3>
+                <h1> {{$a->role}}</h1>
+                <h3> {{$a->institute_name}}</h3>
                 <h4>University of Moratuwa </h4>
             </div>
         </div>
@@ -64,11 +64,55 @@
     </div>
     @endif
 
-    <form method="post" action="{{$id}}/validate">
+
+
+
+    <form method="post" action="{{$a->id}}/reject">
 
         <div class="well well-sm well-primary">
             <br>
-            <h3>Add a note </h3>
+            <h3>Reject The Activity </h3>
+            </br>
+
+        </div>
+
+        <div>
+            <br>
+            <h3>Reason for rejection </h3>
+            </br>
+
+        </div>
+
+        <div class="input">
+            <input type="text" name="r_description">
+        </div>
+
+
+
+
+        <div>
+            <button type="submit" class="btn btn-success" name="reject">Reject</button>
+            <input type="hidden" name="_token" value="{{ Session::token() }}">
+        </div>
+    </form>
+
+
+
+
+
+
+    <form method="post" action="{{$a->id}}/validate">
+
+        <div class="well well-sm well-primary">
+            <br>
+            <h3>Validate the Activity </h3>
+            </br>
+
+        </div>
+
+        <div >
+            <br>
+            <h3>Comments on Activity </h3>
             </br>
 
         </div>
@@ -84,6 +128,8 @@
             </br>
 
         </div>
+
+
         <div class="btn-group btn-group-vertical" data-toggle="buttons">
             <div class="radio">
                 <label>
