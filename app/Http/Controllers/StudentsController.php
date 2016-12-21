@@ -68,54 +68,50 @@ class StudentsController extends Controller
         $index_no_substring1 = substr($index_no, 0, 6);
         $index_no_substring2 = substr($index_no, -1);
 
-        $condition1 = is_numeric($index_no_substring1);
-        $condition2 = ctype_alpha($index_no_substring2);
 
 
         $condition1=is_numeric($index_no_substring1);
         $condition2=ctype_alpha ( $index_no_substring2 );
 
         /////////////////  is to be added later, because of ease
-//        DB::statement("Call InsertStudent(?,?,?,?,?,?,?,?)",[$index_no,$email,$first_name,$last_name,$gender,$batch,$dob,$pwd]);
-//        return 1;
+        DB::statement("Call InsertStudent(?,?,?,?,?,?,?,?)",[$index_no,$email,$first_name,$last_name,$gender,$batch,$dob,$pwd]);
+        return 1;
 
         if(!$condition1 or !$condition2){
             return view('students.register', ['customMessage' => 'index number you entered is not valid']);
         }
 
-        // to check the uniqueness of index number
+
         $checkIndexNoQuery = DB::select('select * from students where index_no = ?', [$index_no]);
         if ($checkIndexNoQuery != null) {
             return view('students.register', ['customMessage' => 'the index_no you entered is already exists, check and enter your details again']);
         }
 
-        // to check the uniqueness of email
+
         $checkEmailQuery = DB::select('select id from users where email = ?', [$email]);
         if ($checkEmailQuery != null) {
             return view('students.register', ['customMessage' => 'email is already acquired, try again']);
         }
 
-        // to update user table
-        // becoz , first one is not the best practice
-//         $line1="insert into users (email,password,role) values ('$email','$pwd','$role')";
-        $line1 = "insert into users (email,password,role) values (?,?,?)";
-        DB::statement($line1, [$email, $pwd, $role]);
 
-        //to fetch id, because there is no other way to get that foreign key
-        $id1 = DB::select('select id from users where email = ?', [$email]);
-        $id = null;
-        foreach ($id1 as $user) {
-            $id = $user->id;
-        }
+        //DB::statement("Call InsertStudent(?,?,?,?,?,?,?,?)",[$index_no,$email,$first_name,$last_name,$gender,$batch,$dob,$pwd]);
 
-
-        // to update student table
-        // first one is  created by concatanating, abd it is not the best practice, Thats y second one
-        // $line2= "insert into students (index_no, first_name, last_name,gender,faculty,user_id,dob) values ('$index_no','$first_name','$last_name','$gender','$faculty','$id','$dob')";
-
-        $line2 = "insert into students (index_no, first_name, last_name,gender,user_id,dob,batch) values (?,?,?,?,?,?,?)";
-        DB::statement($line2, [$index_no, $first_name, $last_name, $gender, $id, $dob, $batch]);
-
-        return view('user_login', ['customMessage' => 'registered successfully. now log in to proceed']);
-    }
+//        $line1 = "insert into users (email,password,role) values (?,?,?)";
+//        DB::statement($line1, [$email, $pwd, $role]);
+//
+//        //to fetch id, because there is no other way to get that foreign key
+//        $id1 = DB::select('select id from users where email = ?', [$email]);
+//        $id = null;
+//        foreach ($id1 as $user) {
+//            $id = $user->id;
+//        }
+//
+//
+//        // to update student table
+//
+//        $line2 = "insert into students (index_no, first_name, last_name,gender,user_id,dob,batch) values (?,?,?,?,?,?,?)";
+//        DB::statement($line2, [$index_no, $first_name, $last_name, $gender, $id, $dob, $batch]);
+//
+       return view('user_login', ['customMessage' => 'registered successfully. now log in to proceed']);
+  }
 }
