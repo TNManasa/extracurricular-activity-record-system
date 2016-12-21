@@ -49,7 +49,7 @@
                 <div class="panel-body">
                     <ul class="list-group">
                         @foreach($organizations as $organization)
-                            <li class="list-group-item"><a href="{{ route('admin.organization-profile', [$organization->id]) }}">{{ $organization->name }}</a></li>
+                            <li class="list-group-item"><img src="{{route('organizations.get-logo',['logo_name'=>$organization->name])}}" style="width: 40px; height: 40px">&nbsp;&nbsp;<a href="{{ route('admin.organization-profile', [$organization->id]) }}">{{ $organization->name }}</a></li>
                         @endforeach
                     </ul>
                 </div>
