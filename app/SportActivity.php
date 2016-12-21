@@ -10,6 +10,7 @@ class SportActivity
     public $sport_id;
     public $role;
     public $sport_name;
+    public $activity; // activity object
 
     public static function getAll()
     {
@@ -22,6 +23,7 @@ class SportActivity
                 $a->sport_id = $sport_activity->sport_id;
                 $a->role = $sport_activity->role;
                 $a->sport_name = Sport::findById($a->sport_id);
+                $a->activity = Activity::findById($a->activity_id);
                 array_push($sport_activities, $a);
             }
             return $sport_activities;
@@ -44,6 +46,7 @@ class SportActivity
                 $sport_activity->sport_id = $a->sport_id;
                 $sport_activity->role = $a->role;
                 $sport_activity->sport_name = Sport::findById($a->sport_id)->name;
+                $sport_activity->activity = Activity::findById($a->id);
                 return $sport_activity;
             }
         } catch (Exception $e) {

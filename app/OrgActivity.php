@@ -11,6 +11,7 @@ class OrgActivity
     public $project_name;
     public $role;
     public $org_name;
+    public $activity; // activity object
 
 
     public static function getAll()
@@ -23,6 +24,7 @@ class OrgActivity
             $a->org_id = $org_activity->org_id;
             $a->project_name = $org_activity->project_name;
             $a->role = $org_activity->role;
+            $a->activity = Activity::findById($a->activity_id);
 
             array_push($org_activities, $a);
         }
@@ -38,6 +40,8 @@ class OrgActivity
         $org_activity->project_name = $a->project_name;
         $org_activity->role = $a->role;
         $org_activity->org_name = Organization::findById($a->org_id)->name;
+        $org_activity->activity = Activity::findById($a->id);
+
         return $org_activity;
     }
 

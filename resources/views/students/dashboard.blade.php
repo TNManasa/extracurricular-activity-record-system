@@ -35,29 +35,39 @@
             <h3>My Activities</h3>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-3">
-            <h4>Sports</h4>
 
-            <ul class="list-group">
-                @foreach($sports as $sport)
-                    <li class="list-group-item">{{ $sport->sport_name }}</li>
-                @endforeach
-            </ul>
+    <div>
+        <h3>Sports</h3>
+        <div class="row">
+        @foreach($sports as $sport)
+                <div class="col-md-4">
+                    <ul class="list-group">
+                        <li class="list-group-item"><strong>{{ $sport->sport_name }}</strong></li>
+                        <li class="list-group-item">Role: {{ $sport->role }}</li>
+                        <li class="list-group-item">Start Date: {{ $sport->activity->start_date }}</li>
+                        <li class="list-group-item">End Date: @if($sport->activity->end_date == 1) Present @else {{ $sport->activity->end_date }} @endif</li>
+                        <li class="list-group-item">Effort: {{ $sport->activity->effort }}</li>
+                        <li class="list-group-item">Description: {{ $sport->activity->description }}</li>
+                        <li class="list-group-item">Image: @if($sport->activity->image) {{ $sport->activity->image }} @else No Image @endif</li>
+                    </ul>
+                </div>
+        @endforeach
         </div>
-        <div class="col-md-3">
-            <h4>Organizations</h4>
-            <ul class="list-group">
-                @foreach($organizations as $organization)
-                    <li class="list-group-item">{{ $organization->org_name }}</li>
-                @endforeach
-            </ul>
-        </div>
-        <div class="col-md-3">
-            <h4>Competitions</h4>
-        </div>
-        <div class="col-md-3">
-            <h4>Achievements</h4>
+
+        <br>
+        <h3>Organizations/Societies</h3>
+        <div class="row">
+        @foreach($organizations as $organization)
+                <div class="col-md-4">
+                    <ul class="list-group">
+                        <li class="list-group-item"><strong>{{ $organization->org_name }}</strong></li>
+                        <li class="list-group-item">Project: {{ $organization->project_name }}</li>
+                        <li class="list-group-item">Role: {{ $organization->role }}</li>
+                        <li class="list-group-item">Start Date: {{ $organization->activity->start_date }}</li>
+                        <li class="list-group-item">End Date: @if(@$organization->activity->end_date == 1) Present @else {{ $organization->activity->end_date }} @endif</li>
+                    </ul>
+                </div>
+        @endforeach
         </div>
     </div>
 @stop
