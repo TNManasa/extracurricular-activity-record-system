@@ -9,6 +9,7 @@ class CompetitionActivity {
     public $activity_id;
     public $competition_name;
     public $status;
+    public $activity;
 
     public static function getAll()
     {
@@ -20,6 +21,7 @@ class CompetitionActivity {
                 $a->activity_id = $competition_activity->id;
                 $a->competition_name = $competition_activity->competition_name;
                 $a->status = $competition_activity->status;
+                $a->activity = Activity::findById($a->activity_id);
 
                 array_push($competition_activities, $a);
             }
@@ -29,13 +31,15 @@ class CompetitionActivity {
         }
     }
 
-    public function findById($id)
+    public static function findById($id)
     {
-        $a = DB::select('select * from competition_activities where id=?', [$id]);
+        $a = DB::select('select * from competition_activities where id=?', [$id])[0];
         $competition_activity = new CompetitionActivity();
         $competition_activity->activity_id = $a->id;
         $competition_activity->competition_name = $a->competition_name;
         $competition_activity->status = $a->status;
+        $competition_activity->activity = Activity::findById($a->id);
+
         return $competition_activity;
     }
 

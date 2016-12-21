@@ -30,10 +30,14 @@ class StudentsController extends Controller
         $student = Student::findByUserId(Auth::User()->id);
         $sports = Student::getSportsOfStudent($student->index_no);
         $organizations = Student::getOrganizationsOfStudent($student->index_no);
+        $achievements = Student::getAchievementsOfStudent($student->index_no);
+        $competitions = Student::getCompetitionsOfStudent($student->index_no);
         return view('students.dashboard', [
             'student' => $student,
             'sports' => $sports,
-            'organizations' => $organizations
+            'organizations' => $organizations,
+            'achievements' => $achievements,
+            'competitions' => $competitions
         ]);
     }
 

@@ -3,6 +3,7 @@
 namespace App;
 
 use DB;
+use Symfony\Component\HttpFoundation\AcceptHeaderItem;
 
 class Achievement{
 
@@ -18,13 +19,14 @@ class Achievement{
             $a = new Achievement();
             $a->activity_id = $achievement->id;
             $a->achievement_name= $achievement->achievement_name;
+            $a->activity = Activity::findById($a->activity_id);
 
             array_push($achievements, $a);
         }
         return $achievements;
     }
 
-    public function findById($id)
+    public static function findById($id)
     {
         try{
             $a = DB::select('select * from achievements where id=?', [$id])[0];

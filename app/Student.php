@@ -107,7 +107,7 @@ class Student
 //                $o = new OrgActivity();
 //                $o->activity_id = $org_activity->id;
 //                $o->org_id = $org_activity->org_id;
-//                $o->project_name = $org_activity->project_name;
+//                $o->project_name = $org_activity->project_name
 //                $o->role = $org_activity->role;
                 $o = OrgActivity::findById($org_activity->id);
                 array_push($org_activities, $o);
@@ -122,7 +122,7 @@ class Student
             $raw_achievements = DB::select('select * from activities where student_id=? and activity_type=?', [$index_no, 4]);
             $achievements = [];
             foreach ($raw_achievements as $result){
-                $a = Activity::findById($result->id);
+                $a = Achievement::findById($result->id);
                 array_push($achievements, $a);
             }
 
@@ -133,6 +133,17 @@ class Student
     }
 
     public static function getCompetitionsOfStudent($index_no){
+        try{
+            $raw_competitions = DB::select('select * from activities where student_id=? and activity_type=?', [$index_no, 3]);
+            $competitions = [];
+            foreach ($raw_competitions as $result){
+                $a = CompetitionActivity::findById($result->id);
+                array_push($competitions, $a);
+            }
 
+            return $competitions;
+        }catch(Exception $e){
+            return [];
+        }
     }
 }
