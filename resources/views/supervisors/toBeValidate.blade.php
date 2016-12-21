@@ -14,7 +14,7 @@
 @section('content')
 
 
-
+    <a href="/pending" class="btn btn-primary">Back</a>
 
     <div class="container">
         <div class="col-md-10">

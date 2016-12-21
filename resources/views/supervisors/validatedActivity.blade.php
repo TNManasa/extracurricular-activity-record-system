@@ -13,7 +13,7 @@
 
 @section('content')
 
-
+    <a href="/validated" class="btn btn-primary">Back</a>
 
 
     <div class="container">
