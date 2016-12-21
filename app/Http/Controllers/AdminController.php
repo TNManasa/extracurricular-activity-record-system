@@ -57,12 +57,14 @@ class AdminController extends Controller
         $sports = Student::getSportsOfStudent($index_no);
         $organizations = Student::getOrganizationsOfStudent($index_no);
         $achievements = Student::getAchievementsOfStudent($index_no);
+        $competitions = Student::getCompetitionsOfStudent($index_no);
 
         return view('admin.student_profile',[
             'student' => $student,
             'sports' => $sports,
             'organizations' => $organizations,
-            'achievements' => $achievements
+            'achievements' => $achievements,
+            'competitions' => $competitions
         ]);
     }
 

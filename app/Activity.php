@@ -25,6 +25,7 @@ class Activity
     public $activity_name;
     public $role;
     public $supervisor_name;
+    public $validation;     // validation object
 
     public static function getAll()
     {
@@ -44,6 +45,7 @@ class Activity
                 $a->effort = $activity->effort;
                 $a->description = $activity->description;
                 $a->image = $activity->image;
+                $a->validation = Validation::findByID($activity->id);
 
                 array_push($activities, $a);
             }
@@ -69,6 +71,7 @@ class Activity
             $activity->effort = $a->effort;
             $activity->description = $a->description;
             $activity->image=$a->image;
+            $activity->validation = Validation::findByID($a->id);
             return $activity;
         }catch(Exception $e){
             return [];

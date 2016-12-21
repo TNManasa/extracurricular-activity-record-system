@@ -51,6 +51,18 @@
                         <li class="list-group-item">Description: {{ $sport->activity->description }}</li>
                         <li class="list-group-item">
                             Image: @if($sport->activity->image) {{ $sport->activity->image }} @else No Image @endif</li>
+                        <li class="list-group-item">
+                            Validation:
+                            @if($sport->activity->validation == null)
+                                Pending
+                            @else
+                                @if($sport->activity->validation->is_validated == 1)
+                                    Validated
+                                @elseif($sport->activity->validation->is_validated==2)
+                                    Rejected
+                                @endif
+                            @endif
+                        </li>
                     </ul>
                 </div>
             @endforeach
@@ -72,6 +84,18 @@
                         <li class="list-group-item">Description: {{ $organization->activity->description }}</li>
                         <li class="list-group-item">
                             Image: @if($organization->activity->image) {{ $organization->activity->image }} @else No Image @endif</li>
+                        <li class="list-group-item">
+                            Validation:
+                            @if($organization->activity->validation == null)
+                                Pending
+                            @else
+                                @if($organization->activity->validation->is_validated == 1)
+                                    Validated
+                                @elseif($organization->activity->validation->is_validated==2)
+                                    Rejected
+                                @endif
+                            @endif
+                        </li>
                     </ul>
                 </div>
             @endforeach
@@ -90,6 +114,18 @@
                         <li class="list-group-item">Description: {{ $achievement->activity->description }}</li>
                         <li class="list-group-item">
                             Image: @if($achievement->activity->image) {{ $achievement->activity->image }} @else No Image @endif</li>
+                        <li class="list-group-item">
+                            Validation:
+                            @if($achievement->activity->validation == null)
+                                Pending
+                            @else
+                                @if($achievement->activity->validation->is_validated == 1)
+                                    Validated
+                                @elseif($achievement->activity->validation->is_validated==2)
+                                    Rejected
+                                @endif
+                            @endif
+                        </li>
                     </ul>
                 </div>
             @endforeach
@@ -110,6 +146,18 @@
                         <li class="list-group-item">Description: {{ $competition->activity->description }}</li>
                         <li class="list-group-item">
                             Image: @if($competition->activity->image) {{ $competition->activity->image }} @else No Image @endif</li>
+                        <li class="list-group-item">
+                            Validation:
+                            @if($competition->activity->validation == null)
+                                Pending
+                            @else
+                                @if($competition->activity->validation->is_validated == 1)
+                                    Validated
+                                @elseif($competition->activity->validation->is_validated==2)
+                                    Rejected
+                                @endif
+                            @endif
+                        </li>
                     </ul>
                 </div>
             @endforeach
