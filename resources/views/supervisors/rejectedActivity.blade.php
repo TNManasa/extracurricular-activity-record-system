@@ -27,7 +27,11 @@
     </div>
 
 
+    <?php $ed="Present" ?>
 
+    @if(!($a[0]->end_date==1)){
+    {{$ed=$a[0]->end_date}}
+    }@endif
 
 
     {{-- @foreach($activity as $a)--}}
@@ -48,7 +52,7 @@
         <li class="list-group-item">Description: <h4>{{$a[0]->description}} </h4> </li>
         <li class="list-group-item">
             Duration:
-            <h4>From {{$a[0]->start_date}} To {{$a[0]->end_date}} </h4>
+            <h4>From {{$a[0]->start_date}} To {{$ed}} </h4>
         </li>
 
         <li class="list-group-item">Rating  : Rejected </li>

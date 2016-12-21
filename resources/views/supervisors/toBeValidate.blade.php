@@ -26,11 +26,17 @@
         </div>
     </div>
 
-
+    <?php $ed="Present"?>
 
 
 
     {{-- @foreach($activity as $a)--}}
+
+    @if(!($a->end_date==1)){
+    {{$ed=$a->end_date}}
+    }@endif
+
+
     @if($a->activity_type==1)
         <?php $b = "Organizational Activity"?>
     @elseif($a->activity_type==2)
@@ -48,7 +54,7 @@
         <li class="list-group-item">Description: <h4>{{$a->description}} </h4> </li>
         <li class="list-group-item">
             Duration:
-            <h4>From {{$a->start_date}} To {{$a->end_date}} </h4>
+            <h4>From {{$a->start_date}} To {{$ed}} </h4>
         </li>
 
     </ul>
@@ -91,7 +97,7 @@
 
 
         <div>
-            <button type="submit" class="btn btn-success" name="reject">Reject</button>
+            <button type="submit" class="btn btn-success" name="reject" onclick='return confirm("Do you really want to reject this activity ?");'>Reject</button>
             <input type="hidden" name="_token" value="{{ Session::token() }}">
         </div>
     </form>
