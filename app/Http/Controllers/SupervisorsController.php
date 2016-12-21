@@ -21,7 +21,7 @@ class SupervisorsController extends Controller
        // $pendingActivities= DB::select('select * from activities WHERE activities.id NOT IN (SELECT id FROM activities RIGHT JOIN validations on activities.id=validations.validation_id)');
 
       
-      
+
        $pendingActivities= Activity::getPendingActivities();
         return view('supervisors.pending_activity', compact('pendingActivities'));
 
@@ -50,12 +50,12 @@ class SupervisorsController extends Controller
     }
 
     public function validatedActivityShow($id){
-        //$a=Activity::showPendingActivity($id);
+        $a=Activity::showPendingActivity($id);
         
-        //return view('supervisors.validatedActivity',compact('a'));
+        return view('supervisors.validatedActivity',compact('a'));
 
-        $supervisor_name= DB::select('select concat(first_name," ",last_name) as name from supervisors where emp_id =?',["140B"]);
-        return $supervisor_name[0]->name;
+       // $supervisor_name= DB::select('select concat(first_name," ",last_name) as name from supervisors where emp_id =?',["140B"]);
+        //return $supervisor_name[0]->name;
     }
 
 

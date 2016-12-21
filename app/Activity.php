@@ -160,6 +160,7 @@ class Activity
                 $b->institute_name="";
             }
             if(!($isValidated==null)){
+                $b->supervisor_name=Supervisor::getNameByID($isValidated->supervisor_id);
                 $array=array();
                 array_push($array,$b );
                 array_push($array,$isValidated );
