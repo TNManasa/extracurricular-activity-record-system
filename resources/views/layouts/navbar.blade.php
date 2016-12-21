@@ -32,7 +32,10 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Logged in as Supervisor<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             {{--<li><a href="{{ route('students.dashboard', [Student::findById(Auth::User()->id)])->index_no }}">Student Dashboard</a></li>--}}
-                            <li><a href="{{ route('admin.index') }}">Supervisor Controls</a></li>
+                            <li><a href="{{ url('/pending') }}">Pending Activities</a></li>
+                            <li><a href="{{ url('/validated') }}">Validated Activities</a></li>
+                            <li><a href="{{ url('/rejected') }}">Rejected Activities</a></li>
+
                             <li role="separator" class="divider"></li>
                         </ul>
                     </li>
