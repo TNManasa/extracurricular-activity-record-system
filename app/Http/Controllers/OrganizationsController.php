@@ -125,11 +125,25 @@ class OrganizationsController extends Controller
         $role=$request['role'];
         $project_name=$request['project_name'];
 
-        DB::statement('select InsertOrganizationActivity(?,?,?,?,?,?,?,?,?,?,?)', [$student_id, $activity_type, $start_date,$end_date,$effort, $description, $image,$org_id,$role,$project_name,@success]);
-        $success=DB::select('select @success');
-        dd($success);
+        $success_array=DB::select('call InsertOrganizationActivity(?,?,?,?,?,?,?,?,?,?)', [$student_id, $activity_type, $start_date,$end_date,$effort, $description, $image,$org_id,$role,$project_name]);
+        $var_success='@success';
+        $var_id='@id';
+        $success = $success_array[0]->$var_success;
+        $id = $success_array[0]->$var_id;
 
-        //return redirect()->route('students.dashboard');
+        if($success==1){
+            if($image==1){
+                $image_name=$id.'.'.$request->file('image')->getClientOriginalExtension();
+
+                if(!is_dir(base_path() . '/storage/app/activities/')){
+                    mkdir(base_path() . '/storage/app/activities/',0777,true);
+                }
+
+                $request->file('image')->move(base_path() . '/storage/app/activities/', $image_name);
+            }
+        }
+
+        return redirect()->route('students.dashboard');
     }
 
 }
