@@ -14,10 +14,10 @@ class CreateSupervisorsTable extends Migration
     public function up()
     {
         Schema::create('supervisors', function (Blueprint $table) {
-            $table->string('emp_id');
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('position');
+            $table->string('emp_id', 10);
+            $table->string('first_name', 60);
+            $table->string('last_name', 60);
+            $table->string('position', 30);
             $table->integer('user_id')->unsigned();
 
             $table->primary('emp_id');

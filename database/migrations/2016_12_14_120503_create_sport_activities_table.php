@@ -16,7 +16,7 @@ class CreateSportActivitiesTable extends Migration
         Schema::create('sport_activities', function (Blueprint $table) {
             $table->integer('id')->unsigned();
             $table->integer('sport_id')->unsigned();
-            $table->string('role');
+            $table->string('role', 30);
 
             $table->primary('id');
             $table->foreign('id')->references('id')->on('activities');

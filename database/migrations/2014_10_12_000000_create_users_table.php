@@ -15,10 +15,10 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('email')->unique();
+            $table->string('email', 60)->unique();
             $table->string('password');
-            $table->string('role');
-            $table->string('rank')->nullable();
+            $table->string('role', 60);
+            $table->string('rank', 30)->nullable();
             $table->boolean('flag')->default(0);
             // flag = 0 => No problem
             // flag = 1 => Problematic User

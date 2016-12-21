@@ -15,7 +15,7 @@ class CreateSportsTable extends Migration
     {
         Schema::create('sports', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('sport_name');
+            $table->string('sport_name', 30);
         });
     }
 

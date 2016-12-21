@@ -53,69 +53,6 @@
         </div> {{--End of Column--}}
     </div>{{--End of Row--}}
 
-    {{--<div class="row">--}}
-        {{--<div class="col-md-6">--}}
-            {{--<div class="panel panel-default">--}}
-                {{--<div class="panel-heading">--}}
-                    {{--<h4>Sports</h4>--}}
-                {{--</div>--}}
-                {{--<div class="panel-body">--}}
-                    {{--<ul class="list-group">--}}
-                        {{--@foreach($sports as $sport)--}}
-                            {{--<li class="list-group-item">{{ $sport->sport_name }}</li>--}}
-                        {{--@endforeach--}}
-                    {{--</ul>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
-
-    {{--<div class="row">--}}
-        {{--<div class="col-md-6">--}}
-            {{--<div class="panel panel-default">--}}
-                {{--<div class="panel-heading">--}}
-                    {{--<h4>Organizations/Societies</h4>--}}
-                {{--</div>--}}
-                {{--<div class="panel-body">--}}
-                    {{--<ul class="list-group">--}}
-                        {{--@foreach($organizations as $organization)--}}
-                            {{--<li class="list-group-item">{{ $organization->org_name }}</li>--}}
-                        {{--@endforeach--}}
-                    {{--</ul>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
-
-    {{--<div class="row">--}}
-        {{--<div class="col-md-6">--}}
-            {{--<div class="panel panel-default">--}}
-                {{--<div class="panel-heading">--}}
-                    {{--<h4>Achievements</h4>--}}
-                {{--</div>--}}
-                {{--<div class="panel-body">--}}
-                    {{--<table class="table table-bordered table-responsive">--}}
-
-                    {{--</table>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
-
-    {{--<div class="row">--}}
-        {{--<div class="col-md-6">--}}
-            {{--<div class="panel panel-default">--}}
-                {{--<div class="panel-heading">--}}
-                    {{--<h4>Competitions</h4>--}}
-                {{--</div>--}}
-                {{--<div class="panel-body">--}}
-                    {{--<table class="table table-bordered table-responsive">--}}
-
-                    {{--</table>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <h3>Student's Activities</h3>
