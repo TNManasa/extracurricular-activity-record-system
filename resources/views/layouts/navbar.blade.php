@@ -47,8 +47,8 @@
                             {{--<li><a href="{{ route('students.dashboard', [Student::findById(Auth::User()->id)])->index_no }}">Student Dashboard</a></li>--}}
                             <li><a href="{{ route('admin.index') }}">Admin Dashboard</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="{{ route('admin.all-students') }}">All Students</a></li>
-                            <li><a href="{{ route('admin.all-organizations') }}">All Organizations</a></li>
+{{--                            <li><a href="{{ route('admin.all-students') }}">All Students</a></li>--}}
+{{--                            <li><a href="{{ route('admin.all-organizations') }}">All Organizations</a></li>--}}
 
                         </ul>
                     </li>
