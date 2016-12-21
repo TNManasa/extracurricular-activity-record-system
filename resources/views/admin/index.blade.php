@@ -23,8 +23,8 @@
         </div>
         <div class="col-md-6">
             <a href="{{ route('sports.new-sport') }}" class="btn btn-default">Add New Sport</a>
-            <a href="{{ route('organizations.new-organization') }}" class="btn btn-default">Add New Organization
-            </a>
+            <a href="{{ route('organizations.new-organization') }}" class="btn btn-default">Add New Organization</a>
+            <a href="{{ route('supervisors.register') }}" class="btn btn-default">Add Supervisor</a>
         </div>
     </div>
 

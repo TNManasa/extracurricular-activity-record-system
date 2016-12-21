@@ -120,7 +120,7 @@ class SupervisorsController extends Controller
             'email' => 'required|email',
             'first_name' => 'required|alpha',
             'last_name' => 'required|alpha',
-            'position' => 'required|alpha',
+            'position' => 'required',
             'password' => 'required|same:password_confirmation'
         ]);
 
@@ -163,8 +163,8 @@ class SupervisorsController extends Controller
         $line2= "insert into supervisors (emp_id, first_name, last_name,position,user_id) values (?,?,?,?,?)";
         DB::insert($line2,[$emp_id,$first_name,$last_name,$position,$id]);
 
-        return 'success';
-
+//        return 'success';
+        return redirect()->route('admin.dashboard');
     }
 
 }

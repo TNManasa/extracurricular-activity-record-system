@@ -64,12 +64,12 @@ Route::post('/students/addDetails',[
 Route::get('/supervisors/register', [
     'uses' => 'SupervisorsController@newSupervisor',
     'as' => 'supervisors.register'
-])->middleware('auth', 'checkSupervisor');
+])->middleware('auth', 'checkAdmin');
 
 Route::post('/supervisors/addDetails', [
     'uses' => 'SupervisorsController@addNewSupervisor',
     'as' => 'supervisor.addDetails'
-])->middleware('auth', 'checkSupervisor');
+])->middleware('auth', 'checkAdmin');
 
 // End of Supervisor Routes
 
@@ -218,37 +218,37 @@ Route::group(['middleware' => ['auth', 'checkSupervisor']], function(){
 Route::get('admin', [
     'uses' => 'AdminController@getIndex',
     'as' => 'admin.index'
-]);
+])->middleware('auth', 'checkAdmin');
 
 Route::get('admin/all-students', [
     'uses' => 'AdminController@getAllStudents',
     'as' => 'admin.all-students',
-]);
+])->middleware('auth', 'checkAdmin');
 
 Route::get('admin/all-supervisors', [
     'uses' => 'AdminController@getAllSupervisors',
     'as' => 'admin.all-supervisors'
-]);
+])->middleware('auth', 'checkAdmin');
 
 Route::get('admin/flag-user/{user_id}', [
     'uses' => 'AdminController@flagUser',
     'as' => 'admin.flag-user'
-]);
+])->middleware('auth', 'checkAdmin');
 
 Route::get('admin/student_profile/{index_no}',[
     'uses' => 'AdminController@getStudentProfile',
     'as' => 'admin.student-profile'
-]);
+])->middleware('auth', 'checkAdmin');
 
 Route::get('admin/sport/{sport_id}', [
     'uses' => 'AdminController@getSportProfile',
     'as' => 'admin.sport-profile',
-]);
+])->middleware('auth', 'checkAdmin');
 
 Route::get('admin/organization{organization_id}', [
     'uses' => 'AdminController@getOrganizationProfile',
     'as' => 'admin.organization-profile'
-]);
+])->middleware('auth', 'checkAdmin');
 
 // end of Admin Routes
 
