@@ -26,6 +26,9 @@ IF
 	OR (SELECT @x4 REGEXP '[[:alpha:]]+')
 	OR (SELECT @x5 REGEXP '[[:alpha:]]+')
 	OR (SELECT @x6 REGEXP '[[:alpha:]]+')
+	OR NEW.gender<1
+	OR NEW.gender>2
+	
 THEN
 	SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'Cannot add or update row:that kind of index doesnot exist';
