@@ -16,6 +16,8 @@
             </div>
     </div>
 
+        <?php $ed="present"?>
+
     <table class="table">
         <thead>
         <tr>
@@ -30,6 +32,10 @@
         </thead>
         <tbody>
         @foreach($pendingActivities as $a)
+
+            @if(!($a->end_date==1)){
+            {{$ed=$a->end_date}}
+            }@endif
 
             @if($a->activity_type==1)
                 <?php $b="Organizational Activity"?>
@@ -46,7 +52,7 @@
 
             <td>{{$a->student_id}}</td>
             <td>{{$a->start_date}}</td>
-            <td>{{$a->end_date}}</td>
+            <td>{{$ed}}</td>
             <td>{{$b}}</td>
             <td><a href="/pending_activity/{{$id}}" class=" btn btn-primary"  >View Activity </a></td>
 

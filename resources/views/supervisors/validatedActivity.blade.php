@@ -27,10 +27,14 @@
     </div>
 
 
-
+    <?php $ed="Present"?>
 
 
     {{-- @foreach($activity as $a)--}}
+    @if(!($a[0]->end_date==1)){
+    {{$ed=$a[0]->end_date}}
+    }@endif
+
     @if($a[0]->activity_type==1)
         <?php $b = "Organizational Activity"?>
     @elseif($a[0]->activity_type==2)
@@ -48,7 +52,7 @@
         <li class="list-group-item">Description: <h4>{{$a[0]->description}} </h4> </li>
         <li class="list-group-item">
             Duration:
-            <h4>From {{$a[0]->start_date}} To {{$a[0]->end_date}} </h4>
+            <h4>From {{$a[0]->start_date}} To {{$ed}} </h4>
         </li>
 
         <li class="list-group-item">Rating  : {{$a[1]->rating}} </li>
