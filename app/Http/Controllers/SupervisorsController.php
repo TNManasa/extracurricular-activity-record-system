@@ -74,6 +74,28 @@ class SupervisorsController extends Controller
 
     }
 
+
+    public function activityReject(Request $request, $id){
+        $input=$request->all();
+
+        $rd=$input['r_description'];
+        $d=date("Y-m-d");
+
+
+        DB::insert('insert into validations (validation_id,rating,validation_description,supervisor_id,validated_date,is_validated ) values (?,?,?,?,?,?)', [$id,0,$rd,'140B',$d,0]);
+
+
+        $pendingActivities= DB::select('select * from activities WHERE activities.id NOT IN (SELECT id FROM activities RIGHT JOIN validations on activities.id=validations.validation_id)');
+
+        return view('supervisors.pending_activity', compact('pendingActivities'));
+
+    }
+
+
+
+
+
+
     public function newSupervisor()
     {
         return view('supervisors.register');

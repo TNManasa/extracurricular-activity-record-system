@@ -84,7 +84,7 @@
         </div>
 
         <div class="input">
-            <input type="text" name="v_description">
+            <input type="text" name="r_description">
         </div>
 
 
