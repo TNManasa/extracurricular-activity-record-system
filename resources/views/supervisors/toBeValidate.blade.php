@@ -21,9 +21,9 @@
     <?php $ed = "Present"?>
     {{-- @foreach($activity as $a)--}}
 
-    @if(!($a->end_date==1)){
-    {{$ed=$a->end_date}}
-    }@endif
+    @if(!($a->end_date==1))
+    <?php $ed=$a->end_date?>
+    @endif
 
 
     @if($a->activity_type==1)
@@ -53,7 +53,7 @@
     {{--@endforeach--}}
     @if($a->image==1)
         <div class="image">
-            <img src="{{route('activities.get-image',['activity_id'=>$a->id])}}">
+            <img src="{{route('activities.get-image',['activity_id'=>$a->id])}}" style="width: 500px;height: 500px">
         </div>
     @endif
 
@@ -153,7 +153,7 @@
         }
 
         if(valid){
-            return confirm("Are you sure you want to add this activity ?");
+            return confirm("Are you sure you want to validate this activity ?");
         }else{
             return false;
         }

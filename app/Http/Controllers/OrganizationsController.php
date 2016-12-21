@@ -125,6 +125,10 @@ class OrganizationsController extends Controller
         $role=$request['role'];
         $project_name=$request['project_name'];
 
+        if($project_name===""){
+            $project_name=null;
+        }
+
         $success_array=DB::select('call InsertOrganizationActivity(?,?,?,?,?,?,?,?,?,?)', [$student_id, $activity_type, $start_date,$end_date,$effort, $description, $image,$org_id,$role,$project_name]);
         $var_success='@success';
         $var_id='@id';
