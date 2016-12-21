@@ -19,8 +19,8 @@
     <div class="container">
         <div class="col-md-10">
             <div class="jumbotron">
-                <h1>Role: {{$a->role}}</h1>
-                <h3>Project Name: {{$a->institute_name}}</h3>
+                <h1> {{$a->role}}</h1>
+                <h3> {{$a->institute_name}}</h3>
                 <h4>University of Moratuwa </h4>
             </div>
         </div>
