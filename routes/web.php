@@ -1,7 +1,7 @@
 <?php
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome-page.index');
 })->name('welcome');
 /*
  * Convention for naming the routes: use lowercase letters, hyphens, periods, Use Plurals

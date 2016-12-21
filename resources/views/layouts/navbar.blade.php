@@ -21,8 +21,9 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Logged in as Student<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         {{--<li><a href="{{ route('students.dashboard', [Student::findById(Auth::User()->id)])->index_no }}">Student Dashboard</a></li>--}}
-                        <li><a href="{{ route('admin.index') }}">Student Controls</a></li>
+                        <li><a href="{{ route('activities.new-activity') }}">Add New Activity</a></li>
                         <li role="separator" class="divider"></li>
+                        <li><a href="{{ route('students.dashboard') }}">Student Dashboard</a></li>
                     </ul>
                 </li>
                     {{--Logged in as Supervisor--}}
@@ -41,8 +42,11 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Logged in as Admin<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             {{--<li><a href="{{ route('students.dashboard', [Student::findById(Auth::User()->id)])->index_no }}">Student Dashboard</a></li>--}}
-                            <li><a href="{{ route('admin.index') }}">Admin Controls</a></li>
+                            <li><a href="{{ route('admin.index') }}">Admin Dashboard</a></li>
                             <li role="separator" class="divider"></li>
+                            <li><a href="{{ route('admin.all-students') }}">All Students</a></li>
+                            <li><a href="{{ route('admin.all-organizations') }}">All Organizations</a></li>
+
                         </ul>
                     </li>
                     {{--Not logged in--}}
@@ -64,18 +68,18 @@
                 {{--<button type="submit" class="btn btn-default">Submit</button>--}}
             {{--</form>--}}
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Link</a></li>
+                <li><a href="{{ route('welcome') }}">Go back to Welcome Page</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                    @if(Auth::check())
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Logout <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        @if(Auth::check())
                             <li><a href="{{ route('logout') }}">Logout</a></li>
                             <li role="separator" class="divider"></li>
-                        @else
+                    @else
                             <li><a href="{{ route('user.login') }}">Sign In</a></li>
                             <li><a href="{{ route('students.register') }}">Register as Student</a></li>
-                        @endif
                     </ul>
+                    @endif
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->
