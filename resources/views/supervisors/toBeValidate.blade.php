@@ -97,7 +97,7 @@
 
 
         <div>
-            <button type="submit" class="btn btn-success" name="reject">Reject</button>
+            <button type="submit" class="btn btn-success" name="reject" onclick='return confirm("Do you really want to reject this activity ?");'>Reject</button>
             <input type="hidden" name="_token" value="{{ Session::token() }}">
         </div>
     </form>
