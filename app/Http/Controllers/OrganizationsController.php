@@ -67,6 +67,7 @@ class OrganizationsController extends Controller
 //            'start_date' => 'required'
 //        ]);
 
+        /*
         $activity = new Activity();
         // TODO: Attach the authenticated Student ID before saving
 
@@ -105,7 +106,30 @@ class OrganizationsController extends Controller
         $org_activity->project_name=$request['project_name'];
         OrgActivity::insert($org_activity);
 
-        return redirect()->route('students.dashboard');
+        */
+
+        //using function
+        $student_id = User::findStudentIndex(Auth::id());
+        $activity_type= 1;
+        $start_date=$request['start_date'];
+        $end_date=$request['end_date'];
+        $effort=$request['effort'];
+        $description=$request['description'];
+        $image=0;
+        if($request['image']==null){
+            $image=0;
+        }else{
+            $image=1;
+        }
+        $org_id=$request['name'];
+        $role=$request['role'];
+        $project_name=$request['project_name'];
+
+        DB::statement('select InsertOrganizationActivity(?,?,?,?,?,?,?,?,?,?,?)', [$student_id, $activity_type, $start_date,$end_date,$effort, $description, $image,$org_id,$role,$project_name,@success]);
+        $success=DB::select('select @success');
+        dd($success);
+
+        //return redirect()->route('students.dashboard');
     }
 
 }
