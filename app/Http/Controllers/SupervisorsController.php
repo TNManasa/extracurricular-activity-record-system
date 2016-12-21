@@ -58,7 +58,10 @@ class SupervisorsController extends Controller
         //return $supervisor_name[0]->name;
     }
 
-    
+    public function rejectedActivityShow($id){
+        $a=Activity::showPendingActivity($id);
+        return view('supervisors.rejectedActivity',compact('a'));
+    }
 
 
     public function activityValidate(Request $request, $id){
