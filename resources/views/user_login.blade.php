@@ -4,7 +4,8 @@
     User Login
 @stop
 
-@section('begin_body')
+
+@section('content')
     <div class="container">
         <div class="jumbotron">
             <h1>Login!</h1>
@@ -12,9 +13,6 @@
             <h4>University of Moratuwa - Department of Computer Science & Engineering</h4>
         </div>
     </div>
-@stop
-
-@section('content')
     <div class="row">
         <div class="col-md-6-offset-2">
             @if(count($errors)>0)

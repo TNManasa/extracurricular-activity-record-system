@@ -97,7 +97,7 @@
         <div class="container text-center">
             <div class="call-to-action">
                 <h2>Created by Elixir</h2>
-                <a href="http://startbootstrap.com/template-overviews/creative/" class="btn btn-default btn-xl sr-button">Created by GATHIKA :: MENUKA :: THEJAN :: SALAKA</a>
+                <a href="http://startbootstrap.com/template-overviews/creative/" class="btn btn-default btn-xl sr-button">GATHIKA :: MENUKA :: THEJAN :: SALAKA</a>
             </div>
         </div>
     </aside>
