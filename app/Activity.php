@@ -191,6 +191,8 @@ class Activity
             if($a->activity_type==1){
                 //$org=DB::select('select organization_name,project_name,role from organizations RIGHT JOIN (select org_id,project_name,role from org_activities where id=?) as t on organizations.id=t.org_id ',[$id]);
                 $org=DB::select('select organization_name,project_name,role from complete_org_activities where id=?',[$id]);
+
+//                dd($org);
                 $b->activity_name=$org[0]->project_name;
                 $b->role=$org[0]->role;
                 $b->institute_name=$org[0]->organization_name;
