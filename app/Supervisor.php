@@ -36,7 +36,7 @@ class Supervisor
     }
 
     public static function getNameByID($ID){
-        $supervisor_name= DB::select('select concat(first_name," ",last_name) as name from supervisors where emp_id =?',["140B"]);
+        $supervisor_name= DB::select('select concat(first_name," ",last_name) as name from supervisors where emp_id =?',[$ID]);
         $str= $supervisor_name[0]->name;
         return $str;
     }
