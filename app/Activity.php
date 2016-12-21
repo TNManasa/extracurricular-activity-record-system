@@ -133,7 +133,7 @@ class Activity
     }
 
     public static function getValidatedActivities(){
-        $v_activities= DB::select('select * from activities WHERE activities.id  IN (SELECT id FROM activities RIGHT JOIN validations on activities.id=validations.validation_id WHERE is_validated=1)');
+        $v_activities= DB::select('select * from activities WHERE activities.id  IN (SELECT id FROM validation_activities WHERE is_validated=1)');
         $validated_activities=array();
         foreach($v_activities as $activity){
             $b = new Activity();
@@ -152,7 +152,8 @@ class Activity
     }
 
     public static function getRejectedActivities(){
-        $v_activities= DB::select('select * from activities WHERE activities.id  IN (SELECT id FROM activities RIGHT JOIN validations on activities.id=validations.validation_id WHERE is_validated=0)');
+       // $v_activities= DB::select('select * from activities WHERE activities.id  IN (SELECT id FROM activities RIGHT JOIN validations on activities.id=validations.validation_id WHERE is_validated=0)');
+        $v_activities= DB::select('select * from activities WHERE activities.id  IN (SELECT id FROM validation_activities WHERE is_validated=0)');
         $validated_activities=array();
         foreach($v_activities as $activity){
             $b = new Activity();
@@ -189,7 +190,7 @@ class Activity
             $b->s_last_name=$a->last_name;
             if($a->activity_type==1){
                 //$org=DB::select('select organization_name,project_name,role from organizations RIGHT JOIN (select org_id,project_name,role from org_activities where id=?) as t on organizations.id=t.org_id ',[$id]);
-                $org=DB::select('select organization_name,project_name,role from complete_org_activities where id=',[$id]);
+                $org=DB::select('select organization_name,project_name,role from complete_org_activities where id=?',[$id]);
                 $b->activity_name=$org[0]->project_name;
                 $b->role=$org[0]->role;
                 $b->institute_name=$org[0]->organization_name;
