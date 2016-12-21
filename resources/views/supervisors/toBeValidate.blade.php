@@ -81,7 +81,7 @@
 
 
     </form>
-    <form method="post" action="{{$a->id}}/validate">
+    <form method="post" action="{{$a->id}}/validate" onsubmit="return validateForm()">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3>Validate the Activity </h3>
@@ -108,27 +108,27 @@
         <div class="btn-group btn-group-vertical" data-toggle="buttons">
             <div class="radio">
                 <label>
-                    <input type="radio" name="option" value="1">Very Low Effort</span>
+                    <input type="radio" name="option" value="1" id="option">Very Low Effort</span>
                 </label>
             </div>
             <div class="radio">
                 <label>
-                    <input type="radio" name="option" value="2"> Low Effort</span>
+                    <input type="radio" name="option" value="2" id="option"> Low Effort</span>
                 </label>
             </div>
             <div class="radio">
                 <label>
-                    <input type="radio" name="option" value="3"> Medium Effort</span>
+                    <input type="radio" name="option" value="3" id="option"> Medium Effort</span>
                 </label>
             </div>
             <div class="radio">
                 <label>
-                    <input type="radio" name="option" value="4"> High Effort</span>
+                    <input type="radio" name="option" value="4" id="option"> High Effort</span>
                 </label>
             </div>
             <div class="radio">
                 <label>
-                    <input type="radio" name="option" value="5"> Excellent Effort </span>
+                    <input type="radio" name="option" value="5" id="option"> Excellent Effort </span>
                 </label>
             </div>
         </div>
@@ -137,9 +137,26 @@
             <input type="hidden" name="_token" value="{{ Session::token() }}">
         </div>
     </form>
-
-
-
-
-
 @stop
+
+@push('scripts')
+<script>
+    function validateForm() {
+        var valid = true;
+
+        var rate_option=$('input[name="option"]:checked').val();
+
+        if(rate_option==null){
+            alert("Please rate the activity");
+            valid=false;
+            return false;
+        }
+
+        if(valid){
+            return confirm("Are you sure you want to add this activity ?");
+        }else{
+            return false;
+        }
+    }
+</script>
+@endpush
