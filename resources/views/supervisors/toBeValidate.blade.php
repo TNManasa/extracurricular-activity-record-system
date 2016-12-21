@@ -1,19 +1,11 @@
 @extends('layouts.master')
 
-
-
-
-
-
-
 @section('title')
-    activity to be validated
+    Activity to be validated
 
 @stop
 
 @section('content')
-
-
     <a href="/pending" class="btn btn-primary">Back</a>
 
     <div class="container">
@@ -26,10 +18,7 @@
         </div>
     </div>
 
-    <?php $ed="Present"?>
-
-
-
+    <?php $ed = "Present"?>
     {{-- @foreach($activity as $a)--}}
 
     @if(!($a->end_date==1)){
@@ -51,7 +40,7 @@
         <li class="list-group-item">Student ID : {{$a->student_id}} </li>
         <li class="list-group-item">Student Name : {{$a->s_first_name}}  {{$a->s_last_name}} </li>
         <li class="list-group-item">Activity Type: {{$b}}</li>
-        <li class="list-group-item">Description: <h4>{{$a->description}} </h4> </li>
+        <li class="list-group-item">Description: <h4>{{$a->description}} </h4></li>
         <li class="list-group-item">
             Duration:
             <h4>From {{$a->start_date}} To {{$ed}} </h4>
@@ -63,69 +52,49 @@
     <br>
     {{--@endforeach--}}
     @if($a->image==1)
-    <div class="image">
-        <img src="{{route('activities.get-image',['activity_id'=>$a->id])}}">
-        
-        
-    </div>
+        <div class="image">
+            <img src="{{route('activities.get-image',['activity_id'=>$a->id])}}">
+        </div>
     @endif
-
-
 
 
     <form method="post" action="{{$a->id}}/reject">
 
-        <div class="well well-sm well-primary">
-            <br>
-            <h3>Reject The Activity </h3>
-            </br>
-
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3>Reject The Activity </h3>
+            </div>
+            <div class="panel-body">
+                <h3>Reason for rejection </h3>
+            </div>
+            <div class="input">
+                <input class="form-control" type="text" name="r_description">
+            </div>
+            <div>
+                <br>
+                <button type="submit" class="btn btn-success" name="reject"
+                        onclick='return confirm("Do you really want to reject this activity ?");'>Reject
+                </button>
+                <input type="hidden" name="_token" value="{{ Session::token() }}">
+            </div>
         </div>
 
-        <div>
-            <br>
-            <h3>Reason for rejection </h3>
-            </br>
 
-        </div>
-
-        <div class="input">
-            <input type="text" name="r_description">
-        </div>
-
-
-
-
-        <div>
-            <button type="submit" class="btn btn-success" name="reject" onclick='return confirm("Do you really want to reject this activity ?");'>Reject</button>
-            <input type="hidden" name="_token" value="{{ Session::token() }}">
-        </div>
     </form>
-
-
-
-
-
-
     <form method="post" action="{{$a->id}}/validate">
-
-        <div class="well well-sm well-primary">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3>Validate the Activity </h3>
+            </div>
+            <div class="panel-body">
+                <h3>Comments on Activity </h3>
+            </div>
             <br>
-            <h3>Validate the Activity </h3>
-            </br>
-
+            <div class="input">
+                <input class="form-control" type="text" name="v_description">
+            </div>
         </div>
 
-        <div >
-            <br>
-            <h3>Comments on Activity </h3>
-            </br>
-
-        </div>
-
-        <div class="input">
-            <input type="text" name="v_description">
-        </div>
 
 
         <div class="well well-sm well-primary">
