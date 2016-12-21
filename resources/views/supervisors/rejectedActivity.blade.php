@@ -7,7 +7,7 @@
 
 
 @section('title')
-     validated activity
+    rejected activity
 
 @stop
 
@@ -51,10 +51,10 @@
             <h4>From {{$a[0]->start_date}} To {{$a[0]->end_date}} </h4>
         </li>
 
-        <li class="list-group-item">Rating  : {{$a[1]->rating}} </li>
-        <li class="list-group-item">Comments(by supervisor):  <h4>{{$a[1]->validation_description}} </h4> </li>
-        <li class="list-group-item">Validated Date  : {{$a[1]->validated_date}} </li>
-        <li class="list-group-item">Validated By    : {{$a[0]->supervisor_name}} </li>
+        <li class="list-group-item">Rating  : Rejected </li>
+        <li class="list-group-item">Reasons for rejection:  <h4>{{$a[1]->validation_description}} </h4> </li>
+        <li class="list-group-item">Rejected Date  : {{$a[1]->validated_date}} </li>
+        <li class="list-group-item">Rejected By    : {{$a[0]->supervisor_name}} </li>
 
     </ul>
 
