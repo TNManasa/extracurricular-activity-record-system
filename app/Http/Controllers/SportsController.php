@@ -33,7 +33,7 @@ class SportsController extends Controller
 
         Sport::insert($sport);
 
-        return redirect()->back();
+        return redirect()->route('admin.index');
     }
 
     public function newSportActivity()

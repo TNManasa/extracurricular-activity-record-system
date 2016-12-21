@@ -43,7 +43,7 @@ class OrganizationsController extends Controller
 
         Organization::insert($organization);
 
-        return redirect()->back();
+        return redirect()->route('admin.index');
     }
 
     public function getLogo($logo_name){
