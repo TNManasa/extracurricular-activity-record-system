@@ -35,7 +35,8 @@ class SupervisorsController extends Controller
     }
 
     public function rejectedActivities(){
-        
+        $rejectedActivities=Activity::getRejectedActivities();
+        return view('supervisors.rejected_activities', compact('rejectedActivities'));
     }
 
     public function activityShow($id){
@@ -57,11 +58,13 @@ class SupervisorsController extends Controller
         //return $supervisor_name[0]->name;
     }
 
+    
+
 
     public function activityValidate(Request $request, $id){
         $input=$request->all();
         $a=$input['option'];
-        $vd=$input['v_description'];
+        $vd=$input['va_description'];
         $d=date("Y-m-d");
 
 

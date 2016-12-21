@@ -122,6 +122,25 @@ class Activity
         return $validated_activities;
     }
 
+    public static function getRejectedActivities(){
+        $v_activities= DB::select('select * from activities WHERE activities.id  IN (SELECT id FROM activities RIGHT JOIN validations on activities.id=validations.validation_id WHERE is_validated=0)');
+        $validated_activities=array();
+        foreach($v_activities as $activity){
+            $b = new Activity();
+            $b->id = $activity->id;
+            $b->student_id = $activity->student_id;
+            $b->activity_type = $activity->activity_type;
+            $b->start_date = $activity->start_date;
+            $b->end_date = $activity->end_date;
+            $b->effort = $activity->effort;
+            $b->description = $activity->description;
+            $b->image=$activity->image;
+
+            array_push($validated_activities, $b);
+        }
+        return $validated_activities;
+    }
+
     public static function showPendingActivity($id){
         //$activity= DB::select('select *  FROM  (select first_name,last_name,index_no from students) as s RIGHT JOIN (select * from activities where id = ? ) as t on s.index_no=t.student_id', [$id]);
         $activity=DB::select('select * from student_activity where id=?',[$id]);
