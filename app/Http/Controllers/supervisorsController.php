@@ -133,7 +133,7 @@ class SupervisorsController extends Controller
 
 
         /////// needs to be inserted later, .sql file is in sqlfunctions
-//        DB::statement("Call InsertSupervisor(?,?,?,?,?,?)",[$emp_id,$email,$first_name,$last_name,$position,$pwd]);
+        DB::statement("Call InsertSupervisor(?,?,?,?,?,?)",[$emp_id,$email,$first_name,$last_name,$position,$pwd]);
 //        return 1;
 
     //to check the uniqueness of employee number
@@ -150,20 +150,20 @@ class SupervisorsController extends Controller
 
         //insert into users table
         //role should be removed later on .....
-        $line1="insert into users (email,password,role) values (?,?,?)";
-        DB::statement($line1,[$email,$pwd,"supervisor"]);
-
-        //to fetch id, because there is no other way to get that foreign key
-        $id1 = DB::select('select id from users where email = ?',[$email]);
-        $id=null;
-        foreach ($id1 as $user) {
-            $id= $user->id;
-        }
-
-        $line2= "insert into supervisors (emp_id, first_name, last_name,position,user_id) values (?,?,?,?,?)";
-        DB::insert($line2,[$emp_id,$first_name,$last_name,$position,$id]);
-
-        return 'success';
+//        $line1="insert into users (email,password,role) values (?,?,?)";
+//        DB::statement($line1,[$email,$pwd,"supervisor"]);
+//
+//        //to fetch id, because there is no other way to get that foreign key
+//        $id1 = DB::select('select id from users where email = ?',[$email]);
+//        $id=null;
+//        foreach ($id1 as $user) {
+//            $id= $user->id;
+//        }
+//
+//        $line2= "insert into supervisors (emp_id, first_name, last_name,position,user_id) values (?,?,?,?,?)";
+//        DB::insert($line2,[$emp_id,$first_name,$last_name,$position,$id]);
+        DB::statement("Call InsertSupervisor(?,?,?,?,?,?)",[$emp_id,$email,$first_name,$last_name,$position,$pwd]);
+        return redirect()->back();
 
     }
 
