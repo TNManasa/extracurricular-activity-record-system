@@ -25,7 +25,7 @@ class CreateActivitiesTable extends Migration
             $table->string('end_date', 10)->nullable();
             $table->integer('effort');  // measured in hours
             $table->text('description')->nullable();
-            $table->integer('image');
+            $table->tinyInteger('image');
 
             $table->foreign('student_id')->references('index_no')->on('students');
         });

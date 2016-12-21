@@ -104,6 +104,15 @@ class User implements Authenticatable
         return $result_index;
     }
 
+    public static function findSupervisorID($id){
+    $studentqry= DB::select('select emp_id from supervisors where user_id= ?',[$id]);
+    $result_index = null;
+    foreach ($studentqry as $student) {
+        $result_index = $student->emp_id;
+    }
+    return $result_index;
+}
+
     public static function findById($id){
         $user = DB::select('select * from users where id=?', [$id]);
         return $user;
