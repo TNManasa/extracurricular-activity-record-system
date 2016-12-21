@@ -120,7 +120,7 @@ class SupervisorsController extends Controller
             'email' => 'required|email',
             'first_name' => 'required|alpha',
             'last_name' => 'required|alpha',
-            'position' => 'required|alpha',
+            'position' => 'required',
             'password' => 'required|same:password_confirmation'
         ]);
 
