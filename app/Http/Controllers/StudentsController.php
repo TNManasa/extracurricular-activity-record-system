@@ -74,8 +74,7 @@ class StudentsController extends Controller
         $condition2=ctype_alpha ( $index_no_substring2 );
 
         /////////////////  is to be added later, because of ease
-        DB::statement("Call InsertStudent(?,?,?,?,?,?,?,?)",[$index_no,$email,$first_name,$last_name,$gender,$batch,$dob,$pwd]);
-        return 1;
+//        DB::statement("Call InsertStudent(?,?,?,?,?,?,?,?)",[$index_no,$email,$first_name,$last_name,$gender,$batch,$dob,$pwd]);
 
         if(!$condition1 or !$condition2){
             return view('students.register', ['customMessage' => 'index number you entered is not valid']);
@@ -94,7 +93,7 @@ class StudentsController extends Controller
         }
 
 
-        //DB::statement("Call InsertStudent(?,?,?,?,?,?,?,?)",[$index_no,$email,$first_name,$last_name,$gender,$batch,$dob,$pwd]);
+        DB::statement("Call InsertStudent(?,?,?,?,?,?,?,?)",[$index_no,$email,$first_name,$last_name,$gender,$batch,$dob,$pwd]);
 
 //        $line1 = "insert into users (email,password,role) values (?,?,?)";
 //        DB::statement($line1, [$email, $pwd, $role]);
