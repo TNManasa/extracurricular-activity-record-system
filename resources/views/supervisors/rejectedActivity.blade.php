@@ -29,9 +29,9 @@
 
     <?php $ed="Present" ?>
 
-    @if(!($a[0]->end_date==1)){
-    {{$ed=$a[0]->end_date}}
-    }@endif
+    @if(!($a[0]->end_date==1))
+    <?php $ed=$a[0]->end_date?>
+    @endif
 
 
     {{-- @foreach($activity as $a)--}}
@@ -64,7 +64,7 @@
 
     @if($a[0]->image==1)
         <div class="image">
-            <img src="{{route('activities.get-image',['activity_id'=>$a->id])}}">
+            <img src="{{route('activities.get-image',['activity_id'=>$a->id])}}" style="width: 500px;height: 500px">
 
 
         </div>

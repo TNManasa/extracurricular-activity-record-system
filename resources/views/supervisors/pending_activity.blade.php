@@ -39,9 +39,9 @@
         <tbody>
         @foreach($pendingActivities as $a)
 
-            @if(!($a->end_date==1)){
-            {{$ed=$a->end_date}}
-            }@endif
+            @if(!($a->end_date==1))
+            <?php $ed=$a->end_date ?>
+            @endif
 
             @if($a->activity_type==1)
                 <?php $b="Organizational Activity"?>
