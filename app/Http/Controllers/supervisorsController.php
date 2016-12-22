@@ -158,7 +158,8 @@ class SupervisorsController extends Controller
 //        $line2= "insert into supervisors (emp_id, first_name, last_name,position,user_id) values (?,?,?,?,?)";
 //        DB::insert($line2,[$emp_id,$first_name,$last_name,$position,$id]);
         DB::statement("Call InsertSupervisor(?,?,?,?,?,?)",[$emp_id,$email,$first_name,$last_name,$position,$pwd]);
-        return redirect()->back();
+
+        return redirect()->route('admin.dashboard');
 
     }
 
