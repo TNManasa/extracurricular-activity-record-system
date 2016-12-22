@@ -18,7 +18,11 @@
                     @endif
                 </li>
                 <li class="list-group-item">Index No: {{ $student->index_no }}</li>
-                <li class="list-group-item">Gender: {{ $student->gender }}</li>
+                @if($student->gender == 1)
+                    <li class="list-group-item">Gender: Male</li>
+                @elseif($student->gender == 2)
+                    <li class="list-group-item">Gender: Female</li>
+                @endif
                 <li class="list-group-item">Email: {{ $student->email }}</li>
                 <li class="list-group-item">DoB: {{ $student->dob }}</li>
                 <li class="list-group-item">Batch: {{ $student->batch }}</li>
