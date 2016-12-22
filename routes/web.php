@@ -12,9 +12,9 @@ Route::get('/', function () {
 // Still not properly set
 
 Route::get('admin/dashboard', [
-    'uses' => 'AdminController@getDashboard',
+    'uses' => 'AdminController@getIndex',
     'as' => 'admin.dashboard'
-])->middleware('auth', 'admin');
+])->middleware('auth', 'checkAdmin');
 
 Route::get('students/dashboard', [
     'uses' => 'StudentsController@getDashboard',
@@ -67,7 +67,7 @@ Route::get('/supervisors/register', [
 ])->middleware('auth', 'checkAdmin');
 
 Route::post('/supervisors/addDetails', [
-    'uses' => 'SupervisorsController@addNewSupervisor',
+    'uses' => 'supervisorsController@addNewSupervisor',
     'as' => 'supervisor.addDetails'
 ])->middleware('auth', 'checkAdmin');
 

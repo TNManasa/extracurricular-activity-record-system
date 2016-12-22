@@ -43,7 +43,7 @@
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Created by Elixir</a>
+                <a class="navbar-brand page-scroll" href="#page-top">Created by Team Elixir</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -96,7 +96,7 @@
     <aside class="bg-dark">
         <div class="container text-center">
             <div class="call-to-action">
-                <h2>Created by Elixir</h2>
+                <h2>Created by Team Elixir</h2>
                 <a href="http://startbootstrap.com/template-overviews/creative/" class="btn btn-default btn-xl sr-button">GATHIKA :: MENUKA :: THEJAN :: SALAKA</a>
             </div>
         </div>

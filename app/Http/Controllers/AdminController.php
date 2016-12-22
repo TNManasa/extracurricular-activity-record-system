@@ -27,6 +27,8 @@ class AdminController extends Controller
             'achievements' => $all_achievements
         ]);
     }
+
+
     public function getAllStudents()
     {
         $students = Student::getAll();
