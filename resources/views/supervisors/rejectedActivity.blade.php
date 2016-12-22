@@ -64,7 +64,7 @@
 
     @if($a[0]->image==1)
         <div class="image">
-            <img src="{{route('activities.get-image',['activity_id'=>$a->id])}}" style="width: 500px;height: 500px">
+            <img src="{{route('activities.get-image',['activity_id'=>$a[0]->id])}}" style="width: 500px;height: 500px">
 
 
         </div>

@@ -104,10 +104,6 @@ class SupervisorsController extends Controller
     }
 
 
-
-
-
-
     public function newSupervisor()
     {
         return view('supervisors.register');
